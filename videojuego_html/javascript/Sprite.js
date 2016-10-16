@@ -61,6 +61,7 @@ AutoAnimatedSprite.prototype.update = function(canvas) {
   }
 
   this.update_pos(this.frameSize.X,this.frameSize.Y,canvas);
+
 }
 
 AutoAnimatedSprite.prototype.render = function(drawingSurface) {
