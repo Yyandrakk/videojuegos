@@ -2,7 +2,7 @@
  * Created by oscar on 13/11/16.
  */
 requirejs.config({
-    baseUrl:"",
+    baseUrl:"js",
     shim : {
         'Phaser': {
             exports: 'Phaser'
@@ -18,7 +18,7 @@ requirejs.config({
     }
 });
 
-require(['loader'],
-    function (loader) {
-        loader.start();
+require(['boot'],
+    function (boot) {
+        boot.start();
     });
