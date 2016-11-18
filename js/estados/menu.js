@@ -1,17 +1,21 @@
 /**
  * Created by oscar on 13/11/16.
  */
-define(['Phaser','Game'], function (Phaser,Game) {
+define(['Phaser','Game','mundo'], function (Phaser,Game,Mundo) {
     function Menu() {
         Phaser.State.call(this);
     }
 //Inheritance
     Menu.prototype = Object.create(Phaser.State.prototype);
     Menu.prototype.constructor = Menu;
-    Menu.prototype.optionGrupo;
+    Menu.optionGrupo=null;
+    Menu.soundBoton=null;
     /* download assets code here */
     Menu.prototype.preload = function () {
        //Cargar el mundo inicial
+        Game.load.image('tileMP1', '../../media/tileset/Hyptosis/hyptosis_tile-art-batch-1.png');
+        Game.load.image('tileMP2', '../../media/tileset/Hyptosis/hyptosis_til-art-batch-2.png');
+        Game.load.tilemap('mapP', '../../media/map/mapaPrincipal.json', null,Phaser.Tilemap.TILED_JSON);
 
 
 
@@ -31,9 +35,7 @@ define(['Phaser','Game'], function (Phaser,Game) {
     Menu.prototype.toggleSound = function() {
 
         Game.sound.mute = ! Game.sound.mute;
-
-        this.muteButton.frame = Game.sound.mute ? 1 : 0;
-
+        //this.soundBoton.frame = Game.sound.mute ? 1 : 0;
 
     }
     /* initialize persistent game objects here */
@@ -41,24 +43,28 @@ define(['Phaser','Game'], function (Phaser,Game) {
 
         var nameLabel = Game.add.text(Game.world.centerX, Game.world.centerY-100, 'EPS WARRIOR');
         nameLabel.anchor.setTo(0.5, 0.5);
-        var startBo = Game.add.button(Game.world.centerX, Game.world.centerY, "startB", function(){});
+        var startBo = Game.add.button(Game.world.centerX, Game.world.centerY, "startB", this.start());
+        startBo.scale.setTo(0.5,0.5);
         startBo.anchor.set(0.5);
 
 
         this.optionGrupo = Game.add.group();
-        var optionBoton = Game.add.button(Game.world.centerX, Game.world.centerY + 100, "option", this.mostrarMenu);
+        var optionBoton = Game.add.button(Game.world.centerX, Game.world.centerY + 100, "option", this.mostrarMenu());
+        optionBoton.scale.setTo(0.5,0.5);
         optionBoton.anchor.set(0.5);
         this.optionGrupo.add(optionBoton);
-        var soundBoton = Game.add.button(Game.world.centerX, Game.world.centerY + 150, "mute", this.toggleSound);
-        soundBoton.frame=0;
-        soundBoton.anchor.set(0.5);
-        soundBoton.input.useHandCursor = true;
-        this.optionGrupo.add(soundBoton);
+        this.soundBoton = Game.add.button(Game.world.centerX, Game.world.centerY + 150, "mute", this.toggleSound());
+        this.soundBoton.frame=0;
+        this.soundBoton.scale.setTo(0.5,0.5);
+        this.soundBoton.anchor.set(0.5);
+        this.soundBoton.input.useHandCursor = true;
+        this.optionGrupo.add(this.soundBoton);
 
     }
     /* update movements, collisions, score here */
-    Menu.prototype.update = function () {
-
+    Menu.prototype.start = function () {
+        Game.state.add('Mundo', new Mundo());
+        Game.state.start('Mundo');
     }
 
 
