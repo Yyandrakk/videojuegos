@@ -14,8 +14,7 @@ define(['Phaser','Game','estados/menu'], function (Phaser,Game,Menu) {
         Game.load.image("mute","../media/botones/sound.png",1);
         Game.load.image("mute","../media/botones/mute.png",0);
         Game.load.image("option","../media/botones/opciones.png");
-        Game.load.image('progressBar', '../media/image/progressBar.png');
-
+        Game.load.image("progressBar", "../media/image/progressBar.png");
         var loadingLabel = Game.add.text(Game.world.centerX, 150, 'loading...',{ font: '30px Arial', fill: '#ffffff' });
         loadingLabel.anchor.setTo(0.5, 0.5);
         var progressBar = Game.add.sprite(Game.world.centerX, 200, 'progressBar');

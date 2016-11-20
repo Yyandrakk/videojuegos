@@ -1,15 +1,26 @@
 /**
  * Created by oscar on 18/11/16.
  */
-define((['Phaser'], function (Phaser) {
+define(['Phaser'], function (Phaser) {
     function Player (game,x,y) {
         Phaser.Sprite.call(this,game,x,y,'player');
-        this.animations.add('fly',[0,1,2],10,true,true);
-        this.animations.play('fly');
+        this.animations.add('down',[0,1,2],12,true,true);
+        this.animations.add('left',[3,4,5],12,true,true);
+        this.animations.add('rigth',[6,7,8],12,true,true);
+        this.animations.add('up',[9,10,11],12,true,true);
+
+        this.animations.play('down');
         this.anchor.setTo(0.5,0.5);
-        this.speed = 0.2;
         game.add.existing(this);
+        this.cursor= {
+            up: [game.input.keyboard.addKey(Phaser.Keyboard.W), game.input.keyboard.addKey(Phaser.Keyboard.UP)],
+            left: [game.input.keyboard.addKey(Phaser.Keyboard.A), game.input.keyboard.addKey(Phaser.Keyboard.LEFT)],
+            right: [game.input.keyboard.addKey(Phaser.Keyboard.D), game.input.keyboard.addKey(Phaser.Keyboard.RIGHT)],
+            down: [game.input.keyboard.addKey(Phaser.Keyboard.S), game.input.keyboard.addKey(Phaser.Keyboard.DOWN)]
+        }
+
     }
+
 
     Player.prototype = Object.create(Phaser.Sprite.prototype);
     Player.prototype.constructor = Player;
@@ -33,15 +44,10 @@ define((['Phaser'], function (Phaser) {
         else {
             this.player.body.velocity.x = 0;
             this.player.body.velocity.y = 0;
-            this.player.animations.stop(); // Stop the animation
-            this.player.frame = 4; // Set the player frame to 4 (stand still)
-            //this.player.frame = 4; // Set the player frame to 4 (stand still)
-        }
-        // Make the player jump
-        if (this.cursor.up.isDown && this.player.body.touching.down) {
-            this.player.body.velocity.y = -320;
-            this.jumpSound.play();
+            this.player.animations.stop();
+            //this.player.frame = 1;
         }
     }
+
     return Player;
 });
