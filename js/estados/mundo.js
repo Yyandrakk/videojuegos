@@ -13,6 +13,7 @@ define(['Phaser','Game','sprites/player'], function (Phaser,Game,Player) {
 
 
     Mundo.prototype.preload = function () {
+        this.createWorld();
         this.player = new Player(Game,Game.world.centerX, Game.world.centerY);
         this.player.anchor.setTo(0.5, 0.5);
 
@@ -20,6 +21,7 @@ define(['Phaser','Game','sprites/player'], function (Phaser,Game,Player) {
         Game.physics.arcade.enable(this.player);
         Game.camera.follow(this.player);
         this.listSprites.push(this.player);
+
 
 
 
@@ -34,7 +36,7 @@ define(['Phaser','Game','sprites/player'], function (Phaser,Game,Player) {
             this.listSprites[i].update();
         }
     }
-    Mundo.createWorld = function () {
+    Mundo.prototype.createWorld = function () {
         this.map=Game.add.tilemap('mapP');
         this.map.addTilesetImage('tileMP1');
         this.map.addTilesetImage('tileMP2');

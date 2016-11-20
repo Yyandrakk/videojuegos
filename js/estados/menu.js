@@ -16,7 +16,7 @@ define(['Phaser','Game','estados/mundo'], function (Phaser,Game,Mundo) {
         Game.load.image('tileMP1', '../media/tileset/Hyptosis/hyptosis_tile-art-batch-1.png');
         Game.load.image('tileMP2', '../media/tileset/Hyptosis/hyptosis_til-art-batch-2.png');
         Game.load.tilemap('mapP', "../media/map/mapaPrincipal.json", null,Phaser.Tilemap.TILED_JSON);
-        Game.load.spritesheet('player', '../media/sprite/joker1.png', 32, 42);
+        Game.load.spritesheet('player', '../media/sprite/joker1.png',  32, 32);
 
 
 
@@ -44,7 +44,7 @@ define(['Phaser','Game','estados/mundo'], function (Phaser,Game,Mundo) {
 
         var nameLabel = Game.add.text(Game.world.centerX, Game.world.centerY-100, 'EPS WARRIOR');
         nameLabel.anchor.setTo(0.5, 0.5);
-        var startBo = Game.add.button(Game.world.centerX, Game.world.centerY, "startB", this.start());
+        var startBo = Game.add.button(Game.world.centerX, Game.world.centerY, "startB", this.start(),this);
         startBo.scale.setTo(0.5,0.5);
         startBo.anchor.set(0.5);
 
