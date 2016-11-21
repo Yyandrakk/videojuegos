@@ -44,7 +44,7 @@ define(['Phaser','Game','estados/mundo'], function (Phaser,Game,Mundo) {
 
         var nameLabel = Game.add.text(Game.world.centerX, Game.world.centerY-100, 'EPS WARRIOR');
         nameLabel.anchor.setTo(0.5, 0.5);
-        var startBo = Game.add.button(Game.world.centerX, Game.world.centerY, "startB", this.start(),this);
+        var startBo = Game.add.button(Game.world.centerX, Game.world.centerY, "startB", this.empezar(),this);
         startBo.scale.setTo(0.5,0.5);
         startBo.anchor.set(0.5);
 
@@ -63,7 +63,8 @@ define(['Phaser','Game','estados/mundo'], function (Phaser,Game,Mundo) {
 
     }
     /* update movements, collisions, score here */
-    Menu.prototype.start = function () {
+    Menu.prototype.empezar = function () {
+        Game.physics.startSystem(Phaser.Physics.ARCADE);
         Game.state.add('Mundo', new Mundo());
         Game.state.start('Mundo');
     }

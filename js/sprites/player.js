@@ -12,13 +12,13 @@ define(['Phaser'], function (Phaser) {
         this.animations.play('down');
         this.anchor.setTo(0.5,0.5);
         game.add.existing(this);
-        /*this.cursor= {
+        this.cursor= {
             up: [game.input.keyboard.addKey(Phaser.Keyboard.W), game.input.keyboard.addKey(Phaser.Keyboard.UP)],
             left: [game.input.keyboard.addKey(Phaser.Keyboard.A), game.input.keyboard.addKey(Phaser.Keyboard.LEFT)],
             right: [game.input.keyboard.addKey(Phaser.Keyboard.D), game.input.keyboard.addKey(Phaser.Keyboard.RIGHT)],
             down: [game.input.keyboard.addKey(Phaser.Keyboard.S), game.input.keyboard.addKey(Phaser.Keyboard.DOWN)]
-        }*/
-        this.cursor = game.input.keyboard.createCursorKeys();
+        }
+        //this.cursor = game.input.keyboard.createCursorKeys();
 
     }
 
@@ -26,19 +26,19 @@ define(['Phaser'], function (Phaser) {
     Player.prototype = Object.create(Phaser.Sprite.prototype);
     Player.prototype.constructor = Player;
     Player.prototype.update = function () {
-        if (this.cursor.left.isDown) {
+        if (this.cursor.left.some(bt => bt.isDown==true)) {
             this.body.velocity.x = -200;
             this.animations.play('left');
         }
-        else if (this.cursor.right.isDown) {
+        else if (this.cursor.right.some(bt => bt.isDown==true)) {
             this.body.velocity.x = 200;
             this.animations.play('derecha');
         }
-        else if(this.cursor.up.isDown){
+        else if(this.cursor.up.some(b => b.isDown==true)){
             this.body.velocity.y = -200;
             this.animations.play('up');
         }
-        else if(this.cursor.down.isDown){
+        else if(this.cursor.down.some(b=>b.isDown==true)){
             this.body.velocity.y = +200;
             this.animations.play('down');
         }

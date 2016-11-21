@@ -21,27 +21,31 @@ define(['Phaser','Game','sprites/player'], function (Phaser,Game,Player) {
         Game.physics.arcade.enable(this.player);
         Game.camera.follow(this.player);
         this.listSprites.push(this.player);
-
-
-
-
     }
     Mundo.prototype.create = function () {
-        Game.world.setBounds(0,0,40*32,40*32);//posible cambio de 1000 a lo del tilemap
+        Game.world.setBounds(0,0,40*32,40*32);
 
 
     }
     Mundo.prototype.update = function () {
+        Game.physics.arcade.collide(this.player,this.muro);
+        Game.physics.arcade.collide(this.player,this.decoracion);
         for(i=0;i<this.listSprites.length;i++){
             this.listSprites[i].update();
         }
+
     }
     Mundo.prototype.createWorld = function () {
         this.map=Game.add.tilemap('mapP');
         this.map.addTilesetImage('tileMP1');
         this.map.addTilesetImage('tileMP2');
-        this.layer = this.map.createLayer('Capa suelo');
-        this.layer.resizeWorld();
+        this.map.setCollisionByExclusion([1]);
+        this.suelo = this.map.createLayer('Capa suelo');
+        this.suelo.resizeWorld();
+        this.muro = this.map.createLayer('capa muro exterior');
+        this.decoracion = this.map.createLayer('decoracion');
+
+
     }
     return Mundo;
 });
