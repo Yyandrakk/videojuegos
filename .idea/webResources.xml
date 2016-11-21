@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebResourcesPaths">
+    <contentEntries>
+      <entry url="file://$PROJECT_DIR$">
+        <entryData>
+          <resourceRoots>
+            <path value="file://$PROJECT_DIR$/media" />
+            <path value="file://$PROJECT_DIR$/media/botones" />
+            <path value="file://$PROJECT_DIR$/media/image" />
+            <path value="file://$PROJECT_DIR$/media/map" />
+            <path value="file://$PROJECT_DIR$/media/sprite" />
+            <path value="file://$PROJECT_DIR$/media/tileset" />
+            <path value="file://$PROJECT_DIR$/media/tileset/Hyptosis" />
+          </resourceRoots>
+        </entryData>
+      </entry>
+    </contentEntries>
+  </component>
+</project>

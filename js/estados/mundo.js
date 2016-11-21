@@ -39,11 +39,13 @@ define(['Phaser','Game','sprites/player'], function (Phaser,Game,Player) {
         this.map=Game.add.tilemap('mapP');
         this.map.addTilesetImage('tileMP1');
         this.map.addTilesetImage('tileMP2');
-        this.map.setCollisionByExclusion([1]);
+
         this.suelo = this.map.createLayer('Capa suelo');
         this.suelo.resizeWorld();
         this.muro = this.map.createLayer('capa muro exterior');
-        this.decoracion = this.map.createLayer('decoracion');
+        this.decoracion = this.map.createLayer('decoracion')
+        this.map.setCollisionBetween(1, 10000, true, this.muro);
+        this.map.setCollisionBetween(1, 10000, true, this.decoracion);
 
 
     }
