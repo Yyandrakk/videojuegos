@@ -16,6 +16,7 @@ define(['Phaser','Game','estados/mundo'], function (Phaser,Game,Mundo) {
         Game.load.image('tileMP1', '../media/tileset/Hyptosis/hyptosis_tile-art-batch-1.png');
         Game.load.image('tileMP2', '../media/tileset/Hyptosis/hyptosis_til-art-batch-2.png');
         Game.load.tilemap('mapP', "../media/map/mapaPrincipal.json", null,Phaser.Tilemap.TILED_JSON);
+        Game.load.tilemap('mapLab', "../media/map/minijuego_laberinto.json", null, Phaser.Tilemap.TILED_JSON);
         Game.load.spritesheet('player', '../media/sprite/joker1.png',  32, 32);
 
 

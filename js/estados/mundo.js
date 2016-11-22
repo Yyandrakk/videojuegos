@@ -21,6 +21,7 @@ define(['Phaser','Game','sprites/player'], function (Phaser,Game,Player) {
         Game.physics.arcade.enable(this.player);
         Game.camera.follow(this.player);
         this.listSprites.push(this.player);
+        Game.load.spritesheet('dog', '../media/sprite/dog.png',  48, 48);
     }
     Mundo.prototype.create = function () {
         Game.world.setBounds(0,0,40*32,40*32);
