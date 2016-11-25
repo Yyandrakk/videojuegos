@@ -1,6 +1,3 @@
-/**
- * Created by oscar on 18/11/16.
- */
 define(['Phaser','Game','sprites/player'], function (Phaser,Game,Player) {
 
     function Mundo() {
@@ -16,7 +13,6 @@ define(['Phaser','Game','sprites/player'], function (Phaser,Game,Player) {
         this.createWorld();
         this.player = new Player(Game,Game.world.centerX, Game.world.centerY);
         this.player.anchor.setTo(0.5, 0.5);
-
         this.player.scale.setTo(0.75,0.75);
         Game.physics.arcade.enable(this.player);
         Game.camera.follow(this.player);
@@ -44,7 +40,7 @@ define(['Phaser','Game','sprites/player'], function (Phaser,Game,Player) {
         this.suelo = this.map.createLayer('Capa suelo');
         this.suelo.resizeWorld();
         this.muro = this.map.createLayer('capa muro exterior');
-        this.decoracion = this.map.createLayer('decoracion')
+        this.decoracion = this.map.createLayer('decoracion');
         this.map.setCollisionBetween(1, 10000, true, this.muro);
         this.map.setCollisionBetween(1, 10000, true, this.decoracion);
 

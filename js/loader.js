@@ -7,16 +7,14 @@ define(['Phaser','Game','estados/menu'], function (Phaser,Game,Menu) {
     }
     Loader.prototype = Object.create(Phaser.State.prototype);
     Loader.prototype.constructor = Loader;
-    Loader.prototype.init = function () {
-        Game.load.image("progressBar", "../media/image/progressBar.png");
-    }
+
     Loader.prototype.preload = function (){
         Game.physics.startSystem(Phaser.Physics.ARCADE);
         Game.stage.backgroundColor = "#023";
         this.start=Game.load.image("startB","../../media/botones/start.png");
         //this.start.scale.setTo(0.5);
-        Game.load.image("mute","../media/botones/sound.png",1);
-        //Game.load.image("mute","../media/botones/mute.png",0);
+        Game.load.spritesheet('mute', "../media/botones/sonido_mute.png", 128, 128);
+
         Game.load.image("option","../media/botones/opciones.png");
 
         var loadingLabel = Game.add.text(Game.world.centerX, 150, 'loading...',{ font: '30px Arial', fill: '#ffffff' });
@@ -24,6 +22,10 @@ define(['Phaser','Game','estados/menu'], function (Phaser,Game,Menu) {
         var progressBar = Game.add.sprite(Game.world.centerX, 200, 'progressBar');
         progressBar.anchor.setTo(0.5, 0.5);
         Game.load.setPreloadSprite(progressBar);
+        Game.global.control = {
+            laberinto: {haGanado:false,primeraEntrada:false}
+        };
+
     }
 
     Loader.prototype.create = function () {

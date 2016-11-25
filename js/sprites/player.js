@@ -1,6 +1,3 @@
-/**
- * Created by oscar on 18/11/16.
- */
 define(['Phaser'], function (Phaser) {
     function Player (game,x,y) {
         Phaser.Sprite.call(this,game,x,y,'player');
@@ -28,25 +25,28 @@ define(['Phaser'], function (Phaser) {
     Player.prototype.update = function () {
         if (this.cursor.left.some(bt => bt.isDown==true)) {
             this.body.velocity.x = -200;
+            this.body.velocity.y = 0;
             this.animations.play('left');
         }
         else if (this.cursor.right.some(bt => bt.isDown==true)) {
             this.body.velocity.x = 200;
+            this.body.velocity.y = 0;
             this.animations.play('derecha');
         }
         else if(this.cursor.up.some(b => b.isDown==true)){
             this.body.velocity.y = -200;
+            this.body.velocity.x = 0;
             this.animations.play('up');
         }
         else if(this.cursor.down.some(b=>b.isDown==true)){
             this.body.velocity.y = +200;
+            this.body.velocity.x = 0;
             this.animations.play('down');
         }
         else {
             this.body.velocity.x = 0;
             this.body.velocity.y = 0;
             this.animations.stop();
-            //this.player.frame = 1;
         }
     }
 

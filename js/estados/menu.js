@@ -37,7 +37,7 @@ define(['Phaser','Game','estados/mundo'], function (Phaser,Game,Mundo) {
     function toggleSound() {
 
         Game.sound.mute = ! Game.sound.mute;
-        //this.soundBoton.frame = Game.sound.mute ? 1 : 0;
+        this.soundBoton.frame = Game.sound.mute ? 0 : 1;
 
     }
     /* initialize persistent game objects here */
@@ -56,7 +56,7 @@ define(['Phaser','Game','estados/mundo'], function (Phaser,Game,Mundo) {
         optionBoton.anchor.set(0.5);
         this.optionGrupo.add(optionBoton);
         this.soundBoton = Game.add.button(Game.world.centerX, Game.world.centerY + 200, "mute",toggleSound,this);
-        this.soundBoton.frame=0;
+        this.soundBoton.frame=1;
         this.soundBoton.scale.setTo(0.5,0.5);
         this.soundBoton.anchor.set(0.5);
         this.soundBoton.input.useHandCursor = true;
