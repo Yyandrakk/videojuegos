@@ -41,6 +41,8 @@ define(['Phaser','Game','sprites/player'], function (Phaser,Game,Player) {
         this.suelo.resizeWorld();
         this.muro = this.map.createLayer('capa muro exterior');
         this.decoracion = this.map.createLayer('decoracion');
+        this.laberinto = this.map.createLayer('laberinto');
+        this.minfinal = this.map.createLayer('minijuego_final');
         this.map.setCollisionBetween(1, 10000, true, this.muro);
         this.map.setCollisionBetween(1, 10000, true, this.decoracion);
 
