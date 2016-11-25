@@ -22,9 +22,7 @@ define(['Phaser','Game','estados/menu'], function (Phaser,Game,Menu) {
         var progressBar = Game.add.sprite(Game.world.centerX, 200, 'progressBar');
         progressBar.anchor.setTo(0.5, 0.5);
         Game.load.setPreloadSprite(progressBar);
-        Game.global.control = {
-            laberinto: {haGanado:false,primeraEntrada:false}
-        };
+
 
     }
 
