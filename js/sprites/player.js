@@ -1,22 +1,21 @@
 define(['Phaser'], function (Phaser) {
-    function Player (game,x,y) {
-        Phaser.Sprite.call(this,game,x,y,'player');
+     Player = function(game,x,y,key,frame) {
+        Phaser.Sprite.call(this,game,x,y,key);
         this.animations.add('down',[0,1,2],12,true,true);
         this.animations.add('left',[3,4,5],12,true,true);
         this.animations.add('derecha',[6,7,8],12,true,true);
         this.animations.add('up',[9,10,11],12,true,true);
 
-        this.animations.play('down');
+        this.animations.frame=frame;
         this.anchor.setTo(0.5,0.5);
-        game.add.existing(this);
+
         this.cursor= {
             up: [game.input.keyboard.addKey(Phaser.Keyboard.W), game.input.keyboard.addKey(Phaser.Keyboard.UP)],
             left: [game.input.keyboard.addKey(Phaser.Keyboard.A), game.input.keyboard.addKey(Phaser.Keyboard.LEFT)],
             right: [game.input.keyboard.addKey(Phaser.Keyboard.D), game.input.keyboard.addKey(Phaser.Keyboard.RIGHT)],
             down: [game.input.keyboard.addKey(Phaser.Keyboard.S), game.input.keyboard.addKey(Phaser.Keyboard.DOWN)]
         }
-        //this.cursor = game.input.keyboard.createCursorKeys();
-
+         game.add.existing(this);
     }
 
 
