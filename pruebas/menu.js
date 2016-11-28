@@ -20,7 +20,7 @@ define(['Phaser','Game','estados/laberinto'], function (Phaser,Game,Laberinto) {
         Game.load.tilemap('mapP', "../media/map/mapaPrincipal.json", null,Phaser.Tilemap.TILED_JSON);
         Game.load.tilemap('mapLab', "../media/map/minijuego_laberinto.json", null, Phaser.Tilemap.TILED_JSON);
         Game.load.spritesheet('player', '../media/sprite/joker1.png',  32, 32);
-        Game.load.spritesheet('dog', '../media/sprite/dog.png',  48, 48);
+        Game.load.spritesheet('dog', '../media/sprite/dog.png',  32, 32);
 
 
 
