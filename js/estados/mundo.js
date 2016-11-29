@@ -55,9 +55,9 @@ define(['Phaser','Game','sprites/player','estados/min_final'], function (Phaser,
         Game.physics.arcade.collide(this.player,this.muro);
         Game.physics.arcade.collide(this.player,this.decoracion);
 
-       // if(Game.global.control.every((minijuego) => return minijuego.haGanado == true)){
+        /*if(Game.global.control.every(minijuego => return minijuego.haGanado)){
             Game.physics.arcade.overlap(this.player, this.colision, this.load_minfinal, null, this);
-        //}
+        }*/
         Game.physics.arcade.overlap(this.player, this.colLab, this.load_laberinto, null, this);
         this.player.update();
     }
