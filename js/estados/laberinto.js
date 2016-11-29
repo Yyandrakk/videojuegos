@@ -11,10 +11,10 @@ define(['Phaser','Game','sprites/dog'], function (Phaser,Game,Dog) {
 
     Laberinto.prototype.preload = function () {
         this.createWorld();
-        this.dog = new Dog(Game,Game.world.centerX, Game.world.centerY);
+        this.dog = new Dog(Game);
         this.dog.anchor.setTo(0.5, 0.5);
 
-        this.dog.scale.setTo(0.75,0.75);
+        this.dog.scale.setTo(0.6,0.6);
         this.listSprites.push(this.dog);
         Game.physics.arcade.enable(this.dog);
         //Game.camera.follow(this.player);
@@ -22,6 +22,8 @@ define(['Phaser','Game','sprites/dog'], function (Phaser,Game,Dog) {
     }
     Laberinto.prototype.create = function () {
         Game.world.setBounds(0,0,40*32,40*32);
+        this.dog.position.x = 50;
+        this.dog.position.y = 810;
         Game.camera.follow(this.dog);
 
     }
@@ -31,6 +33,7 @@ define(['Phaser','Game','sprites/dog'], function (Phaser,Game,Dog) {
         for(i=0;i<this.listSprites.length;i++){
             this.listSprites[i].update();
         }
+        Game.physics.arcade.overlap(this.dog, this.objetivo, this.dogDie, null, this);
 
     }
     Laberinto.prototype.createWorld = function () {
@@ -47,6 +50,11 @@ define(['Phaser','Game','sprites/dog'], function (Phaser,Game,Dog) {
         this.map.setCollisionBetween(1, 10000, true, this.objetivo);
 
 
+    }
+    
+    Laberinto.prototype.dogDie = function() {
+        this.dog.position.x = 50;
+        this.dog.position.y = 810;
     }
     return Laberinto;
 });
