@@ -13,6 +13,9 @@ define(['Phaser'], function (Phaser) {
             up: [game.input.keyboard.addKey(Phaser.Keyboard.W), game.input.keyboard.addKey(Phaser.Keyboard.UP)],
             down: [game.input.keyboard.addKey(Phaser.Keyboard.S), game.input.keyboard.addKey(Phaser.Keyboard.DOWN)]
         }
+
+
+       //this.health+=5;
         game.add.existing(this);
     }
 

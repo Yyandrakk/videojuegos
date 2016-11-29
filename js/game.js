@@ -6,7 +6,6 @@ define(['Phaser'], function (Phaser) {
     g.global = {
         control: {laberinto: {haGanado:false,primeraEntrada:false}
 
-
         }
     };
     return g;
