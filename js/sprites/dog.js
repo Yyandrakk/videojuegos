@@ -9,8 +9,9 @@ define(['Phaser'], function (Phaser) {
         this.animations.play('down');
         this.anchor.setTo(0.5,0.5);
         game.add.existing(this);
-        //game.input.mouse.capture = true;
-        //this.cursor = game.input.keyboard.createCursorKeys();
+        game.input.mouse.capture = true;
+        this.cursor = game.input.keyboard.createCursorKeys();
+       
         
         this.cursor= {
             up: [game.input.keyboard.addKey(Phaser.Keyboard.W), game.input.keyboard.addKey(Phaser.Keyboard.UP)],
@@ -18,30 +19,37 @@ define(['Phaser'], function (Phaser) {
             right: [game.input.keyboard.addKey(Phaser.Keyboard.D), game.input.keyboard.addKey(Phaser.Keyboard.RIGHT)],
             down: [game.input.keyboard.addKey(Phaser.Keyboard.S), game.input.keyboard.addKey(Phaser.Keyboard.DOWN)]
         }
-         game.add.existing(this);
+        /*
+        this.inputEnabled=true;
+        this.input.enableDrag(false,false,true);
+        this.input.priorityID=0;*/
+        game.add.existing(this);
     }
 
 
     Dog.prototype = Object.create(Phaser.Sprite.prototype);
     Dog.prototype.constructor = Dog;
+    
     Dog.prototype.update = function () {
+        
+                
         if (this.cursor.left.some(bt => bt.isDown==true)) {
-            this.body.velocity.x = -200;
+            this.body.velocity.x = -150;
             this.body.velocity.y = 0;
             this.animations.play('left');
         }
         else if (this.cursor.right.some(bt => bt.isDown==true)) {
-            this.body.velocity.x = 200;
+            this.body.velocity.x = 150;
             this.body.velocity.y = 0;
             this.animations.play('derecha');
         }
         else if(this.cursor.up.some(b => b.isDown==true)){
-            this.body.velocity.y = -200;
+            this.body.velocity.y = -150;
             this.body.velocity.x = 0;
             this.animations.play('up');
         }
         else if(this.cursor.down.some(b=>b.isDown==true)){
-            this.body.velocity.y = +200;
+            this.body.velocity.y = +150;
             this.body.velocity.x = 0;
             this.animations.play('down');
         }
@@ -50,19 +58,20 @@ define(['Phaser'], function (Phaser) {
             this.body.velocity.y = 0;
             this.animations.stop();
         }
-    }
-        //if (game.input.mousePointer.isDown) {
-        //    game.physics.arcade.moveToPointer(this.body, 400);
-        //    if (Phaser.Rectangle.contains(this.body, game.input.x, game.input.y))
-        //        this.body.velocity.setTo(0, 0);
-        //}
-        //else {
-        //    this.body.velocity.x = 0;
-        //    this.body.velocity.y = 0;
-        //    this.animations.stop();
-            //this.player.frame = 1;
-        //}
+        
     //}
+        if (this.game.input.mousePointer.isDown) {
+            this.game.physics.arcade.moveToPointer(this, 200);
+            if (Phaser.Rectangle.contains(this.body, this.game.input.x, this.game.input.y))
+                this.body.velocity.setTo(0, 0);
+        }
+        else {
+            this.body.velocity.x = 0;
+            this.body.velocity.y = 0;
+            this.animations.stop();
+            this.frame = 1;
+        }
+    }
 
     return Dog;
 });
