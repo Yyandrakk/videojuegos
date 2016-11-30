@@ -22,7 +22,8 @@ define(['Phaser','Game','estados/menu'], function (Phaser,Game,Menu) {
         var progressBar = Game.add.sprite(Game.world.centerX, 200, 'progressBar');
         progressBar.anchor.setTo(0.5, 0.5);
         Game.load.setPreloadSprite(progressBar);
-
+        Game.load.audio('dogdeath', ['../../media/sound/DogDeath.mp3', '../../media/sound/DogDeath.wav']);
+        Game.load.audio('mazemusic', ['../../media/sound/Fire.mp3', '../../media/sound/Fire.wav']);
 
     }
 
