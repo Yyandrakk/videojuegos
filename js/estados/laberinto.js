@@ -20,7 +20,7 @@ define(['Phaser','Game','sprites/dog','estados/mundo'], function (Phaser,Game,Do
         this.listSprites.push(this.dog);
     }
     Laberinto.prototype.create = function () {
-        Game.world.setBounds(0,0,40*32,40*32);
+        Game.world.setBounds(0,0,30*32,30*32);
         this.dog.position.x = 80;
         this.dog.position.y = 810;
         Game.camera.follow(this.dog);
@@ -62,15 +62,17 @@ define(['Phaser','Game','sprites/dog','estados/mundo'], function (Phaser,Game,Do
         this.numVidas.text = 'Vidas: ' + Game.global.control.laberinto.vidas;
         if (Game.global.control.laberinto.vidas < 0){
             //Game.state.start('GameOver');
-            Game.state.start('Menu');
             this.music.stop();
+            Game.state.start('Mundo');
+
         }
         this.deathSound.play();
     }
     
     Laberinto.prototype.levelCompleted = function() {
         Game.global.control.laberinto.haGanado = true;
-        Game.state.add('Mundo', new Mundo());
+       // Game.state.add('Mundo', new Mundo());
+        this.music.stop();
         Game.state.start('Mundo');
     }
     return Laberinto;

@@ -23,15 +23,14 @@ define(['Phaser','Game','estados/mundo'], function (Phaser,Game,Mundo) {
 
 
 
-
     }
     function mostrarMenu(){
         if(this.optionGrupo.y == 0){
             var menuTween = Game.add.tween(this.optionGrupo).to({
-                y: -50
+                y: -60
             }, 500, Phaser.Easing.Bounce.Out, true);
         }
-        if(this.optionGrupo.y == -50){
+        if(this.optionGrupo.y == -60){
             var menuTween = Game.add.tween(this.optionGrupo).to({
                 y: 0
             }, 500, Phaser.Easing.Bounce.Out, true);
@@ -45,7 +44,7 @@ define(['Phaser','Game','estados/mundo'], function (Phaser,Game,Mundo) {
     }
     /* initialize persistent game objects here */
     Menu.prototype.create = function () {
-
+        Game.add.image(0, 0, 'background');
         var nameLabel = Game.add.text(Game.world.centerX, Game.world.centerY-100, 'EPS WARRIOR');
         nameLabel.anchor.setTo(0.5, 0.5);
         var startBo = Game.add.button(Game.world.centerX, Game.world.centerY, "startB", empezar,this);
@@ -65,11 +64,17 @@ define(['Phaser','Game','estados/mundo'], function (Phaser,Game,Mundo) {
         this.soundBoton.input.useHandCursor = true;
         this.optionGrupo.add(this.soundBoton);
 
+        this.music = this.game.add.audio('menu_music');
+        this.music.loop = true;
+        this.music.play();
+
+
     }
 
     function empezar() {
         Game.physics.startSystem(Phaser.Physics.ARCADE);
         Game.state.add('Mundo', new Mundo());
+        this.music.stop();
         Game.state.start('Mundo');
     }
 

@@ -1,4 +1,4 @@
-define(['Phaser','Game','sprites/player','estados/min_final'], function (Phaser,Game,Player,Min_final) {
+define(['Phaser','Game','sprites/player','estados/min_final','estados/laberinto'], function (Phaser,Game,Player,Min_final,Laberinto) {
 
     function Mundo() {
         Phaser.State.call(this);
@@ -12,11 +12,12 @@ define(['Phaser','Game','sprites/player','estados/min_final'], function (Phaser,
     Mundo.prototype.preload = function () {
 
         Game.load.spritesheet('mage', '../media/sprite/Mage.png',  16, 16);
-        Game.load.spritesheet('dog', '../media/sprite/dog.png',  48, 48);
+        Game.load.spritesheet('dog', '../media/sprite/dog.png',  32, 32);
         Game.load.spritesheet('arrow', '../media/sprite/arrow.png',  32,32);
         Game.load.tilemap('mapMF', "../media/map/minijuego_final.json", null,Phaser.Tilemap.TILED_JSON);
         Game.load.tilemap('mapLab', "../media/map/minijuego_laberinto.json", null, Phaser.Tilemap.TILED_JSON);
-
+        Game.load.image('tora_vx_02', '../media/tileset/tora_vx_02.png');
+        Game.load.image('mountain_landscape', '../media/tileset/mountain_landscape.png');
 
     }
     Mundo.prototype.create = function () {
@@ -47,6 +48,9 @@ define(['Phaser','Game','sprites/player','estados/min_final'], function (Phaser,
         this.player.input.priorityID=0;*/
 
         Game.camera.follow(this.player);
+        this.music = this.game.add.audio('mundo_music');
+        this.music.loop = true;
+        this.music.play();
 
 
 
@@ -78,12 +82,14 @@ define(['Phaser','Game','sprites/player','estados/min_final'], function (Phaser,
     }
     Mundo.prototype.load_minfinal=function (p,m) {
         Game.state.add('MinFinal', new Min_final());
+        this.music.stop();
         Game.state.start('MinFinal');
     }
 
     Mundo.prototype.load_laberinto=function (p,m) {
-       // Game.state.add('Laberinto', new Laberinto());
-        // Game.state.start('Laberinto');
+       Game.state.add('Laberinto', new Laberinto());
+        this.music.stop();
+       Game.state.start('Laberinto');
     }
     return Mundo;
 });
