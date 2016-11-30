@@ -3,6 +3,8 @@ define(['Phaser','Game','sprites/player_min_final','sprites/enemy_min_final'], f
     function Min_final() {
         Phaser.State.call(this);
         this.shootTime =0;
+        this.shootEnemyTime=0;
+        this.dificult=500;
     }
 //Inheritance
     Min_final.prototype = Object.create(Phaser.State.prototype);
@@ -38,38 +40,57 @@ define(['Phaser','Game','sprites/player_min_final','sprites/enemy_min_final'], f
         this.arrowEnemy.setAll('anchor.y',0.5);
         this.arrowEnemy.setAll('anchor.x',0);
 
-        this.arrows=[this.arrowPlayer,this.arrowEnemy];
-        this.shootArrow= Game.input.keyboard.addKey(Phaser.Keyboar.SPACEBAR)
+       // this.arrows=[this.arrowPlayer,this.arrowEnemy];
+        this.shootArrow= Game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR)
 
         //Hace que el jugador se pinte arriba del suelo
         Game.world.swap(this.playerG,this.suelo);
        // Game.world.swap(this.enemyG,this.suelo);
         this.player =  this.playerG.getAt(0);
-
-
+        this.player.health+=5;
+        console.log(this.player.health);
 
 
     }
     Min_final.prototype.update = function () {
 
-        Game.physics.arcade.collide(this.arrows,this.muro, (a,m)=>{ a.kill}, null,this);
+        Game.physics.arcade.collide(this.arrowPlayer,this.muro, this.col_muro, null,this);
+        Game.physics.arcade.collide(this.arrowEnemy,this.muro, this.col_muro, null,this);
+        Game.physics.arcade.overlap(this.arrowEnemy,this.player,this.player_damage,null,this);
+        Game.physics.arcade.overlap(this.arrowPlayer,this.enemyG,this.enemy_kill,null,this);
 
+        if(this.player.alive) {
+            Game.physics.arcade.collide(this.player, this.muro);
 
-
-        if(this.player.alive){
-            Game.physics.arcade.collide(this.player,this.muro);
-            if(this.shootArrow.isDown && Game.time.now > this.shootTime){
-                var arrow = this.arrowPlayer.getFirstExists(false);
-                if(arrow){
-                    arrow.reset(this.player.x,this.player.y);
-                    arrow.body.velocity.x= 300;
-                    this.shootTime=Game.time.now + 300;
+            if (this.shootArrow.isDown && Game.time.now > this.shootTime) {
+               var arrow = this.arrowPlayer.getFirstExists(false);
+                if (arrow) {
+                    arrow.reset(this.player.x, this.player.y);
+                    arrow.body.velocity.x = 300;
+                    this.shootTime = Game.time.now + 300;
                 }
-
             }
-            this.player.update();
-            Game.physics.arcade.overlap(this.arrowPlayer,this.enemyG,,null,this);
+            if (Game.time.now > this.shootEnemyTime) {
+                var arrowE = this.arrowEnemy.getFirstExists(false);
+                var enemys = this.enemyG.getAll('alive', true);
+                //alert(enemys.length);
+                if (enemys.length > 0 && arrowE) {
+                    var index = Game.rnd.integerInRange(0, enemys.length - 1)
+                    arrowE.reset(enemys[index].x, enemys[index].y);
+                    Game.physics.arcade.moveToObject(arrowE,this.player,200);
+                    this.shootEnemyTime = Game.time.now + this.dificult;
+                }
+            }
+
+        }else{
+            alert("Game over");
+            Game.state.start('Mundo');
         }
+
+
+
+
+
 
 
     }
@@ -90,8 +111,24 @@ define(['Phaser','Game','sprites/player_min_final','sprites/enemy_min_final'], f
     }
 
     Min_final.prototype.enemy_kill= function(a,e){
-        a.kill;
-        e.kill;
+        a.kill();
+        e.kill();
+        this.dificult-=10;
+
+        if(this.enemyG.countLiving()<=0){
+            Game.state.start('Menu');
+        }
+
+    }
+
+    Min_final.prototype.player_damage= function(p,a){
+        a.kill();
+        this.player.damage(1);
+
+
+    }
+    Min_final.prototype.col_muro= function(a,e){
+        a.kill();
         //comprobar si gana
     }
     return Min_final;
