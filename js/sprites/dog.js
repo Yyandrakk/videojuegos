@@ -32,34 +32,6 @@ define(['Phaser'], function (Phaser) {
     
     Dog.prototype.update = function () {
         
-                
-        if (this.cursor.left.some(bt => bt.isDown==true)) {
-            this.body.velocity.x = -150;
-            this.body.velocity.y = 0;
-            this.animations.play('left');
-        }
-        else if (this.cursor.right.some(bt => bt.isDown==true)) {
-            this.body.velocity.x = 150;
-            this.body.velocity.y = 0;
-            this.animations.play('derecha');
-        }
-        else if(this.cursor.up.some(b => b.isDown==true)){
-            this.body.velocity.y = -150;
-            this.body.velocity.x = 0;
-            this.animations.play('up');
-        }
-        else if(this.cursor.down.some(b=>b.isDown==true)){
-            this.body.velocity.y = +150;
-            this.body.velocity.x = 0;
-            this.animations.play('down');
-        }
-        else {
-            this.body.velocity.x = 0;
-            this.body.velocity.y = 0;
-            this.animations.stop();
-        }
-        
-    //}
         if (this.game.input.mousePointer.isDown) {
             this.game.physics.arcade.moveToPointer(this, 200);
             if (Phaser.Rectangle.contains(this.body, this.game.input.x, this.game.input.y))
