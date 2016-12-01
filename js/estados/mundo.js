@@ -18,6 +18,9 @@ define(['Phaser','Game','sprites/player','estados/min_final','estados/laberinto'
         Game.load.tilemap('mapLab', "../media/map/minijuego_laberinto.json", null, Phaser.Tilemap.TILED_JSON);
         Game.load.image('tora_vx_02', '../media/tileset/tora_vx_02.png');
         Game.load.image('mountain_landscape', '../media/tileset/mountain_landscape.png');
+        Game.load.audio('shoot_arrow', ['../../media/sound/shoot_arrow_mike-koenig.mp3', '../../media/sound/shoot_arrow_mike-koenig.wav']);
+        Game.load.audio('music_min_final', ['../../media/sound/Zander_Noriega-Fight_Them_Until_We_Cant.mp3', '../../media/sound/Zander_Noriega-Fight_Them_Until_We_Cant.wav']);
+
 
     }
     Mundo.prototype.create = function () {
@@ -48,7 +51,12 @@ define(['Phaser','Game','sprites/player','estados/min_final','estados/laberinto'
         this.player.input.priorityID=0;*/
 
         Game.camera.follow(this.player);
-        this.music = this.game.add.audio('mundo_music');
+        if(Game.rnd.integerInRange(0, 10)<5){
+            this.music = this.game.add.audio('mundo_music');
+        }
+        else{
+            this.music = this.game.add.audio('mundo_music2')
+        }
         this.music.loop = true;
         this.music.play();
 

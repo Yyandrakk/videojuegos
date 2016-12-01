@@ -44,7 +44,7 @@ define(['Phaser','Game','estados/mundo'], function (Phaser,Game,Mundo) {
     }
     /* initialize persistent game objects here */
     Menu.prototype.create = function () {
-        Game.add.image(0, 0, 'background');
+        Game.add.image(0, 0, 'back_menu');
         var nameLabel = Game.add.text(Game.world.centerX, Game.world.centerY-100, 'EPS WARRIOR');
         nameLabel.anchor.setTo(0.5, 0.5);
         var startBo = Game.add.button(Game.world.centerX, Game.world.centerY, "startB", empezar,this);
@@ -53,7 +53,7 @@ define(['Phaser','Game','estados/mundo'], function (Phaser,Game,Mundo) {
 
 
         this.optionGrupo = Game.add.group();
-        var optionBoton = Game.add.button(Game.world.centerX, Game.world.centerY + 140, "option",mostrarMenu,this);
+        var optionBoton = Game.add.button(Game.world.centerX, Game.world.centerY + 130, "option",mostrarMenu,this);
         optionBoton.scale.setTo(0.5,0.5);
         optionBoton.anchor.set(0.5);
         this.optionGrupo.add(optionBoton);

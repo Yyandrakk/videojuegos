@@ -48,7 +48,13 @@ define(['Phaser','Game','sprites/player_min_final','sprites/enemy_min_final'], f
        // Game.world.swap(this.enemyG,this.suelo);
         this.player =  this.playerG.getAt(0);
         this.player.health+=5;
-        console.log(this.player.health);
+        //console.log(this.player.health);
+
+        this.sound_arrow = this.game.add.audio('shoot_arrow');
+        this.music = this.game.add.audio('music_min_final');
+        this.music.loop = true;
+        this.music.play();
+
 
 
     }
@@ -63,7 +69,8 @@ define(['Phaser','Game','sprites/player_min_final','sprites/enemy_min_final'], f
             Game.physics.arcade.collide(this.player, this.muro);
 
             if (this.shootArrow.isDown && Game.time.now > this.shootTime) {
-               var arrow = this.arrowPlayer.getFirstExists(false);
+                this.sound_arrow.play();
+                var arrow = this.arrowPlayer.getFirstExists(false);
                 if (arrow) {
                     arrow.reset(this.player.x, this.player.y);
                     arrow.body.velocity.x = 300;
@@ -84,6 +91,7 @@ define(['Phaser','Game','sprites/player_min_final','sprites/enemy_min_final'], f
 
         }else{
             alert("Game over");
+            this.music.stop();
             Game.state.start('Mundo');
         }
 
@@ -116,6 +124,8 @@ define(['Phaser','Game','sprites/player_min_final','sprites/enemy_min_final'], f
         this.dificult-=10;
 
         if(this.enemyG.countLiving()<=0){
+            this.music.stop();
+            alert("Win!");
             Game.state.start('Menu');
         }
 
@@ -129,7 +139,7 @@ define(['Phaser','Game','sprites/player_min_final','sprites/enemy_min_final'], f
     }
     Min_final.prototype.col_muro= function(a,e){
         a.kill();
-        //comprobar si gana
+
     }
     return Min_final;
 });
