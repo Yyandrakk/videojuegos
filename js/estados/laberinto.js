@@ -24,6 +24,7 @@ define(['Phaser','Game','sprites/dog','estados/mundo'], function (Phaser,Game,Do
         this.dog.position.x = 80;
         this.dog.position.y = 810;
         Game.camera.follow(this.dog);
+        Game.global.control.laberinto.vidas = 3;
         this.numVidas = this.game.add.text(30, 30, 'Vidas: 3',{ font: '18px Arial', fill: '#ffffff' });
         this.numVidas.fixedToCamera = true;
         this.deathSound = this.game.add.audio('dogdeath');
