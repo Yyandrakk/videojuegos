@@ -45,7 +45,7 @@ define(['Phaser','Game','estados/mundo'], function (Phaser,Game,Mundo) {
     /* initialize persistent game objects here */
     Menu.prototype.create = function () {
         Game.add.image(0, 0, 'back_menu');
-        var nameLabel = Game.add.text(Game.world.centerX, Game.world.centerY-100, 'EPS WARRIOR');
+        var nameLabel = Game.add.text(Game.world.centerX, Game.world.centerY-100, 'EPS WARRIOR',{font:'48px PressStart2P'});
         nameLabel.anchor.setTo(0.5, 0.5);
         var startBo = Game.add.button(Game.world.centerX, Game.world.centerY, "startB", empezar,this);
         startBo.scale.setTo(0.5,0.5);

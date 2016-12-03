@@ -1,0 +1,19 @@
+@font-face{
+    font-family:PressStart2P;
+    src: url(media/fonts/Press_Start_2P/PressStart2P-Regular.ttf);
+}
+.hiddenText {
+    font-family: PressStart2P;
+    visibility: hidden;
+    display: inline;
+}
+body {
+    background-image: url(media/image/background.jpg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+#game {
+    width: 47.5%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
