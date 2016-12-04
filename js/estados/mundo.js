@@ -10,7 +10,11 @@ define(['Phaser','Game','sprites/player','estados/min_final','estados/laberinto'
 
 
     Mundo.prototype.preload = function () {
-
+        var loadingLabel = Game.add.text(Game.world.centerX, 150, 'Cargando...',{ font: '30px PermanentMarker', fill: '#701e84' });
+        loadingLabel.anchor.setTo(0.5, 0.5);
+        var progressBar = Game.add.sprite(Game.world.centerX, 200, 'progressBar');
+        progressBar.anchor.setTo(0.5, 0.5);
+        Game.load.setPreloadSprite(progressBar);
         Game.load.spritesheet('mage', '../media/sprite/Mage.png',  16, 16);
         Game.load.spritesheet('dog', '../media/sprite/dog.png',  32, 32);
         Game.load.spritesheet('arrow', '../media/sprite/arrow.png',  32,32);

@@ -1,6 +1,3 @@
-/**
- * Created by oscar on 13/11/16.
- */
 define(['Phaser','Game','estados/mundo'], function (Phaser,Game,Mundo) {
     function Menu() {
         Phaser.State.call(this);

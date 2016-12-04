@@ -2,8 +2,17 @@
     font-family:PressStart2P;
     src: url(media/fonts/Press_Start_2P/PressStart2P-Regular.ttf);
 }
+@font-face{
+    font-family:PermanentMarker;
+    src: url(media/fonts/Permanent_Marker/PermanentMarker.ttf);
+}
 .hiddenText {
     font-family: PressStart2P;
+    visibility: hidden;
+    display: inline;
+}
+.hiddenText2 {
+    font-family: PermanentMarker;
     visibility: hidden;
     display: inline;
 }
