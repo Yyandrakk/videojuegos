@@ -467,7 +467,7 @@
       <workItem from="1480687432702" duration="2618000" />
       <workItem from="1480779524060" duration="5290000" />
       <workItem from="1480848179228" duration="3512000" />
-      <workItem from="1480875626275" duration="84000" />
+      <workItem from="1480875626275" duration="1800000" />
     </task>
     <task id="LOCAL-00001" summary="Subir las cosas ordenadas y iniciado RequireJS">
       <created>1479067366520</created>
@@ -616,11 +616,18 @@
       <option name="project" value="LOCAL" />
       <updated>1480868917520</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="añadirdo el diagrama de estados">
+      <created>1480875737676</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1480875737677</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="102681000" />
+    <option name="totallyTimeSpent" value="104397000" />
   </component>
   <component name="TodoView" selected-index="4">
     <todo-panel id="selected-file">
@@ -633,7 +640,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="-1" width="1366" height="741" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23352855" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32866043" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -688,7 +695,8 @@
     <MESSAGE value="Añadida musica nueva y mejor background" />
     <MESSAGE value="Background al html y cargas transparentes. Añadido tipo de letra y css" />
     <MESSAGE value="añadida barra de carga al mundo" />
-    <option name="LAST_COMMIT_MESSAGE" value="añadida barra de carga al mundo" />
+    <MESSAGE value="añadirdo el diagrama de estados" />
+    <option name="LAST_COMMIT_MESSAGE" value="añadirdo el diagrama de estados" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
