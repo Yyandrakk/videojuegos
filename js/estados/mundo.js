@@ -15,15 +15,15 @@ define(['Phaser','Game','sprites/player','estados/min_final','estados/laberinto'
         var progressBar = Game.add.sprite(Game.world.centerX, 200, 'progressBar');
         progressBar.anchor.setTo(0.5, 0.5);
         Game.load.setPreloadSprite(progressBar);
-        Game.load.spritesheet('mage', '../media/sprite/Mage.png',  16, 16);
-        Game.load.spritesheet('dog', '../media/sprite/dog.png',  32, 32);
-        Game.load.spritesheet('arrow', '../media/sprite/arrow.png',  32,32);
-        Game.load.tilemap('mapMF', "../media/map/minijuego_final.json", null,Phaser.Tilemap.TILED_JSON);
-        Game.load.tilemap('mapLab', "../media/map/minijuego_laberinto.json", null, Phaser.Tilemap.TILED_JSON);
-        Game.load.image('tora_vx_02', '../media/tileset/tora_vx_02.png');
-        Game.load.image('mountain_landscape', '../media/tileset/mountain_landscape.png');
-        Game.load.audio('shoot_arrow', ['../../media/sound/shoot_arrow_mike-koenig.mp3', '../../media/sound/shoot_arrow_mike-koenig.wav']);
-        Game.load.audio('music_min_final', ['../../media/sound/Zander_Noriega-Fight_Them_Until_We_Cant.mp3', '../../media/sound/Zander_Noriega-Fight_Them_Until_We_Cant.wav']);
+        Game.load.spritesheet('mage', 'media/sprite/Mage.png',  16, 16);
+        Game.load.spritesheet('dog', 'media/sprite/dog.png',  32, 32);
+        Game.load.spritesheet('arrow', 'media/sprite/arrow.png',  32,32);
+        Game.load.tilemap('mapMF', "media/map/minijuego_final.json", null,Phaser.Tilemap.TILED_JSON);
+        Game.load.tilemap('mapLab', "media/map/minijuego_laberinto.json", null, Phaser.Tilemap.TILED_JSON);
+        Game.load.image('tora_vx_02', 'media/tileset/tora_vx_02.png');
+        Game.load.image('mountain_landscape', 'media/tileset/mountain_landscape.png');
+        Game.load.audio('shoot_arrow', ['media/sound/shoot_arrow_mike-koenig.mp3', 'media/sound/shoot_arrow_mike-koenig.wav']);
+        Game.load.audio('music_min_final', ['media/sound/Zander_Noriega-Fight_Them_Until_We_Cant.mp3', 'media/sound/Zander_Noriega-Fight_Them_Until_We_Cant.wav']);
 
 
     }

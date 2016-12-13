@@ -10,13 +10,13 @@ define(['Phaser','Game','estados/mundo'], function (Phaser,Game,Mundo) {
     /* download assets code here */
     Menu.prototype.preload = function () {
        //Cargar el mundo inicial
-        Game.load.image('tileMP1', '../media/tileset/Hyptosis/hyptosis_tile-art-batch-1.png');
-        Game.load.image('tileMP2', '../media/tileset/Hyptosis/hyptosis_til-art-batch-2.png');
-        Game.load.spritesheet('colisionMP2', '../media/tileset/Hyptosis/hyptosis_til-art-batch-2.png',32,32);
-        Game.load.spritesheet('colisionMP1', '../media/tileset/Hyptosis/hyptosis_tile-art-batch-1.png',32,32);
-        Game.load.image('tileMP3', '../media/tileset/Hyptosis/hyptosis_tile-art-batch-3.png');
-        Game.load.tilemap('mapP', "../media/map/mapaPrincipal.json", null,Phaser.Tilemap.TILED_JSON);
-        Game.load.spritesheet('player', '../media/sprite/joker1.png',  32, 32);
+        Game.load.image('tileMP1', 'media/tileset/Hyptosis/hyptosis_tile-art-batch-1.png');
+        Game.load.image('tileMP2', 'media/tileset/Hyptosis/hyptosis_til-art-batch-2.png');
+        Game.load.spritesheet('colisionMP2', 'media/tileset/Hyptosis/hyptosis_til-art-batch-2.png',32,32);
+        Game.load.spritesheet('colisionMP1', 'media/tileset/Hyptosis/hyptosis_tile-art-batch-1.png',32,32);
+        Game.load.image('tileMP3', 'media/tileset/Hyptosis/hyptosis_tile-art-batch-3.png');
+        Game.load.tilemap('mapP', "media/map/mapaPrincipal.json", null,Phaser.Tilemap.TILED_JSON);
+        Game.load.spritesheet('player', 'media/sprite/joker1.png',  32, 32);
 
 
 
