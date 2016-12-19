@@ -15,7 +15,7 @@ define(['Phaser','Game','sprites/player','estados/min_final','estados/laberinto'
         var progressBar = Game.add.sprite(Game.world.centerX, 200, 'progressBar');
         progressBar.anchor.setTo(0.5, 0.5);
         Game.load.setPreloadSprite(progressBar);
-        Game.load.spritesheet('mage', 'media/sprite/Mage.png',  16, 16);
+        Game.load.spritesheet('mage', 'media/sprite/face_w2_2d.png',32,32);
         Game.load.spritesheet('dog', 'media/sprite/dog.png',  32, 32);
         Game.load.spritesheet('arrow', 'media/sprite/arrow.png',  32,32);
         Game.load.tilemap('mapMF', "media/map/minijuego_final.json", null,Phaser.Tilemap.TILED_JSON);
@@ -41,11 +41,18 @@ define(['Phaser','Game','sprites/player','estados/min_final','estados/laberinto'
         this.colLab.enableBody=true;
         this.colLab.visible=true;
         this.colLab.physicsBodyType=Phaser.Physics.ARCADE;
+        this.waterA = Game.add.group();
+        this.waterA.visible=true;
         this.createWorld();
 
         //Hace que el jugador se pinte arriba del suelo
         Game.world.swap(this.playerG,this.suelo);
+        Game.world.swap(this.waterA,this.decoracion);
+        Game.world.swap(this.decoracion,this.muro);
         this.player =  this.playerG.getAt(0);
+        this.water = this.waterA.getAt(0);
+        this.water.animations.add('move',[0,1,2,3],12,true,true);
+        this.water.animations.play('move');
 
 
         /*
@@ -74,9 +81,9 @@ define(['Phaser','Game','sprites/player','estados/min_final','estados/laberinto'
         Game.physics.arcade.collide(this.player,this.muro);
         Game.physics.arcade.collide(this.player,this.decoracion);
 
-       if(Game.global.control.laberinto.haGanado){
+       //if(Game.global.control.laberinto.haGanado){
             Game.physics.arcade.overlap(this.player, this.colision, this.load_minfinal, null, this);
-       }
+       //}
         Game.physics.arcade.overlap(this.player, this.colLab, this.load_laberinto, null, this);
         this.player.update();
     }
@@ -92,6 +99,7 @@ define(['Phaser','Game','sprites/player','estados/min_final','estados/laberinto'
         this.map.createFromObjects('inicio','player','player',1,true,false,this.playerG,Player);
         this.map.createFromObjects('colision','min_final','colisionMP2',318,true,false,this.colision);
         this.map.createFromObjects('colision','laberinto','colisionMP2',518,true,false,this.colLab);
+        this.map.createFromObjects('animated','water','water',0,true,false,this.waterA);
         this.map.setCollisionBetween(1, 10000, true, this.muro);
         this.map.setCollisionBetween(1, 10000, true, this.decoracion);
     }

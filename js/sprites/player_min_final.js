@@ -1,10 +1,15 @@
 define(['Phaser'], function (Phaser) {
     Player_min_final = function(game,x,y,key,frame) {
         Phaser.Sprite.call(this,game,x,y,key);
-        this.animations.add('down',[0,1,2],12,true,true);
-        this.animations.add('left',[3,4,5],12,true,true);
-        this.animations.add('derecha',[6,7,8],12,true,true);
-        this.animations.add('up',[9,10,11],12,true,true);
+        this.animations.add('down',[0,1,2],96,true,true);
+        this.animations.add('leftd',[3,4,5],96,true,true);
+        this.animations.add('left',[12,13,14],96,true,true);
+        this.animations.add('leftu',[6,7,8],96,true,true);
+        this.animations.add('right',[24,25,26],96,true,true);
+        this.animations.add('rightd',[27,28,29],96,true,true);
+        this.animations.add('up',[36,37,38],96,true,true);
+        this.animations.add('rightu',[39,40,41],96,true,true);
+        this.animations.add('dead',[87,88,89],96,false,true);
 
         this.animations.frame=frame;
         //this.anchor.setTo(1.5,0.5);
@@ -27,12 +32,12 @@ define(['Phaser'], function (Phaser) {
         if(this.cursor.up.some(b => b.isDown==true)){
             this.body.velocity.y = -200;
             this.body.velocity.x = 0;
-            this.animations.play('up');
+            this.animations.play('up',15);
         }
         else if(this.cursor.down.some(b=>b.isDown==true)){
             this.body.velocity.y = +200;
             this.body.velocity.x = 0;
-            this.animations.play('down');
+            this.animations.play('down',15);
         }
         else {
             this.body.velocity.x = 0;

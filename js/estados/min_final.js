@@ -82,7 +82,7 @@ define(['Phaser','Game','sprites/player_min_final','sprites/enemy_min_final'], f
                 var enemys = this.enemyG.getAll('alive', true);
                 //alert(enemys.length);
                 if (enemys.length > 0 && arrowE) {
-                    var index = Game.rnd.integerInRange(0, enemys.length - 1)
+                    var index = Game.rnd.integerInRange(0, enemys.length - 1);
                     arrowE.reset(enemys[index].x, enemys[index].y);
                     Game.physics.arcade.moveToObject(arrowE,this.player,200);
                     this.shootEnemyTime = Game.time.now + this.dificult;
@@ -90,9 +90,13 @@ define(['Phaser','Game','sprites/player_min_final','sprites/enemy_min_final'], f
             }
 
         }else{
-            alert("Game over");
-            this.music.stop();
-            Game.state.start('Mundo');
+            this.player.animations.play('dead').onComplete(function (){
+                alert("Game over");
+                this.music.stop();
+                Game.state.start('Mundo');
+            });
+
+
         }
 
 
@@ -111,7 +115,7 @@ define(['Phaser','Game','sprites/player_min_final','sprites/enemy_min_final'], f
         this.suelo.resizeWorld();
         this.muro = this.map.createLayer('muro');
         this.map.createFromObjects('object','player','player',1,true,false,this.playerG,Player_min_final);
-        this.map.createFromObjects('object','enemy','mage',1,true,false,this.enemyG,Enemy_min_final);
+        this.map.createFromObjects('object','enemy','mage',13,true,false,this.enemyG,Enemy_min_final);
         this.map.setCollisionBetween(1, 10000, true, this.muro);
 
 
