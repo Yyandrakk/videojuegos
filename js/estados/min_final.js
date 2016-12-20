@@ -5,6 +5,8 @@ define(['Phaser','Game','sprites/player_min_final','sprites/enemy_min_final'], f
         this.shootTime =0;
         this.shootEnemyTime=0;
         this.dificult=500;
+        this.optionGrupo=null;
+        this.soundBoton=null;
     }
 //Inheritance
     Min_final.prototype = Object.create(Phaser.State.prototype);
@@ -55,6 +57,10 @@ define(['Phaser','Game','sprites/player_min_final','sprites/enemy_min_final'], f
         this.music.loop = true;
         this.music.play();
 
+        this.dead=this.player.animations.getAnimation("dead");
+        this.dead.onComplete.add(this.deadF,this);
+        this.load_boton();
+
 
 
     }
@@ -65,6 +71,7 @@ define(['Phaser','Game','sprites/player_min_final','sprites/enemy_min_final'], f
         Game.physics.arcade.overlap(this.arrowEnemy,this.player,this.player_damage,null,this);
         Game.physics.arcade.overlap(this.arrowPlayer,this.enemyG,this.enemy_kill,null,this);
 
+        //no quitar la ultima vida
         if(this.player.alive) {
             Game.physics.arcade.collide(this.player, this.muro);
 
@@ -90,19 +97,8 @@ define(['Phaser','Game','sprites/player_min_final','sprites/enemy_min_final'], f
             }
 
         }else{
-            this.player.animations.play('dead').onComplete(function (){
-                alert("Game over");
-                this.music.stop();
-                Game.state.start('Mundo');
-            });
-
-
+            this.player.animations.play('dead');
         }
-
-
-
-
-
 
 
     }
@@ -137,12 +133,63 @@ define(['Phaser','Game','sprites/player_min_final','sprites/enemy_min_final'], f
 
     Min_final.prototype.player_damage= function(p,a){
         a.kill();
+        //cambiar que no le quite la ultima vida
         this.player.damage(1);
 
 
     }
     Min_final.prototype.col_muro= function(a,e){
         a.kill();
+
+    }
+
+    Min_final.prototype.deadF=function () {
+        alert("Game over");
+        this.music.stop();
+        Game.state.start('Mundo');
+    }
+
+    Min_final.prototype.load_boton=function () {
+
+        this.optionGrupo = Game.add.group();
+        this.optionGrupo.fixedToCamera=true;
+        this.optionGrupo.cameraOffset.setTo( 0,0);
+
+        var optionBoton = Game.add.button( Game.width-30,Game.height-30, "option",mostrarMenu,this);
+        optionBoton.scale.setTo(0.5,0.5);
+        optionBoton.anchor.set(0.5);
+        this.optionGrupo.add(optionBoton);
+
+        this.soundBoton = Game.add.button(Game.width-30, Game.height +30, "mute",toggleSound,this);
+        this.soundBoton.frame = Game.sound.mute ? 0 : 1;
+        this.soundBoton.scale.setTo(0.5,0.5);
+        this.soundBoton.anchor.set(0.5);
+        this.soundBoton.input.useHandCursor = true;
+        this.optionGrupo.add(this.soundBoton);
+    }
+
+    function mostrarMenu(){
+        game.paused=!game.paused;
+        if(this.optionGrupo.cameraOffset.y == 0){
+
+            var menuTween = Game.add.tween(this.optionGrupo.cameraOffset).to({
+                y: -60
+            }, 500, Phaser.Easing.Bounce.Out, true);
+
+        }
+        if(this.optionGrupo.cameraOffset.y == -60){
+
+            var menuTween = Game.add.tween(this.optionGrupo.cameraOffset).to({
+                y: 0
+            }, 500, Phaser.Easing.Bounce.Out, true);
+
+        }
+    }
+
+    function toggleSound() {
+
+        Game.sound.mute = ! Game.sound.mute;
+        this.soundBoton.frame = Game.sound.mute ? 0 : 1;
 
     }
     return Min_final;

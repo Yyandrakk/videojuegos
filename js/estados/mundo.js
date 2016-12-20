@@ -2,7 +2,8 @@ define(['Phaser','Game','sprites/player','estados/min_final','estados/laberinto'
 
     function Mundo() {
         Phaser.State.call(this);
-        this.listSprites=[];
+        this.optionGrupo=null;
+        this.soundBoton=null;
     }
 //Inheritance
     Mundo.prototype = Object.create(Phaser.State.prototype);
@@ -70,8 +71,8 @@ define(['Phaser','Game','sprites/player','estados/min_final','estados/laberinto'
         }
         this.music.loop = true;
         this.music.play();
-
-
+        this.load_boton();
+       // Game.world.swap(this.optionGrupo,this.suelo);
 
     }
     /**
@@ -113,6 +114,49 @@ define(['Phaser','Game','sprites/player','estados/min_final','estados/laberinto'
        Game.state.add('Laberinto', new Laberinto());
         this.music.stop();
        Game.state.start('Laberinto');
+    }
+
+    Mundo.prototype.load_boton=function () {
+
+        this.optionGrupo = Game.add.group();
+        this.optionGrupo.fixedToCamera=true;
+        this.optionGrupo.cameraOffset.setTo( 0,0);
+
+        var optionBoton = Game.add.button( Game.width-30,Game.height-30, "option",mostrarMenu,this);
+        optionBoton.scale.setTo(0.5,0.5);
+        optionBoton.anchor.set(0.5);
+        this.optionGrupo.add(optionBoton);
+
+        this.soundBoton = Game.add.button(Game.width-30, Game.height +30, "mute",toggleSound,this);
+        this.soundBoton.frame = Game.sound.mute ? 0 : 1;
+        this.soundBoton.scale.setTo(0.5,0.5);
+        this.soundBoton.anchor.set(0.5);
+        this.soundBoton.input.useHandCursor = true;
+        this.optionGrupo.add(this.soundBoton);
+    }
+
+    function mostrarMenu(){
+        game.paused=!game.paused;
+        if(this.optionGrupo.cameraOffset.y == 0){
+
+            var menuTween = Game.add.tween(this.optionGrupo.cameraOffset).to({
+                y: -60
+            }, 500, Phaser.Easing.Bounce.Out, true);
+
+        }
+        if(this.optionGrupo.cameraOffset.y == -60){
+
+            var menuTween = Game.add.tween(this.optionGrupo.cameraOffset).to({
+                y: 0
+            }, 500, Phaser.Easing.Bounce.Out, true);
+        }
+    }
+
+    function toggleSound() {
+
+        Game.sound.mute = ! Game.sound.mute;
+        this.soundBoton.frame = Game.sound.mute ? 0 : 1;
+
     }
     return Mundo;
 });
