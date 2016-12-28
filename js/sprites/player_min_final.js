@@ -9,7 +9,7 @@ define(['Phaser'], function (Phaser) {
         this.animations.add('rightd',[27,28,29],96,true,true);
         this.animations.add('up',[36,37,38],96,true,true);
         this.animations.add('rightu',[39,40,41],96,true,true);
-        this.animations.add('dead',[87,88,89],96,false,true);
+        this.animations.add('dead',[87,88,89]);
 
         this.animations.frame=frame;
         //this.anchor.setTo(1.5,0.5);

@@ -1,4 +1,4 @@
-define(['Phaser','Game','sprites/player_min_final','sprites/enemy_min_final'], function (Phaser,Game,Player_min_final,Enemy_min_final) {
+define(['Phaser','Game','sprites/player_min_final','sprites/enemy_min_final','BarHealth'], function (Phaser,Game,Player_min_final,Enemy_min_final,BarHealth) {
 
     function Min_final() {
         Phaser.State.call(this);
@@ -50,6 +50,7 @@ define(['Phaser','Game','sprites/player_min_final','sprites/enemy_min_final'], f
        // Game.world.swap(this.enemyG,this.suelo);
         this.player =  this.playerG.getAt(0);
         this.player.health+=5;
+        this.player.maxHealth= this.player.health;
         //console.log(this.player.health);
 
         this.sound_arrow = this.game.add.audio('shoot_arrow');
@@ -58,8 +59,12 @@ define(['Phaser','Game','sprites/player_min_final','sprites/enemy_min_final'], f
         this.music.play();
 
         this.dead=this.player.animations.getAnimation("dead");
-        this.dead.onComplete.add(this.deadF,this);
+        this.dead.onComplete.active=true;
+        this.dead.onComplete.add(deadF,this);
+        this.deadB=false;
         this.load_boton();
+
+        this.barraVida=new HealthBar(Game,{x:150,y:15,height:20,width:200,bar:{color:'#13ad3e'},bg:{color:'#770f0f'}});
 
 
 
@@ -71,7 +76,9 @@ define(['Phaser','Game','sprites/player_min_final','sprites/enemy_min_final'], f
         Game.physics.arcade.overlap(this.arrowEnemy,this.player,this.player_damage,null,this);
         Game.physics.arcade.overlap(this.arrowPlayer,this.enemyG,this.enemy_kill,null,this);
 
-        //no quitar la ultima vida
+        if(this.deadB==true){
+            deadF();
+        }
         if(this.player.alive) {
             Game.physics.arcade.collide(this.player, this.muro);
 
@@ -97,7 +104,11 @@ define(['Phaser','Game','sprites/player_min_final','sprites/enemy_min_final'], f
             }
 
         }else{
-            this.player.animations.play('dead');
+            this.player.revive();
+          //  this.dead.onComplete.add(deadF,this);
+            this.dead.play(10);
+            this.deadB=true;
+            //this.player.animations.play('dead',1);
         }
 
 
@@ -135,6 +146,7 @@ define(['Phaser','Game','sprites/player_min_final','sprites/enemy_min_final'], f
         a.kill();
         //cambiar que no le quite la ultima vida
         this.player.damage(1);
+        this.barraVida.setPercent((this.player.health/this.player.maxHealth)*100);
 
 
     }
@@ -143,9 +155,9 @@ define(['Phaser','Game','sprites/player_min_final','sprites/enemy_min_final'], f
 
     }
 
-    Min_final.prototype.deadF=function () {
-        alert("Game over");
-        this.music.stop();
+    function deadF() {
+        //alert("Game over");
+        //this.music.stop();
         Game.state.start('Mundo');
     }
 

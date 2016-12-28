@@ -10,11 +10,15 @@ requirejs.config({
         'Game':{
             deps : ['Phaser'],
             exports: 'Game'
+        },
+        'BarHealth':{
+            exports:'BarHealth'
         }
     },
     paths: {
         'Phaser': '../libs/phaser/build/phaser',
-        'Game': 'game'
+        'Game': 'game',
+        'BarHealth':'../libs/HealthBar'
     }
 });
 
