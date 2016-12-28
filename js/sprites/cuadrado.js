@@ -4,7 +4,7 @@ define(['Phaser'], function(Phaser){
         this.anchor.setTo(0.5,0.5);
         game.add.existing(this);
         this.cursor = game.input.keyboard.createCursorKeys();
-        game.load.spritesheet('cuadrado', key, 300, 280);
+        this.scale.setTo(0.25, 0.25);
         
         this.cursor= {
             up: [game.input.keyboard.addKey(Phaser.Keyboard.W), game.input.keyboard.addKey(Phaser.Keyboard.UP)],
@@ -40,4 +40,5 @@ define(['Phaser'], function(Phaser){
             this.animations.stop();
         }
     }
+    return Cuadrado;
 });
