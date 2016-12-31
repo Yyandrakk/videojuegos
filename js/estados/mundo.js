@@ -1,4 +1,4 @@
-define(['Phaser','Game','sprites/player','estados/min_final','estados/laberinto'], function (Phaser,Game,Player,Min_final,Laberinto) {
+define(['Phaser','Game','sprites/player','estados/min_final','estados/laberinto','estados/rushhour'], function (Phaser,Game,Player,Min_final,Laberinto,Rushhour) {
 
     function Mundo() {
         Phaser.State.call(this);
@@ -19,7 +19,13 @@ define(['Phaser','Game','sprites/player','estados/min_final','estados/laberinto'
         Game.load.spritesheet('mage', 'media/sprite/face_w2_2d.png',32,32);
         Game.load.spritesheet('dog', 'media/sprite/dog.png',  32, 32);
         Game.load.spritesheet('arrow', 'media/sprite/arrow.png',  32,32);
+        Game.load.spritesheet('Audi', 'media/sprite/Audi.png',  32,32);
+        Game.load.spritesheet('Black_viper', 'media/sprite/Black_viper.png',  32,32);
+        Game.load.spritesheet('Mini_truck', 'media/sprite/Mini_truck.png',  32,32);
+        Game.load.spritesheet('taxi', 'media/sprite/taxi.png',  32,32);
+        Game.load.spritesheet('truck', 'media/sprite/truck.png',  32,32);
         Game.load.tilemap('mapMF', "media/map/minijuego_final.json", null,Phaser.Tilemap.TILED_JSON);
+        Game.load.tilemap('mapRH', "media/map/rushhour.json", null,Phaser.Tilemap.TILED_JSON);
         Game.load.tilemap('mapLab', "media/map/minijuego_laberinto.json", null, Phaser.Tilemap.TILED_JSON);
         Game.load.image('tora_vx_02', 'media/tileset/tora_vx_02.png');
         Game.load.image('mountain_landscape', 'media/tileset/mountain_landscape.png');
@@ -75,9 +81,6 @@ define(['Phaser','Game','sprites/player','estados/min_final','estados/laberinto'
        // Game.world.swap(this.optionGrupo,this.suelo);
 
     }
-    /**
-     *
-     */
     Mundo.prototype.update = function () {
         Game.physics.arcade.collide(this.player,this.muro);
         Game.physics.arcade.collide(this.player,this.decoracion);
@@ -85,7 +88,7 @@ define(['Phaser','Game','sprites/player','estados/min_final','estados/laberinto'
        //if(Game.global.control.laberinto.haGanado){
             Game.physics.arcade.overlap(this.player, this.colision, this.load_minfinal, null, this);
        //}
-        Game.physics.arcade.overlap(this.player, this.colLab, this.load_laberinto, null, this);
+        Game.physics.arcade.overlap(this.player, this.colLab, this.load_Rushhour, null, this);
         this.player.update();
     }
     Mundo.prototype.createWorld = function () {
@@ -116,6 +119,11 @@ define(['Phaser','Game','sprites/player','estados/min_final','estados/laberinto'
        Game.state.start('Laberinto');
     }
 
+    Mundo.prototype.load_Rushhour=function (p,m) {
+        Game.state.add('Rushhour', new Rushhour());
+        this.music.stop();
+        Game.state.start('Rushhour');
+    }
     Mundo.prototype.load_boton=function () {
 
         this.optionGrupo = Game.add.group();

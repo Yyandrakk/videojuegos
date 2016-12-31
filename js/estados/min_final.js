@@ -11,9 +11,7 @@ define(['Phaser','Game','sprites/player_min_final','sprites/enemy_min_final','Ba
 //Inheritance
     Min_final.prototype = Object.create(Phaser.State.prototype);
     Min_final.prototype.constructor = Min_final;
-    Min_final.prototype.preload = function () {
 
-    }
     Min_final.prototype.create = function () {
 
         this.playerG = Game.add.group();
