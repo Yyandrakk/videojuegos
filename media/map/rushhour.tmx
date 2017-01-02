@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="20" height="11" tilewidth="32" tileheight="32" nextobjectid="10">
+ <tileset firstgid="1" name="tileMP4" tilewidth="32" tileheight="32" tilecount="900" columns="30">
+  <image source="../tileset/Hyptosis/hyptosis_tile-art-batch-4.png" width="960" height="960"/>
+ </tileset>
+ <tileset firstgid="901" name="tileMP2" tilewidth="32" tileheight="32" tilecount="900" columns="30">
+  <image source="../tileset/Hyptosis/hyptosis_til-art-batch-2.png" width="960" height="960"/>
+ </tileset>
+ <tileset firstgid="1801" name="Audi" tilewidth="32" tileheight="32" tilecount="1" columns="1">
+  <image source="../sprite/Audi.png" width="32" height="32"/>
+ </tileset>
+ <tileset firstgid="1802" name="Black_viper" tilewidth="32" tileheight="32" tilecount="1" columns="1">
+  <image source="../sprite/Black_viper.png" width="32" height="32"/>
+ </tileset>
+ <tileset firstgid="1803" name="Mini_truck" tilewidth="32" tileheight="32" tilecount="1" columns="1">
+  <image source="../sprite/Mini_truck.png" width="32" height="32"/>
+ </tileset>
+ <tileset firstgid="1804" name="taxi" tilewidth="32" tileheight="32" tilecount="1" columns="1">
+  <image source="../sprite/taxi.png" width="32" height="32"/>
+ </tileset>
+ <tileset firstgid="1805" name="truck" tilewidth="32" tileheight="32" tilecount="1" columns="1">
+  <image source="../sprite/truck.png" width="32" height="32"/>
+ </tileset>
+ <layer name="suelo" width="20" height="11">
+  <data encoding="csv">
+498,498,498,498,498,498,498,498,498,498,498,498,498,498,498,498,498,498,498,498,
+498,498,498,498,498,498,498,498,498,498,498,498,498,498,498,498,498,498,498,498,
+498,498,498,498,498,498,498,498,498,498,498,498,498,498,498,498,498,498,498,498,
+498,498,498,498,498,498,498,498,498,498,498,498,498,498,498,498,498,498,498,498,
+498,498,498,498,498,498,498,498,498,498,498,498,498,498,498,498,498,498,498,498,
+498,498,498,498,498,498,498,498,498,498,498,498,498,498,498,498,498,498,498,498,
+498,498,498,498,498,498,498,498,498,498,498,498,498,498,498,498,498,498,498,498,
+498,498,498,498,498,498,498,498,498,498,498,498,498,498,498,498,498,498,498,498,
+498,498,498,498,498,498,498,498,498,498,498,498,498,498,498,498,498,498,498,498,
+498,498,498,498,498,498,498,498,498,498,498,498,498,498,498,498,498,498,498,498,
+498,498,498,498,498,498,498,498,498,498,498,498,498,498,498,498,498,498,498,498
+</data>
+ </layer>
+ <layer name="muro" width="20" height="11">
+  <data encoding="csv">
+1124,1124,1124,1124,1124,1124,1124,1124,1124,1124,1124,1124,1124,1124,1124,1124,1124,1124,1124,1124,
+1124,1124,1124,1124,1159,1159,1159,1159,1159,1159,1124,1124,1124,1124,1124,1124,1124,1124,1124,1124,
+1124,1124,1124,1130,0,0,0,0,0,0,1128,1124,1124,1124,1124,1124,1124,1124,1124,1124,
+1124,1124,1124,1130,0,0,0,0,0,0,1128,1124,1124,1124,1124,1124,1124,1124,1124,1124,
+1124,1124,1124,1130,0,0,0,0,0,0,0,1124,1124,1124,1124,1124,1124,1124,1124,1124,
+1124,1124,1124,1130,0,0,0,0,0,0,1128,1124,1124,1124,1124,1124,1124,1124,1124,1124,
+1124,1124,1124,1130,0,0,0,0,0,0,1128,1124,1124,1124,1124,1124,1124,1124,1124,1124,
+1124,1124,1124,1130,0,0,0,0,0,0,1128,1124,1124,1124,1124,1124,1124,1124,1124,1124,
+1124,1124,1124,1124,1099,1099,1099,1099,1099,1099,1124,1124,1124,1124,1124,1124,1124,1124,1124,1124,
+1124,1124,1124,1124,1124,1124,1124,1124,1124,1124,1124,1124,1124,1124,1124,1124,1124,1124,1124,1124,
+1124,1124,1124,1124,1124,1124,1124,1124,1124,1124,1124,1124,1124,1124,1124,1124,1124,1124,1124,1124
+</data>
+ </layer>
+ <objectgroup name="coches">
+  <object id="1" name="player" gid="1801" x="130" y="160" width="32" height="32"/>
+  <object id="6" name="cocV" gid="1802" x="193" y="192" width="32" height="32"/>
+  <object id="7" name="camH" gid="1803" x="129" y="255" width="32" height="32"/>
+  <object id="8" name="camV" gid="1805" x="289" y="96" width="32" height="32"/>
+  <object id="9" name="cocH" gid="1804" x="256" y="225" width="32" height="32"/>
+ </objectgroup>
+</map>

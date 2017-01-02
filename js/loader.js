@@ -17,6 +17,7 @@ define(['Phaser','Game','estados/menu'], function (Phaser,Game,Menu) {
         Game.load.spritesheet('mute', "media/botones/sonido_mute.png", 128, 128);
 
         Game.load.image("option","media/botones/opciones.png");
+        Game.load.image("salir","media/botones/salida.png");
 
         var loadingLabel = Game.add.text(Game.world.centerX, 150, 'Cargando...',{ font: '30px PermanentMarker', fill: '#701e84' });
         loadingLabel.anchor.setTo(0.5, 0.5);

@@ -1,4 +1,4 @@
-define(['Phaser','Game','sprites/player','estados/min_final','estados/laberinto','estados/rushhour'], function (Phaser,Game,Player,Min_final,Laberinto,Rushhour) {
+define(['Phaser','Game','sprites/player','estados/min_final','estados/laberinto','estados/rushhour','estados/puzzle'], function (Phaser,Game,Player,Min_final,Laberinto,Rushhour,Puzzle) {
 
     function Mundo() {
         Phaser.State.call(this);
@@ -36,18 +36,32 @@ define(['Phaser','Game','sprites/player','estados/min_final','estados/laberinto'
     }
     Mundo.prototype.create = function () {
         Game.world.setBounds(0,0,40*32,40*32);
+
         this.playerG = Game.add.group();
         this.playerG.enableBody=true;
         this.playerG.visible=true;
         this.playerG.physicsBodyType=Phaser.Physics.ARCADE;
+
         this.colision = Game.add.group();
         this.colision.enableBody=true;
         this.colision.visible=true;
         this.colision.physicsBodyType=Phaser.Physics.ARCADE;
+
         this.colLab = Game.add.group();
         this.colLab.enableBody=true;
         this.colLab.visible=true;
         this.colLab.physicsBodyType=Phaser.Physics.ARCADE;
+
+        this.colPuz = Game.add.group();
+        this.colPuz.enableBody=true;
+        this.colPuz.visible=true;
+        this.colPuz.physicsBodyType=Phaser.Physics.ARCADE;
+
+        this.colRush = Game.add.group();
+        this.colRush.enableBody=true;
+        this.colRush.visible=true;
+        this.colRush.physicsBodyType=Phaser.Physics.ARCADE;
+
         this.waterA = Game.add.group();
         this.waterA.visible=true;
         this.createWorld();
@@ -88,7 +102,9 @@ define(['Phaser','Game','sprites/player','estados/min_final','estados/laberinto'
        //if(Game.global.control.laberinto.haGanado){
             Game.physics.arcade.overlap(this.player, this.colision, this.load_minfinal, null, this);
        //}
-        Game.physics.arcade.overlap(this.player, this.colLab, this.load_Rushhour, null, this);
+        Game.physics.arcade.overlap(this.player, this.colLab, this.load_laberinto, null, this);
+        Game.physics.arcade.overlap(this.player, this.colPuz, this.load_puzzle, null, this);
+        Game.physics.arcade.overlap(this.player, this.colRush, this.load_Rushhour, null, this);
         this.player.update();
     }
     Mundo.prototype.createWorld = function () {
@@ -96,13 +112,19 @@ define(['Phaser','Game','sprites/player','estados/min_final','estados/laberinto'
 
         this.map.addTilesetImage('tileMP1');
         this.map.addTilesetImage('tileMP2');
+        this.map.addTilesetImage('tileMP3');
+        this.map.addTilesetImage('tileMP4');
         this.suelo = this.map.createLayer('Capa suelo');
         this.suelo.resizeWorld();
         this.muro = this.map.createLayer('capa muro exterior');
         this.decoracion = this.map.createLayer('decoracion');
         this.map.createFromObjects('inicio','player','player',1,true,false,this.playerG,Player);
         this.map.createFromObjects('colision','min_final','colisionMP2',318,true,false,this.colision);
-        this.map.createFromObjects('colision','laberinto','colisionMP2',518,true,false,this.colLab);
+        this.map.createFromObjects('colision','puzzle','colisionMP2',518,true,false,this.colPuz);
+        this.map.createFromObjects('colision','laberinto','colisionMP2',130,true,false,this.colLab);
+        this.map.createFromObjects('colision','rushhour','colisionMP3',561,true,false,this.colRush);
+        this.map.createFromObjects('colision','rushhour2','colisionMP3',531,true,false,this.colRush);
+
         this.map.createFromObjects('animated','water','water',0,true,false,this.waterA);
         this.map.setCollisionBetween(1, 10000, true, this.muro);
         this.map.setCollisionBetween(1, 10000, true, this.decoracion);
@@ -124,6 +146,12 @@ define(['Phaser','Game','sprites/player','estados/min_final','estados/laberinto'
         this.music.stop();
         Game.state.start('Rushhour');
     }
+
+    Mundo.prototype.load_puzzle=function (p,m) {
+        Game.state.add('Puzzle', new Puzzle());
+        this.music.stop();
+        Game.state.start('Puzzle');
+    }
     Mundo.prototype.load_boton=function () {
 
         this.optionGrupo = Game.add.group();
@@ -141,6 +169,13 @@ define(['Phaser','Game','sprites/player','estados/min_final','estados/laberinto'
         this.soundBoton.anchor.set(0.5);
         this.soundBoton.input.useHandCursor = true;
         this.optionGrupo.add(this.soundBoton);
+
+
+        this.quitJuego = Game.add.button(Game.width-30, Game.height +90, "salir",salirMenu,this);
+        this.quitJuego.scale.setTo(0.5,0.5);
+        this.quitJuego.anchor.set(0.5);
+        this.quitJuego.input.useHandCursor = true;
+        this.optionGrupo.add( this.quitJuego);
     }
 
     function mostrarMenu(){
@@ -148,11 +183,11 @@ define(['Phaser','Game','sprites/player','estados/min_final','estados/laberinto'
         if(this.optionGrupo.cameraOffset.y == 0){
 
             var menuTween = Game.add.tween(this.optionGrupo.cameraOffset).to({
-                y: -60
+                y: -120
             }, 500, Phaser.Easing.Bounce.Out, true);
 
         }
-        if(this.optionGrupo.cameraOffset.y == -60){
+        if(this.optionGrupo.cameraOffset.y == -120){
 
             var menuTween = Game.add.tween(this.optionGrupo.cameraOffset).to({
                 y: 0
@@ -164,6 +199,11 @@ define(['Phaser','Game','sprites/player','estados/min_final','estados/laberinto'
 
         Game.sound.mute = ! Game.sound.mute;
         this.soundBoton.frame = Game.sound.mute ? 0 : 1;
+
+    }
+    function salirMenu() {
+        if(confirm("¿Esta seguro de que quiere salir al menu?"))
+            Game.state.start('Menu');
 
     }
     return Mundo;

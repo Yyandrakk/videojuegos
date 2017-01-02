@@ -12,11 +12,14 @@ define(['Phaser','Game','estados/mundo'], function (Phaser,Game,Mundo) {
        //Cargar el mundo inicial
         Game.load.image('tileMP1', 'media/tileset/Hyptosis/hyptosis_tile-art-batch-1.png');
         Game.load.image('tileMP2', 'media/tileset/Hyptosis/hyptosis_til-art-batch-2.png');
-        Game.load.spritesheet('colisionMP2', 'media/tileset/Hyptosis/hyptosis_til-art-batch-2.png',32,32);
-        Game.load.spritesheet('colisionMP1', 'media/tileset/Hyptosis/hyptosis_tile-art-batch-1.png',32,32);
-        Game.load.spritesheet('water','media/tileset/wateranimate2.png',96,193);
         Game.load.image('tileMP3', 'media/tileset/Hyptosis/hyptosis_tile-art-batch-3.png');
         Game.load.image('tileMP4', 'media/tileset/Hyptosis/hyptosis_tile-art-batch-4.png');
+        Game.load.spritesheet('colisionMP1', 'media/tileset/Hyptosis/hyptosis_tile-art-batch-1.png',32,32);
+        Game.load.spritesheet('colisionMP2', 'media/tileset/Hyptosis/hyptosis_til-art-batch-2.png',32,32);
+        Game.load.spritesheet('colisionMP3', 'media/tileset/Hyptosis/hyptosis_tile-art-batch-3.png',32,32);
+
+        Game.load.spritesheet('water','media/tileset/wateranimate2.png',96,193);
+
         Game.load.tilemap('mapP', "media/map/mapaPrincipal.json", null,Phaser.Tilemap.TILED_JSON);
 
         Game.load.spritesheet('player', 'media/sprite/actor_10.png',  32, 32);

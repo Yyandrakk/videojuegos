@@ -4,6 +4,7 @@ define(['Phaser'], function (Phaser) {
         this.animations.frame=frame;
         this.inputEnabled=true;
         this.input.enableDrag();
+        this.input.usedHandCursor=true;
 
 
         switch (key){
@@ -33,18 +34,12 @@ define(['Phaser'], function (Phaser) {
                 this.input.allowVerticalDrag=true;
                 break;
             default:
-
-
         }
-
-
         game.add.existing(this);
     }
 
-
     Vehiculos.prototype = Object.create(Phaser.Sprite.prototype);
     Vehiculos.prototype.constructor = Vehiculos;
-
 
     return Vehiculos;
 });
