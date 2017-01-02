@@ -10,6 +10,7 @@ define(['Phaser','Game','estados/menu'], function (Phaser,Game,Menu) {
 
     Loader.prototype.preload = function (){
         Game.physics.startSystem(Phaser.Physics.ARCADE);
+        Game.physics.startSystem(Phaser.Physics.P2JS);
        // Game.stage.backgroundColor = "#023";
         //Game.add.image(0, 0, 'background');
         this.start=Game.load.image("startB","media/botones/start.png");
