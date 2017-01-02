@@ -4,6 +4,7 @@ define(['Phaser','Game','sprites/player','estados/min_final','estados/laberinto'
         Phaser.State.call(this);
         this.optionGrupo=null;
         this.soundBoton=null;
+        this.desbloquear=false;
     }
 //Inheritance
     Mundo.prototype = Object.create(Phaser.State.prototype);
@@ -93,15 +94,18 @@ define(['Phaser','Game','sprites/player','estados/min_final','estados/laberinto'
         this.music.play();
         this.load_boton();
        // Game.world.swap(this.optionGrupo,this.suelo);
+        //console.log([].slice.apply(Game.global.control));
 
     }
     Mundo.prototype.update = function () {
         Game.physics.arcade.collide(this.player,this.muro);
         Game.physics.arcade.collide(this.player,this.decoracion);
 
-       //if(Game.global.control.laberinto.haGanado){
+       if(this.desbloquear){
             Game.physics.arcade.overlap(this.player, this.colision, this.load_minfinal, null, this);
-       //}
+       }else{
+           desbloquearFinal();
+       }
         Game.physics.arcade.overlap(this.player, this.colLab, this.load_laberinto, null, this);
         Game.physics.arcade.overlap(this.player, this.colPuz, this.load_puzzle, null, this);
         Game.physics.arcade.overlap(this.player, this.colRush, this.load_Rushhour, null, this);
@@ -205,6 +209,14 @@ define(['Phaser','Game','sprites/player','estados/min_final','estados/laberinto'
         if(confirm("¿Esta seguro de que quiere salir al menu?"))
             Game.state.start('Menu');
 
+    }
+    function desbloquearFinal(){
+        for (var mini in Game.global.control){
+            if(mini.haGanado==false){
+                return;
+            }
+        }
+        this.desbloquear=true;
     }
     return Mundo;
 });
