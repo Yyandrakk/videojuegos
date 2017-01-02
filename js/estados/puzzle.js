@@ -1,4 +1,4 @@
-define(['Phaser','Game','sprites/cuadrado','estados/mundo'], function(Phaser,Game,Cuadrado,Mundo){
+define(['Phaser','Game','estados/mundo'], function(Phaser,Game,Mundo){
      
     function Puzzle(){
         Phaser.State.call(this);
@@ -13,10 +13,19 @@ define(['Phaser','Game','sprites/cuadrado','estados/mundo'], function(Phaser,Gam
     
     Puzzle.prototype.preload = function(){
 		Game.load.spritesheet("imagen", "media/sprite/cientificoloco.jpg", ANCHO_PIEZA, ALTO_PIEZA);
+		Game.load.audio('puzzle_music', ['media/sound/Puzzle Solving.mp3']);
+		Game.load.audio('sliding_sound', ['media/sound/Sliding.mp3', 'media/sound/Sliding.wav']);
     }
     
     Puzzle.prototype.create = function(){
 		var ind = 0, pieza, k = 0;
+		
+		this.music = this.game.add.audio('puzzle_music');
+		this.moverSound = this.game.add.audio('sliding_sound');
+        this.music.loop = true;
+        this.music.play();
+		
+		this.load_boton();
 		
 		totalPiezas = 9;
 		aleat = this.crearArrayAleatorio();
@@ -41,6 +50,7 @@ define(['Phaser','Game','sprites/cuadrado','estados/mundo'], function(Phaser,Gam
 				k++;
 			}
 		}
+		
     }
 	
 	Puzzle.prototype.seleccionarPieza = function(pieza){
@@ -86,6 +96,8 @@ define(['Phaser','Game','sprites/cuadrado','estados/mundo'], function(Phaser,Gam
 		huecoVacio.current = temp.current;
 		huecoVacio.nombre = 'Pieza' + huecoVacio.posX.toString() + 'x' + huecoVacio.posY.toString();
 		
+		this.moverSound.play();
+		
 		this.fin();
 	}
 	
@@ -101,6 +113,7 @@ define(['Phaser','Game','sprites/cuadrado','estados/mundo'], function(Phaser,Gam
 		
 		if (esFin){
 			Game.add.text(Game.world.centerX, Game.world.centerY, "Victoria");
+			this.music.stop();
 		}
 	}
 	
@@ -127,6 +140,50 @@ define(['Phaser','Game','sprites/cuadrado','estados/mundo'], function(Phaser,Gam
 		
 		return array;
 	}
+	
+	Puzzle.prototype.load_boton=function () {
+
+        this.optionGrupo = Game.add.group();
+        this.optionGrupo.fixedToCamera=true;
+        this.optionGrupo.cameraOffset.setTo( 0,0);
+
+        var optionBoton = Game.add.button( Game.width-80,Game.height-50, "option",mostrarMenu,this);
+        optionBoton.scale.setTo(0.5,0.5);
+        optionBoton.anchor.set(0.5);
+        this.optionGrupo.add(optionBoton);
+
+        this.soundBoton = Game.add.button(Game.width-80, Game.height +30, "mute",toggleSound,this);
+        this.soundBoton.frame = Game.sound.mute ? 0 : 1;
+        this.soundBoton.scale.setTo(0.5,0.5);
+        this.soundBoton.anchor.set(0.5);
+        this.soundBoton.input.useHandCursor = true;
+        this.optionGrupo.add(this.soundBoton);
+    }
+
+    function mostrarMenu(){
+        game.paused=!game.paused;
+        if(this.optionGrupo.cameraOffset.y == 0){
+
+            var menuTween = Game.add.tween(this.optionGrupo.cameraOffset).to({
+                y: -60
+            }, 500, Phaser.Easing.Bounce.Out, true);
+
+        }
+        if(this.optionGrupo.cameraOffset.y == -60){
+
+            var menuTween = Game.add.tween(this.optionGrupo.cameraOffset).to({
+                y: 0
+            }, 500, Phaser.Easing.Bounce.Out, true);
+
+        }
+    }
+
+    function toggleSound() {
+
+        Game.sound.mute = ! Game.sound.mute;
+        this.soundBoton.frame = Game.sound.mute ? 0 : 1;
+
+    }
     
     return Puzzle;
 });
