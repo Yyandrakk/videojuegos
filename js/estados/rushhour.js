@@ -1,12 +1,17 @@
 define(['Phaser','Game','estados/mundo','sprites/Vehiculos'], function (Phaser,Game,Mundo,Vehiculos) {
-
+    /**
+     * Representa al minijuego Rush Hour
+     * @constructor
+     */
     function Rushhour() {
         Phaser.State.call(this);
 
     }
 //Inheritance
+
     Rushhour.prototype = Object.create(Phaser.State.prototype);
     Rushhour.prototype.constructor = Rushhour;
+
     Rushhour.prototype.create = function () {
         Game.world.setBounds(0,0,640,352);
 
@@ -36,7 +41,9 @@ define(['Phaser','Game','estados/mundo','sprites/Vehiculos'], function (Phaser,G
         Game.physics.arcade.overlap(this.player, this.colSalida, this.levelCompleted, null, this);
         //Game.physics.arcade.overlap(this.player, this.muro, this.collideMuro, null, this);
     }
-
+    /**
+     * Carga el tile Map
+     */
     Rushhour.prototype.createWorld = function () {
         this.map=Game.add.tilemap('mapRH');
         this.map.addTilesetImage('tileMP2');
@@ -52,13 +59,20 @@ define(['Phaser','Game','estados/mundo','sprites/Vehiculos'], function (Phaser,G
         this.map.setCollisionBetween(1, 10000, true, this.muro);
 
     }
+    /**
+     *
+     * @param p
+     * @param m
+     */
     Rushhour.prototype.levelCompleted = function (p,m) {
         Game.global.control.rushhour.haGanado = true;
         // Game.state.add('Mundo', new Mundo());
        // this.music.stop();
         Game.state.start('Mundo');
     }
-
+    /**
+     * Carga el tablero en su posicion
+     */
     Rushhour.prototype.crearTablero = function () {
 
        var i=0,j=0;
@@ -150,10 +164,11 @@ define(['Phaser','Game','estados/mundo','sprites/Vehiculos'], function (Phaser,G
        }
 
     }
-
+    /**
+     *
+     * @param c
+     */
     function agarrar(c) {
-
-
 
         var i,inicio,final;
 
@@ -211,6 +226,10 @@ define(['Phaser','Game','estados/mundo','sprites/Vehiculos'], function (Phaser,G
         }
     }
 
+    /**
+     *
+     * @param c
+     */
     function soltar(c) {
         var i;
         for(i=0;i<c.tam;i++){
@@ -236,6 +255,9 @@ define(['Phaser','Game','estados/mundo','sprites/Vehiculos'], function (Phaser,G
 
     }
 
+    /**
+     *
+     */
     Rushhour.prototype.load_boton=function () {
 
         this.optionGrupo = Game.add.group();
@@ -262,7 +284,9 @@ define(['Phaser','Game','estados/mundo','sprites/Vehiculos'], function (Phaser,G
         this.optionGrupo.add( this.quitJuego);
     }
 
-
+    /**
+     *
+     */
     function mostrarMenu(){
         Game.physics.arcade.isPaused=! Game.physics.arcade.isPaused;
         if(this.optionGrupo.cameraOffset.y == 0){
@@ -280,53 +304,24 @@ define(['Phaser','Game','estados/mundo','sprites/Vehiculos'], function (Phaser,G
         }
     }
 
+    /**
+     *
+     */
     function toggleSound() {
 
         Game.sound.mute = ! Game.sound.mute;
         this.soundBoton.frame = Game.sound.mute ? 0 : 1;
 
     }
+
+    /**
+     *
+     */
     function salirMenu() {
         if(confirm("¿Esta seguro de que quiere salir al menu?"))
             Game.state.start('Menu');
 
     }
 
-
-
-/*
-    function pulsar(pos) {
-
-        var cuerpos=new Array();
-        cuerpos.push(this.playerG.getAt(0).body);
-        this.enemyG.forEach(function (car) {
-            cuerpos.push(car.body);
-        },this);
-
-        var posCuerpos = Game.physics.p2.hitTest(pos.position,cuerpos);
-
-        var PosP2 = [Game.physics.p2.pxmi(pos.x),Game.physics.p2.pxmi(pos.y)];
-        var PosA = [pos.x,pos.y]
-        if(posCuerpos.length){
-
-            var SpritePulsado=posCuerpos[0];
-            var PosLocal=[0,0];
-
-
-            SpritePulsado.toLocalFrame(PosLocal,PosP2);
-            var mpxiArray=[Game.physics.p2.mpxi(PosLocal[0]),Game.physics.p2.mpxi(PosLocal[1])];
-            this.restricionRaton = Game.physics.p2.createRevoluteConstraint(this.raton,[0,0],SpritePulsado,mpxiArray)
-        }
-
-    }
-
-    function soltar() {
-        Game.physics.p2.removeConstraint(this.restricionRaton)
-    }
-
-    function moverVehiculo(pos) {
-        this.raton.x=Game.physics.p2.pxmi(pos.x);
-        this.raton.y=Game.physics.p2.pxmi(pos.y);
-    }*/
     return Rushhour;
 });

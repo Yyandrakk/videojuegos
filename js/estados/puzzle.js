@@ -1,11 +1,21 @@
 define(['Phaser','Game','estados/mundo'], function(Phaser,Game,Mundo){
-     
+    /**
+	 *
+     * @constructor
+     */
     function Puzzle(){
         Phaser.State.call(this);
         this.listSprites = [];
     }
-    
+
+    /**
+	 *
+     * @type {number}
+     */
 	var ANCHO_PIEZA = 100, ALTO_PIEZA = 93.33333;
+    /**
+	 *
+     */
 	var totalPiezas, grupoPiezas, aleat = [];
     //Inheritance
     Puzzle.prototype = Object.create(Phaser.State.prototype);
@@ -52,7 +62,10 @@ define(['Phaser','Game','estados/mundo'], function(Phaser,Game,Mundo){
 		}
 		
     }
-	
+    /**
+	 *
+     * @param pieza
+     */
 	Puzzle.prototype.seleccionarPieza = function(pieza){
 		var huecoVacio = this.vecinoVacio(pieza);
 		
@@ -60,7 +73,11 @@ define(['Phaser','Game','estados/mundo'], function(Phaser,Game,Mundo){
 			this.mover(pieza, huecoVacio);
 		}
 	}
-	
+    /**
+	 *
+     * @param pieza
+     * @returns {boolean}
+     */
 	Puzzle.prototype.vecinoVacio = function(pieza){
 		var vacioEncontrado = false;
 		
@@ -76,7 +93,11 @@ define(['Phaser','Game','estados/mundo'], function(Phaser,Game,Mundo){
 		
 		return vacioEncontrado;
 	}
-	
+    /**
+	 *
+     * @param pieza
+     * @param huecoVacio
+     */
 	Puzzle.prototype.mover = function(pieza, huecoVacio){
 		var temp = {
 			posX: pieza.posX,
@@ -100,7 +121,9 @@ define(['Phaser','Game','estados/mundo'], function(Phaser,Game,Mundo){
 		
 		this.fin();
 	}
-	
+    /**
+	 *
+     */
 	Puzzle.prototype.fin = function(){
 		var esFin = true;
 		
@@ -117,7 +140,9 @@ define(['Phaser','Game','estados/mundo'], function(Phaser,Game,Mundo){
 			Game.global.control.puzzle.haGanado = true;
 		}
 	}
-	
+    /**
+	 *
+     */
 	Puzzle.prototype.crearArrayAleatorio = function(){
 		var indArray = [];
 		for (var i = 0; i < totalPiezas; i++){
@@ -125,7 +150,11 @@ define(['Phaser','Game','estados/mundo'], function(Phaser,Game,Mundo){
 		}
 		return this.mezclar(indArray);
 	}
-    
+    /**
+	 *
+     * @param array
+     * @returns {*}
+     */
 	Puzzle.prototype.mezclar = function(array){
 		var cont = array.length, temp, indice;
 		
@@ -141,7 +170,9 @@ define(['Phaser','Game','estados/mundo'], function(Phaser,Game,Mundo){
 		
 		return array;
 	}
-	
+    /**
+	 *
+     */
 	Puzzle.prototype.load_boton=function () {
 
         this.optionGrupo = Game.add.group();
@@ -160,7 +191,9 @@ define(['Phaser','Game','estados/mundo'], function(Phaser,Game,Mundo){
         this.soundBoton.input.useHandCursor = true;
         this.optionGrupo.add(this.soundBoton);
     }
-
+    /**
+	 *
+     */
     function mostrarMenu(){
         game.paused=!game.paused;
         if(this.optionGrupo.cameraOffset.y == 0){
@@ -179,6 +212,9 @@ define(['Phaser','Game','estados/mundo'], function(Phaser,Game,Mundo){
         }
     }
 
+    /**
+	 *
+     */
     function toggleSound() {
 
         Game.sound.mute = ! Game.sound.mute;

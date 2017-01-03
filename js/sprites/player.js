@@ -1,11 +1,11 @@
 define(['Phaser'], function (Phaser) {
     /**
-     *
-     * @param game
-     * @param x
-     * @param y
-     * @param key
-     * @param frame
+     * Sprite para el mundo
+     * @param game - Phaser.Game
+     * @param {number} x - Coordenada  x
+     * @param {number} y - Coordenada y
+     * @param {string} key - Imagen precargada para el sprite
+     * @param {number} frame - Id del frame del spritesheet
      * @constructor
      */
      Player = function(game,x,y,key,frame) {

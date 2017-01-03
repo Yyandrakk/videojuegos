@@ -1,5 +1,8 @@
 define(['Phaser','Game','sprites/dog','estados/mundo'], function (Phaser,Game,Dog,Mundo) {
-
+    /**
+     *
+     * @constructor
+     */
     function Laberinto() {
         Phaser.State.call(this);
         this.listSprites=[];
@@ -40,6 +43,9 @@ define(['Phaser','Game','sprites/dog','estados/mundo'], function (Phaser,Game,Do
         }
 
     }
+    /**
+     *
+     */
     Laberinto.prototype.createWorld = function () {
         this.map=Game.add.tilemap('mapLab', tileWidth=50, tileHeight=50);
         
@@ -55,7 +61,9 @@ define(['Phaser','Game','sprites/dog','estados/mundo'], function (Phaser,Game,Do
 
 
     }
-    
+    /**
+     *
+     */
     Laberinto.prototype.dogDie = function() {
         this.dog.position.x = 80;
         this.dog.position.y = 810;
@@ -69,7 +77,9 @@ define(['Phaser','Game','sprites/dog','estados/mundo'], function (Phaser,Game,Do
         }
         this.deathSound.play();
     }
-    
+    /**
+     *
+     */
     Laberinto.prototype.levelCompleted = function() {
         Game.global.control.laberinto.haGanado = true;
        // Game.state.add('Mundo', new Mundo());

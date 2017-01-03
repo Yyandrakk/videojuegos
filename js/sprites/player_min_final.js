@@ -1,4 +1,13 @@
 define(['Phaser'], function (Phaser) {
+    /**
+     *
+     * @param game
+     * @param x
+     * @param y
+     * @param key
+     * @param frame
+     * @constructor
+     */
     Player_min_final = function(game,x,y,key,frame) {
         Phaser.Sprite.call(this,game,x,y,key);
         this.animations.add('down',[0,1,2],96,true,true);

@@ -1,7 +1,8 @@
-/**
- * Created by oscar on 30/11/16.
- */
 define(['Game','loader'],function (Game,Loader) {
+    /**
+     *
+     * @constructor
+     */
     function PreLoader() {
         Phaser.State.call(this);
     }

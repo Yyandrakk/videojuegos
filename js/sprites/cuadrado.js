@@ -1,4 +1,12 @@
 define(['Phaser'], function(Phaser){
+    /**
+     *
+     * @param game
+     * @param x
+     * @param y
+     * @param key
+     * @constructor
+     */
     function Cuadrado(game,x,y,key){
         Phaser.Sprite.call(this,game,x,y,key);
         this.anchor.setTo(0.5,0.5);

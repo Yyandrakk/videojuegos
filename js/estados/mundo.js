@@ -1,5 +1,8 @@
 define(['Phaser','Game','sprites/player','estados/min_final','estados/laberinto','estados/rushhour','estados/puzzle'], function (Phaser,Game,Player,Min_final,Laberinto,Rushhour,Puzzle) {
-
+    /**
+     * Es un estado que permite moverte entre los minijuegos
+     * @constructor
+     */
     function Mundo() {
         Phaser.State.call(this);
         this.optionGrupo=null;
@@ -112,6 +115,9 @@ define(['Phaser','Game','sprites/player','estados/min_final','estados/laberinto'
         Game.physics.arcade.overlap(this.player, this.colRush, this.load_Rushhour, null, this);
         this.player.update();
     }
+    /**
+     *
+     */
     Mundo.prototype.createWorld = function () {
         this.map=Game.add.tilemap('mapP');
 
@@ -134,29 +140,50 @@ define(['Phaser','Game','sprites/player','estados/min_final','estados/laberinto'
         this.map.setCollisionBetween(1, 10000, true, this.muro);
         this.map.setCollisionBetween(1, 10000, true, this.decoracion);
     }
+    /**
+     *
+     * @param p
+     * @param m
+     */
     Mundo.prototype.load_minfinal=function (p,m) {
         Game.state.add('MinFinal', new Min_final());
         this.music.stop();
         Game.state.start('MinFinal');
     }
-
+    /**
+     *
+     * @param p
+     * @param m
+     */
     Mundo.prototype.load_laberinto=function (p,m) {
        Game.state.add('Laberinto', new Laberinto());
         this.music.stop();
        Game.state.start('Laberinto');
     }
-
+    /**
+     *
+     * @param p
+     * @param m
+     */
     Mundo.prototype.load_Rushhour=function (p,m) {
         Game.state.add('Rushhour', new Rushhour());
         this.music.stop();
         Game.state.start('Rushhour');
     }
-
+    /**
+     *
+     * @param p
+     * @param m
+     */
     Mundo.prototype.load_puzzle=function (p,m) {
         Game.state.add('Puzzle', new Puzzle());
         this.music.stop();
         Game.state.start('Puzzle');
     }
+
+    /**
+     * Se encarga de generar los botones en su sitio
+     */
     Mundo.prototype.load_boton=function () {
 
         this.optionGrupo = Game.add.group();
@@ -182,7 +209,9 @@ define(['Phaser','Game','sprites/player','estados/min_final','estados/laberinto'
         this.quitJuego.input.useHandCursor = true;
         this.optionGrupo.add( this.quitJuego);
     }
-
+    /**
+     * Se encarga de mostrar o ocultar el resto de botones cuando se da al de opciones
+     */
     function mostrarMenu(){
         Game.physics.arcade.isPaused=! Game.physics.arcade.isPaused;
         if(this.optionGrupo.cameraOffset.y == 0){
@@ -200,17 +229,31 @@ define(['Phaser','Game','sprites/player','estados/min_final','estados/laberinto'
         }
     }
 
+    /**
+     * Pone o quita el sonido
+     */
     function toggleSound() {
 
         Game.sound.mute = ! Game.sound.mute;
         this.soundBoton.frame = Game.sound.mute ? 0 : 1;
 
     }
-    function salirMenu() {
-        if(confirm("¿Esta seguro de que quiere salir al menu?"))
-            Game.state.start('Menu');
 
+    /**
+     * Accion cuando se pulsa el boton de salir, vuelves al menu de inicio, reiniciando el juego
+     */
+    function salirMenu() {
+        if(confirm("¿Esta seguro de que quiere salir al menu?")) {
+            for (var mini in Game.global.control){
+                mini.haGanado=false
+            }
+            Game.state.start('Menu');
+        }
     }
+
+    /**
+     * Desbloquea el minijuego final cuando se ganan todos
+     */
     function desbloquearFinal(){
         for (var mini in Game.global.control){
             if(mini.haGanado==false){

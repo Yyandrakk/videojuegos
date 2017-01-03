@@ -1,4 +1,8 @@
 define(['Phaser','Game','estados/mundo'], function (Phaser,Game,Mundo) {
+    /**
+     *
+     * @constructor
+     */
     function Menu() {
         Phaser.State.call(this);
         this.optionGrupo=null;
@@ -27,6 +31,9 @@ define(['Phaser','Game','estados/mundo'], function (Phaser,Game,Mundo) {
 
 
     }
+    /**
+     *
+     */
     function mostrarMenu(){
         if(this.optionGrupo.y == 0){
             var menuTween = Game.add.tween(this.optionGrupo).to({
@@ -39,13 +46,17 @@ define(['Phaser','Game','estados/mundo'], function (Phaser,Game,Mundo) {
             }, 500, Phaser.Easing.Bounce.Out, true);
         }
     }
+
+    /**
+     *
+     */
     function toggleSound() {
 
         Game.sound.mute = ! Game.sound.mute;
         this.soundBoton.frame = Game.sound.mute ? 0 : 1;
 
     }
-    /* initialize persistent game objects here */
+
     Menu.prototype.create = function () {
         Game.add.image(0, 0, 'back_menu');
         var nameLabel = Game.add.text(Game.world.centerX, Game.world.centerY-100, 'EPS WARRIOR',{font:'48px PressStart2P'});
@@ -73,7 +84,9 @@ define(['Phaser','Game','estados/mundo'], function (Phaser,Game,Mundo) {
 
 
     }
-
+    /**
+     *
+     */
     function empezar() {
         Game.physics.startSystem(Phaser.Physics.ARCADE);
         Game.state.add('Mundo', new Mundo());

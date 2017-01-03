@@ -1,5 +1,8 @@
 define(['Phaser','Game','sprites/player_min_final','sprites/enemy_min_final','BarHealth'], function (Phaser,Game,Player_min_final,Enemy_min_final,BarHealth) {
-
+    /**
+     *
+     * @constructor
+     */
     function Min_final() {
         Phaser.State.call(this);
         this.shootTime =0;
@@ -111,6 +114,9 @@ define(['Phaser','Game','sprites/player_min_final','sprites/enemy_min_final','Ba
 
 
     }
+    /**
+     *
+     */
     Min_final.prototype.createWorld = function () {
         this.map=Game.add.tilemap('mapMF');
         this.map.addTilesetImage('tileMP1');
@@ -126,7 +132,11 @@ define(['Phaser','Game','sprites/player_min_final','sprites/enemy_min_final','Ba
 
 
     }
-
+    /**
+     *
+     * @param a
+     * @param e
+     */
     Min_final.prototype.enemy_kill= function(a,e){
         a.kill();
         e.kill();
@@ -139,7 +149,11 @@ define(['Phaser','Game','sprites/player_min_final','sprites/enemy_min_final','Ba
         }
 
     }
-
+    /**
+     *
+     * @param p
+     * @param a
+     */
     Min_final.prototype.player_damage= function(p,a){
         a.kill();
         //cambiar que no le quite la ultima vida
@@ -152,13 +166,18 @@ define(['Phaser','Game','sprites/player_min_final','sprites/enemy_min_final','Ba
         a.kill();
 
     }
-
+    /**
+     *
+     */
     function deadF() {
         //alert("Game over");
         //this.music.stop();
         Game.state.start('Mundo');
     }
 
+    /**
+     *
+     */
     Min_final.prototype.load_boton=function () {
 
         this.optionGrupo = Game.add.group();
@@ -177,7 +196,9 @@ define(['Phaser','Game','sprites/player_min_final','sprites/enemy_min_final','Ba
         this.soundBoton.input.useHandCursor = true;
         this.optionGrupo.add(this.soundBoton);
     }
-
+    /**
+     *
+     */
     function mostrarMenu(){
         game.paused=!game.paused;
         if(this.optionGrupo.cameraOffset.y == 0){
@@ -196,6 +217,9 @@ define(['Phaser','Game','sprites/player_min_final','sprites/enemy_min_final','Ba
         }
     }
 
+    /**
+     *
+     */
     function toggleSound() {
 
         Game.sound.mute = ! Game.sound.mute;

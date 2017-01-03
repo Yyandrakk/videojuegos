@@ -2,6 +2,10 @@
  * Created by oscar on 13/11/16.
  */
 define(['Phaser','Game','estados/menu'], function (Phaser,Game,Menu) {
+    /**
+     *
+     * @constructor
+     */
     function Loader() {
         Phaser.State.call(this);
     }

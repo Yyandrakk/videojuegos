@@ -1,4 +1,11 @@
 define(['Phaser'], function (Phaser) {
+    /**
+     *
+     * @param game
+     * @param x
+     * @param y
+     * @constructor
+     */
     function Dog(game,x,y) {
         Phaser.Sprite.call(this,game,x,y,'dog');
         this.animations.add('down',[0,1,2,3],16,true,true);
