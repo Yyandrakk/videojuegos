@@ -24,11 +24,12 @@ define(['Phaser','Game','estados/mundo','sprites/Vehiculos'], function (Phaser,G
         this.colSalida.enableBody=true;
         this.colSalida.visible=true;
         this.colSalida.physicsBodyType=Phaser.Physics.ARCADE;
-        //this.createWorld();
+        this.createWorld();
         //this.player = this.playerG.getAt(0);
 
       // Game.world.swap(this.playerG,this.suelo);
        this.crearTablero();
+       this.load_boton();
     }
 
     Rushhour.prototype.update = function () {
@@ -40,15 +41,15 @@ define(['Phaser','Game','estados/mundo','sprites/Vehiculos'], function (Phaser,G
         this.map=Game.add.tilemap('mapRH');
         this.map.addTilesetImage('tileMP2');
         this.map.addTilesetImage('tileMP4');
-
-        //this.muro = this.map.createLayer('muro');
+        this.map.createLayer('suelo');
+        this.muro = this.map.createLayer('decoracion');
         /*this.map.createFromObjects('coches','player','Audi',1,true,false,this.playerG,Vehiculos);
         this.map.createFromObjects('coches','cocV','Black_viper',1,true,false,this.enemyG,Vehiculos);
         this.map.createFromObjects('coches','cocH','taxi',1,true,false,this.enemyG,Vehiculos);
         this.map.createFromObjects('coches','camV','truck',1,true,false,this.enemyG,Vehiculos);
         this.map.createFromObjects('coches','camH','Mini_truck',1,true,false,this.enemyG,Vehiculos);*/
         this.map.createFromObjects('salida','salida','colisionMP2',751,true,false,this.colSalida);
-        //this.map.setCollisionBetween(1, 10000, true, this.muro);
+        this.map.setCollisionBetween(1, 10000, true, this.muro);
 
     }
     Rushhour.prototype.levelCompleted = function (p,m) {
@@ -64,7 +65,7 @@ define(['Phaser','Game','estados/mundo','sprites/Vehiculos'], function (Phaser,G
         Game.add.sprite(0,0,"tablero");
 
 
-      var vehiculos=new Array;
+      var vehiculos=new Array();
       vehiculos.push({
           fila:2 ,
           col:  2,
@@ -143,6 +144,7 @@ define(['Phaser','Game','estados/mundo','sprites/Vehiculos'], function (Phaser,G
 
            if(veh.key=="audi"){
                this.player=vehS;
+               Game.physics.enable(this.player,Phaser.Physics.ARCADE);
            }
 
        }
@@ -166,15 +168,24 @@ define(['Phaser','Game','estados/mundo','sprites/Vehiculos'], function (Phaser,G
                     break;
                 }
             }
+            if(c.key=="audi"){
+                for (i = c.col + c.tam; i < 17; i++) {
+                    if (Game.global.rush.tablero[c.fila][i] == 0) {
+                        final = i;
+                    } else {
+                        break;
+                    }
+                }
+            }else {
 
-            for(i=c.col+c.tam;i<6;i++){
-                if(Game.global.rush.tablero[c.fila][i]==0){
-                    final=i;
-                }else{
-                    break;
+                for (i = c.col + c.tam; i < 6; i++) {
+                    if (Game.global.rush.tablero[c.fila][i] == 0) {
+                        final = i;
+                    } else {
+                        break;
+                    }
                 }
             }
-
             c.input.boundsRect=new Phaser.Rectangle(inicio*Game.global.rush.tamanoSprite,c.y,(final-inicio+1)*Game.global.rush.tamanoSprite,Game.global.rush.tamanoSprite);
 
         }else{
@@ -222,6 +233,62 @@ define(['Phaser','Game','estados/mundo','sprites/Vehiculos'], function (Phaser,G
                 Game.global.rush.tablero[c.fila+i][c.col]=1;
             }
         }
+
+    }
+
+    Rushhour.prototype.load_boton=function () {
+
+        this.optionGrupo = Game.add.group();
+        this.optionGrupo.fixedToCamera=true;
+        this.optionGrupo.cameraOffset.setTo( 0,0);
+
+        var optionBoton = Game.add.button( Game.width-30,Game.height-30, "option",mostrarMenu,this);
+        optionBoton.scale.setTo(0.5,0.5);
+        optionBoton.anchor.set(0.5);
+        this.optionGrupo.add(optionBoton);
+
+        this.soundBoton = Game.add.button(Game.width-30, Game.height +30, "mute",toggleSound,this);
+        this.soundBoton.frame = Game.sound.mute ? 0 : 1;
+        this.soundBoton.scale.setTo(0.5,0.5);
+        this.soundBoton.anchor.set(0.5);
+        this.soundBoton.input.useHandCursor = true;
+        this.optionGrupo.add(this.soundBoton);
+
+
+        this.quitJuego = Game.add.button(Game.width-30, Game.height +90, "salir",salirMenu,this);
+        this.quitJuego.scale.setTo(0.5,0.5);
+        this.quitJuego.anchor.set(0.5);
+        this.quitJuego.input.useHandCursor = true;
+        this.optionGrupo.add( this.quitJuego);
+    }
+
+
+    function mostrarMenu(){
+        Game.physics.arcade.isPaused=! Game.physics.arcade.isPaused;
+        if(this.optionGrupo.cameraOffset.y == 0){
+
+            var menuTween = Game.add.tween(this.optionGrupo.cameraOffset).to({
+                y: -120
+            }, 500, Phaser.Easing.Bounce.Out, true);
+
+        }
+        if(this.optionGrupo.cameraOffset.y == -120){
+
+            var menuTween = Game.add.tween(this.optionGrupo.cameraOffset).to({
+                y: 0
+            }, 500, Phaser.Easing.Bounce.Out, true);
+        }
+    }
+
+    function toggleSound() {
+
+        Game.sound.mute = ! Game.sound.mute;
+        this.soundBoton.frame = Game.sound.mute ? 0 : 1;
+
+    }
+    function salirMenu() {
+        if(confirm("¿Esta seguro de que quiere salir al menu?"))
+            Game.state.start('Menu');
 
     }
 

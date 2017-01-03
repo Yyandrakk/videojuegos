@@ -184,7 +184,7 @@ define(['Phaser','Game','sprites/player','estados/min_final','estados/laberinto'
     }
 
     function mostrarMenu(){
-        game.paused=!game.paused;
+        Game.physics.arcade.isPaused=! Game.physics.arcade.isPaused;
         if(this.optionGrupo.cameraOffset.y == 0){
 
             var menuTween = Game.add.tween(this.optionGrupo.cameraOffset).to({

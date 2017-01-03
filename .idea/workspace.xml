@@ -1,18 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8cc47ea1-de98-404f-ab17-859d132e00d9" name="Default" comment="rushhour sigue sin ir">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/media/image/field.png" afterPath="$PROJECT_DIR$/media/image/field.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/media/sprite/Audi.png" afterPath="$PROJECT_DIR$/media/sprite/Audi.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/media/sprite/Black_viper.png" afterPath="$PROJECT_DIR$/media/sprite/Black_viper.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/media/sprite/Mini_truck.png" afterPath="$PROJECT_DIR$/media/sprite/Mini_truck.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/media/sprite/taxi.png" afterPath="$PROJECT_DIR$/media/sprite/taxi.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/media/sprite/truck.png" afterPath="$PROJECT_DIR$/media/sprite/truck.png" />
+    <list default="true" id="8cc47ea1-de98-404f-ab17-859d132e00d9" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/estados/mundo.js" afterPath="$PROJECT_DIR$/js/estados/mundo.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/estados/rushhour.js" afterPath="$PROJECT_DIR$/js/estados/rushhour.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/game.js" afterPath="$PROJECT_DIR$/js/game.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/sprites/Vehiculos.js" afterPath="$PROJECT_DIR$/js/sprites/Vehiculos.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/media/map/rushhour.json" afterPath="$PROJECT_DIR$/media/map/rushhour.json" />
     </list>
     <ignored path="videojuegos.iws" />
@@ -39,8 +32,18 @@
       <file leaf-file-name="rushhour.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/estados/rushhour.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="127" column="106" lean-forward="false" selection-start-line="127" selection-start-column="106" selection-end-line="127" selection-end-column="106" />
+            <state relative-caret-position="102">
+              <caret line="40" column="39" lean-forward="false" selection-start-line="40" selection-start-column="39" selection-end-line="40" selection-end-column="39" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="game.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/game.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="162">
+              <caret line="13" column="46" lean-forward="false" selection-start-line="13" selection-start-column="46" selection-end-line="13" selection-end-column="46" />
               <folding />
             </state>
           </provider>
@@ -49,8 +52,8 @@
       <file leaf-file-name="mundo.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/estados/mundo.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="72">
-              <caret line="22" column="26" lean-forward="false" selection-start-line="22" selection-start-column="26" selection-end-line="22" selection-end-column="26" />
+            <state relative-caret-position="206">
+              <caret line="183" column="5" lean-forward="true" selection-start-line="159" selection-start-column="3" selection-end-line="183" selection-end-column="5" />
               <folding />
             </state>
           </provider>
@@ -98,9 +101,9 @@
         <option value="$PROJECT_DIR$/js/estados/min_final.js" />
         <option value="$PROJECT_DIR$/js/estados/menu.js" />
         <option value="$PROJECT_DIR$/js/loader.js" />
-        <option value="$PROJECT_DIR$/js/game.js" />
         <option value="$PROJECT_DIR$/js/sprites/Vehiculos.js" />
         <option value="$PROJECT_DIR$/js/estados/mundo.js" />
+        <option value="$PROJECT_DIR$/js/game.js" />
         <option value="$PROJECT_DIR$/js/estados/rushhour.js" />
       </list>
     </option>
@@ -548,7 +551,7 @@
       <workItem from="1483193252896" duration="7378000" />
       <workItem from="1483350220193" duration="7814000" />
       <workItem from="1483370892307" duration="7743000" />
-      <workItem from="1483436237639" duration="21903000" />
+      <workItem from="1483436237639" duration="24329000" />
     </task>
     <task id="LOCAL-00001" summary="Subir las cosas ordenadas y iniciado RequireJS">
       <created>1479067366520</created>
@@ -767,11 +770,25 @@
       <option name="project" value="LOCAL" />
       <updated>1483448260964</updated>
     </task>
-    <option name="localTasksCounter" value="32" />
+    <task id="LOCAL-00032" summary="rushhour funcionan las colisiones">
+      <created>1483460054495</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1483460054495</updated>
+    </task>
+    <task id="LOCAL-00033" summary="rushhour funcionan las colisiones">
+      <created>1483460204036</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1483460204036</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="177634000" />
+    <option name="totallyTimeSpent" value="180060000" />
   </component>
   <component name="TodoView" selected-index="4">
     <todo-panel id="selected-file">
@@ -820,7 +837,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
-    <MESSAGE value="BUG: Cambiar los nombres de los tileset" />
     <MESSAGE value="Ya carga bien el tilemap pero no colisiona, añadido el movimiento con las flechas y AWSD" />
     <MESSAGE value="Menu funciona y ya colisona con el mundo, aunque hay algunas que no quedan muy bien" />
     <MESSAGE value="añadido control de minijuegos pasados y el control de sonido" />
@@ -845,7 +861,8 @@
     <MESSAGE value="Desbloquear minijuego final &#10;" />
     <MESSAGE value="Cambio a P2 en rushhour" />
     <MESSAGE value="rushhour sigue sin ir" />
-    <option name="LAST_COMMIT_MESSAGE" value="rushhour sigue sin ir" />
+    <MESSAGE value="rushhour funcionan las colisiones" />
+    <option name="LAST_COMMIT_MESSAGE" value="rushhour funcionan las colisiones" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1171,26 +1188,26 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/game.js">
+    <entry file="file://$PROJECT_DIR$/js/estados/mundo.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="188">
-          <caret line="15" column="24" lean-forward="false" selection-start-line="15" selection-start-column="24" selection-end-line="15" selection-end-column="24" />
+        <state relative-caret-position="206">
+          <caret line="183" column="5" lean-forward="true" selection-start-line="159" selection-start-column="3" selection-end-line="183" selection-end-column="5" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/estados/mundo.js">
+    <entry file="file://$PROJECT_DIR$/js/game.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="72">
-          <caret line="22" column="26" lean-forward="false" selection-start-line="22" selection-start-column="26" selection-end-line="22" selection-end-column="26" />
+        <state relative-caret-position="162">
+          <caret line="13" column="46" lean-forward="false" selection-start-line="13" selection-start-column="46" selection-end-line="13" selection-end-column="46" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/js/estados/rushhour.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="127" column="106" lean-forward="false" selection-start-line="127" selection-start-column="106" selection-end-line="127" selection-end-column="106" />
+        <state relative-caret-position="102">
+          <caret line="40" column="39" lean-forward="false" selection-start-line="40" selection-start-column="39" selection-end-line="40" selection-end-column="39" />
           <folding />
         </state>
       </provider>
