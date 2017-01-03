@@ -2,7 +2,7 @@ define(['Phaser'], function (Phaser) {
     Vehiculos = function(game,x,y,key,frame) {
         Phaser.Sprite.call(this,game,x,y,key);
         this.animations.frame=frame;
-        /*this.inputEnabled=true;
+        this.inputEnabled=true;
         this.input.enableDrag();
         this.input.usedHandCursor=true;
 
@@ -34,7 +34,7 @@ define(['Phaser'], function (Phaser) {
                 this.input.allowVerticalDrag=true;
                 break;
             default:
-        }*/
+        }
         game.add.existing(this);
     }
 
