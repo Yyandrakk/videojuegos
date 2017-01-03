@@ -17,5 +17,6 @@ define(['Phaser'], function (Phaser) {
 
         }
     };
+
     return g;
 });
