@@ -2,15 +2,7 @@ define(['Phaser','Game','estados/mundo','sprites/Vehiculos'], function (Phaser,G
 
     function Rushhour() {
         Phaser.State.call(this);
-        this.tablero=[
-            [0,0,0,0,0,0],
-            [0,0,0,0,0,0],
-            [0,0,0,0,0,0],
-            [0,0,0,0,0,0],
-            [0,0,0,0,0,0],
-            [0,0,0,0,0,0]
-        ];
-        this.tamanoSprite=32;
+
     }
 //Inheritance
     Rushhour.prototype = Object.create(Phaser.State.prototype);
@@ -32,30 +24,11 @@ define(['Phaser','Game','estados/mundo','sprites/Vehiculos'], function (Phaser,G
         this.colSalida.enableBody=true;
         this.colSalida.visible=true;
         this.colSalida.physicsBodyType=Phaser.Physics.ARCADE;
-        this.createWorld();
-        this.player = this.playerG.getAt(0);
-/*
-        var colisionesG= Game.physics.p2.createCollisionGroup();
+        //this.createWorld();
+        //this.player = this.playerG.getAt(0);
 
-
-        Game.physics.p2.updateBoundsCollisionGroup();
-
-        //Game.physics.p2.enable(this.player,false);
-        player.body.setCollisionGroup(colisionesG);
-        player.body.collides([colisionesG]);
-
-        this.enemyG.forEach(function (car) {
-            car.body.setCollisionGroup(colisionesG);
-            car.body.collides([colisionesG]);
-        },this);
-        this.raton = new Phaser.Physics.P2.Body(Game);
-        Game.physics.p2.addBody(this.raton);
-
-        Game.input.onDown.add(pulsar,this);
-        Game.input.onUp.add(soltar,this);
-        Game.input.addMoveCallback(moverVehiculo,this);
-        Game.camera.follow(player);*/
-       Game.world.swap(this.playerG,this.suelo);
+      // Game.world.swap(this.playerG,this.suelo);
+       this.crearTablero();
     }
 
     Rushhour.prototype.update = function () {
@@ -65,18 +38,17 @@ define(['Phaser','Game','estados/mundo','sprites/Vehiculos'], function (Phaser,G
 
     Rushhour.prototype.createWorld = function () {
         this.map=Game.add.tilemap('mapRH');
-       this.map.addTilesetImage('tileMP2');
+        this.map.addTilesetImage('tileMP2');
         this.map.addTilesetImage('tileMP4');
-        this.suelo = this.map.createLayer('suelo');
-        this.suelo.resizeWorld();
-        this.muro = this.map.createLayer('muro');
-        this.map.createFromObjects('coches','player','Audi',1,true,false,this.playerG,Vehiculos);
+
+        //this.muro = this.map.createLayer('muro');
+        /*this.map.createFromObjects('coches','player','Audi',1,true,false,this.playerG,Vehiculos);
         this.map.createFromObjects('coches','cocV','Black_viper',1,true,false,this.enemyG,Vehiculos);
         this.map.createFromObjects('coches','cocH','taxi',1,true,false,this.enemyG,Vehiculos);
         this.map.createFromObjects('coches','camV','truck',1,true,false,this.enemyG,Vehiculos);
-        this.map.createFromObjects('coches','camH','Mini_truck',1,true,false,this.enemyG,Vehiculos);
+        this.map.createFromObjects('coches','camH','Mini_truck',1,true,false,this.enemyG,Vehiculos);*/
         this.map.createFromObjects('salida','salida','colisionMP2',751,true,false,this.colSalida);
-        this.map.setCollisionBetween(1, 10000, true, this.muro);
+        //this.map.setCollisionBetween(1, 10000, true, this.muro);
 
     }
     Rushhour.prototype.levelCompleted = function (p,m) {
@@ -87,28 +59,100 @@ define(['Phaser','Game','estados/mundo','sprites/Vehiculos'], function (Phaser,G
     }
 
     Rushhour.prototype.crearTablero = function () {
+
        var i=0,j=0;
-        for(i=0;i<this.player.tam;i++){
-            this.tablero[this.player.fila][this.player.col+j]=1;
-        }
-        this.player.events.onDragStart.add(agarrar);
-        this.player.events.onDragStop.add(soltar);
+        Game.add.sprite(0,0,"tablero");
 
-        this.enemyG.forEach(function (car) {
-            for(i=0;i<this.car.tam;i++){
-                if(car.dir){
-                    this.tablero[this.car.fila][this.car.col+j]=1;
-                }else{
-                    this.tablero[this.car.fila+j][this.car.col]=1;
-                }
 
-            }
-            this.car.events.onDragStart.add(agarrar);
-            this.car.events.onDragStop.add(soltar);
-        },this);
+      var vehiculos=new Array;
+      vehiculos.push({
+          fila:2 ,
+          col:  2,
+          dir:  true,
+          tam:  2,
+          key:  "audi"
+      });
+      vehiculos.push(
+           {
+               fila:0 ,
+               col:  1,
+               dir:  true,
+               tam:  3,
+               key:  "Mini_truck"
+      });
+      vehiculos.push (
+           {
+               fila:3 ,
+               col:  3,
+               dir:  true,
+               tam:  3,
+               key:  "Mini_truck"
+           });
+        vehiculos.push( {
+               fila: 0 ,
+               col:  4,
+               dir:  false,
+               tam:  3,
+               key:  "truck"
+           });
+        vehiculos.push({
+               fila: 4 ,
+               col:  3,
+               dir:  false,
+               tam:  2,
+               key:  "Black_viper"
+           });
+        vehiculos.push({
+               fila: 4 ,
+               col:  4,
+               dir:  true,
+               tam:  2,
+               key:  "taxi"
+           });
+
+
+       for(j=0;j<vehiculos.length;j++){
+            var veh=vehiculos[j];
+           for(i=0;i<veh.tam;i++){
+               if(veh.dir){
+                   Game.global.rush.tablero[veh.fila][veh.col+i]=1;
+               }else{
+                   Game.global.rush.tablero[veh.fila+i][veh.col]=1;
+               }
+           }
+
+
+           if(veh.dir){
+              var vehS=Game.add.sprite(Game.global.rush.tamanoSprite*veh.col,Game.global.rush.tamanoSprite*veh.fila,veh.key);
+           }else{
+              var vehS=Game.add.sprite(Game.global.rush.tamanoSprite*veh.col+Game.global.rush.tamanoSprite,Game.global.rush.tamanoSprite*veh.fila,veh.key);
+           }
+           vehS.angle=(veh.dir)?0:90;
+           vehS.tam=veh.tam;
+           vehS.dir=veh.dir;
+           vehS.col=veh.col;
+           vehS.fila=veh.fila;
+           vehS.inputEnabled=true;
+           vehS.input.enableDrag();
+           vehS.input.enableSnap(Game.global.rush.tamanoSprite,Game.global.rush.tamanoSprite,false,true);
+           vehS.input.usedHandCursor=true;
+           vehS.input.allowHorizontalDrag=vehS.dir;
+           vehS.input.allowVerticalDrag=!vehS.dir;
+           vehS.events.onDragStart.add(agarrar);
+           vehS.events.onDragStop.add(soltar);
+
+           if(veh.key=="audi"){
+               this.player=vehS;
+           }
+
+       }
+
     }
 
     function agarrar(c) {
+
+
+
         var i,inicio,final;
 
         if(c.dir){
@@ -116,7 +160,7 @@ define(['Phaser','Game','estados/mundo','sprites/Vehiculos'], function (Phaser,G
             final=c.col+c.tam-1;
 
             for(i=c.col-1;i>=0;i--){
-                if(this.tablero[c.fila][i]==0){
+                if(Game.global.rush.tablero[c.fila][i]==0){
                     inicio=i;
                 }else{
                     break;
@@ -124,21 +168,21 @@ define(['Phaser','Game','estados/mundo','sprites/Vehiculos'], function (Phaser,G
             }
 
             for(i=c.col+c.tam;i<6;i++){
-                if(this.tablero[c.fila][i]==0){
+                if(Game.global.rush.tablero[c.fila][i]==0){
                     final=i;
                 }else{
                     break;
                 }
             }
 
-            c.input.boundsRect=new Phaser.Rectangle(inicio*this.tamanoSprite,c.y,(final-inicio+1)*this.tamanoSprite,this.tamanoSprite);
+            c.input.boundsRect=new Phaser.Rectangle(inicio*Game.global.rush.tamanoSprite,c.y,(final-inicio+1)*Game.global.rush.tamanoSprite,Game.global.rush.tamanoSprite);
 
         }else{
             inicio=c.fila;
             final=c.fila+c.tam-1;
 
             for(i=c.fila-1;i>=0;i--){
-                if(this.tablero[i][c.col]==0){
+                if(Game.global.rush.tablero[i][c.col]==0){
                     inicio=i;
                 }else{
                     break;
@@ -146,13 +190,13 @@ define(['Phaser','Game','estados/mundo','sprites/Vehiculos'], function (Phaser,G
             }
 
             for(i=c.fila+c.tam;i<6;i++){
-                if(this.tablero[i][c.col]==0){
+                if(Game.global.rush.tablero[i][c.col]==0){
                     final=i;
                 }else{
                     break;
                 }
             }
-            c.input.boundsRect=new Phaser.Rectangle(c.x,inicio*this.tamanoSprite,c.x+c.tam*this.tamanoSprite,(final-inicio+2-c.tam)*this.tamanoSprite);
+            c.input.boundsRect=new Phaser.Rectangle(c.x,inicio*Game.global.rush.tamanoSprite,c.x+c.tam*Game.global.rush.tamanoSprite,(final-inicio+2-c.tam)*Game.global.rush.tamanoSprite);
         }
     }
 
@@ -160,24 +204,25 @@ define(['Phaser','Game','estados/mundo','sprites/Vehiculos'], function (Phaser,G
         var i;
         for(i=0;i<c.tam;i++){
             if(c.dir){
-                this.tablero[c.fila][c.col+i]=0;
+                Game.global.rush.tablero[c.fila][c.col+i]=0;
             }else{
-                this.tablero[c.fila+i][c.col]=0;
+                Game.global.rush.tablero[c.fila+i][c.col]=0;
             }
         }
 
         if(c.dir){
-            c.col=c.x/this.tamanoSprite;
+            c.col=c.x/Game.global.rush.tamanoSprite;
             for(i=0;i<c.tam;i++){
-                this.tablero[c.fila][c.col+i]=1;
+                Game.global.rush.tablero[c.fila][c.col+i]=1;
             }
         }else{
 
-            c.fila=c.y/this.tamanoSprite;
+            c.fila=c.y/Game.global.rush.tamanoSprite;
             for(i=0;i<c.tam;i++){
-                this.tablero[c.fila+i][c.col]=1;
+                Game.global.rush.tablero[c.fila+i][c.col]=1;
             }
         }
+
     }
 
 

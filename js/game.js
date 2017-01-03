@@ -4,6 +4,17 @@ define(['Phaser'], function (Phaser) {
         control: {laberinto: {haGanado:false,primeraEntrada:false,vidas:3},
                   puzzle: {haGanado:false,primeraEntrada:false},
                   rushhour: {haGanado:false,primeraEntrada:false}
+        },
+        rush: {tablero:[
+            [0,0,0,0,0,0],
+            [0,0,0,0,0,0],
+            [0,0,0,0,0,0],
+            [0,0,0,0,0,0],
+            [0,0,0,0,0,0],
+            [0,0,0,0,0,0]
+        ],
+         tamanoSprite:32
+
         }
     };
     return g;
