@@ -1,12 +1,14 @@
 define(['Phaser','Game','estados/mundo'], function (Phaser,Game,Mundo) {
     /**
      *
+     * @param key
      * @constructor
      */
     function GameOver() {
         Phaser.State.call(this);
         this.optionGrupo=null;
         this.soundBoton=null;
+
     }
 //Inheritance
     GameOver.prototype = Object.create(Phaser.State.prototype);
