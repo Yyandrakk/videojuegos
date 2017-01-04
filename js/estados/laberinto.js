@@ -1,4 +1,4 @@
-define(['Phaser','Game','sprites/dog','estados/mundo'], function (Phaser,Game,Dog,Mundo) {
+define(['Phaser','Game','sprites/dog','estados/mundo','estados/gameOver'], function (Phaser,Game,Dog,Mundo,GameOver) {
     /**
      *
      * @constructor
@@ -21,6 +21,7 @@ define(['Phaser','Game','sprites/dog','estados/mundo'], function (Phaser,Game,Do
         this.listSprites.push(this.dog);
         Game.physics.arcade.enable(this.dog);
         this.listSprites.push(this.dog);
+		Game.state.add('GameOver', new GameOver());
     }
     Laberinto.prototype.create = function () {
         Game.world.setBounds(0,0,30*32,30*32);
@@ -70,9 +71,9 @@ define(['Phaser','Game','sprites/dog','estados/mundo'], function (Phaser,Game,Do
         Game.global.control.laberinto.vidas -= 1;
         this.numVidas.text = 'Vidas: ' + Game.global.control.laberinto.vidas;
         if (Game.global.control.laberinto.vidas < 0){
-            //Game.state.start('GameOver');
+            Game.state.start('GameOver');
             this.music.stop();
-            Game.state.start('Mundo');
+            //Game.state.start('Mundo');
 
         }
         this.deathSound.play();
