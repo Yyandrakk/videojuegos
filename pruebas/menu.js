@@ -19,16 +19,6 @@ define(['Phaser','Game','estados/puzzle'], function (Phaser,Game,Puzzle) {
         Game.load.image('mountain_landscape', '../media/tileset/mountain_landscape.png');
         Game.load.tilemap('mapP', "../media/map/mapaPrincipal.json", null,Phaser.Tilemap.TILED_JSON);
         Game.load.tilemap('mapLab', "../media/map/minijuego_laberinto.json", null, Phaser.Tilemap.TILED_JSON);
-        Game.load.spritesheet('player', 'media/sprite/joker1.png');
-        Game.load.image('cuadrado1', 'media/sprite/Cuadrado1.png');
-        Game.load.image('cuadrado2', 'media/sprite/Cuadrado2.png');
-        Game.load.image('cuadrado3', 'media/sprite/Cuadrado3.png');
-        Game.load.image('cuadrado4', 'media/sprite/Cuadrado4.png');
-        Game.load.image('cuadrado5', 'media/sprite/Cuadrado5.png');
-        Game.load.image('cuadrado6', 'media/sprite/Cuadrado6.png');
-        Game.load.image('cuadrado7', 'media/sprite/Cuadrado7.png');
-        Game.load.image('cuadrado8', 'media/sprite/Cuadrado8.png');
-        Game.load.image('cuadrado9', 'media/sprite/Cuadrado9.png');
 
 
 
