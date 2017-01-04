@@ -15,11 +15,6 @@ define(['Phaser','Game','estados/mundo','sprites/Vehiculos'], function (Phaser,G
     Rushhour.prototype.create = function () {
         Game.world.setBounds(0,0,640,352);
 
-        this.playerG = Game.add.group();
-        this.playerG.enableBody=true;
-        this.playerG.visible=true;
-        this.playerG.physicsBodyType=Phaser.Physics.ARCADE;
-
         this.enemyG = Game.add.group();
         this.enemyG.enableBody=true;
         this.enemyG.visible=true;
@@ -30,16 +25,23 @@ define(['Phaser','Game','estados/mundo','sprites/Vehiculos'], function (Phaser,G
         this.colSalida.visible=true;
         this.colSalida.physicsBodyType=Phaser.Physics.ARCADE;
         this.createWorld();
-        //this.player = this.playerG.getAt(0);
-
-      // Game.world.swap(this.playerG,this.suelo);
+       Game.world.swap(this.enemyG,this.suelo);
        this.crearTablero();
        this.load_boton();
+
+
+        this.enemyG.forEach(function (e) {
+            e.body.gravity.x=500;
+            e.body.velocity.y=100*Game.rnd.realInRange(0.5,1.5);
+            e.body.bounce.y=1;
+        },this);
+
     }
 
     Rushhour.prototype.update = function () {
         Game.physics.arcade.overlap(this.player, this.colSalida, this.levelCompleted, null, this);
-        //Game.physics.arcade.overlap(this.player, this.muro, this.collideMuro, null, this);
+        Game.physics.arcade.collide(this.enemyG, this.muro);
+        Game.physics.arcade.overlap(this.player, this.enemyG, this.levelInCompleted, null, this);
     }
     /**
      * Carga el tile Map
@@ -48,35 +50,42 @@ define(['Phaser','Game','estados/mundo','sprites/Vehiculos'], function (Phaser,G
         this.map=Game.add.tilemap('mapRH');
         this.map.addTilesetImage('tileMP2');
         this.map.addTilesetImage('tileMP4');
-        this.map.createLayer('suelo');
+        this.suelo=this.map.createLayer('suelo');
         this.muro = this.map.createLayer('decoracion');
-        /*this.map.createFromObjects('coches','player','Audi',1,true,false,this.playerG,Vehiculos);
-        this.map.createFromObjects('coches','cocV','Black_viper',1,true,false,this.enemyG,Vehiculos);
-        this.map.createFromObjects('coches','cocH','taxi',1,true,false,this.enemyG,Vehiculos);
-        this.map.createFromObjects('coches','camV','truck',1,true,false,this.enemyG,Vehiculos);
-        this.map.createFromObjects('coches','camH','Mini_truck',1,true,false,this.enemyG,Vehiculos);*/
+        this.map.createFromObjects('coches','poli','Police',1,true,false,this.enemyG,Vehiculos);
         this.map.createFromObjects('salida','salida','colisionMP2',751,true,false,this.colSalida);
         this.map.setCollisionBetween(1, 10000, true, this.muro);
 
     }
     /**
-     *
-     * @param p
-     * @param m
+     * Devuelve al jugador al mundo y marca como ganada la partida
+     * @param p - No se usa, necesario para el overlap
+     * @param m - No se usa, necesario para el overlap
      */
     Rushhour.prototype.levelCompleted = function (p,m) {
         Game.global.control.rushhour.haGanado = true;
-        // Game.state.add('Mundo', new Mundo());
+
        // this.music.stop();
         Game.state.start('Mundo');
     }
     /**
-     * Carga el tablero en su posicion
+     * Devuelve al jugador al mundo cuando pierde
+     * @param p - No se usa, necesario para el overlap
+     * @param m - No se usa, necesario para el overlap
+     */
+    Rushhour.prototype.levelInCompleted = function (p,m) {
+
+        // Game.state.add('Mundo', new Mundo());
+        // this.music.stop();
+        Game.state.start('Mundo');
+    }
+    /**
+     * Carga el tablero en su posicion, tambien añade los vehiculos en su posicion
      */
     Rushhour.prototype.crearTablero = function () {
 
        var i=0,j=0;
-        Game.add.sprite(0,0,"tablero");
+       Game.add.sprite(0,0,"tablero");
 
 
       var vehiculos=new Array();
@@ -165,8 +174,9 @@ define(['Phaser','Game','estados/mundo','sprites/Vehiculos'], function (Phaser,G
 
     }
     /**
-     *
-     * @param c
+     * El evento que se dispara cuando pulsa y arrastra un vehiculo,
+     * evitando que salga del tablero y permite las colisiones
+     * @param {Phaser.Sprite} c - Vehiculo que esta pulsando
      */
     function agarrar(c) {
 
@@ -184,7 +194,7 @@ define(['Phaser','Game','estados/mundo','sprites/Vehiculos'], function (Phaser,G
                 }
             }
             if(c.key=="audi"){
-                for (i = c.col + c.tam; i < 17; i++) {
+                for (i = c.col + c.tam; i < 18; i++) {
                     if (Game.global.rush.tablero[c.fila][i] == 0) {
                         final = i;
                     } else {
@@ -227,8 +237,8 @@ define(['Phaser','Game','estados/mundo','sprites/Vehiculos'], function (Phaser,G
     }
 
     /**
-     *
-     * @param c
+     * Actualiza el tablero cuando suelta un vehiculo en su nueva posicion.
+     * @param {Phaser.Sprite} c - Vehiculo que ha soltado.
      */
     function soltar(c) {
         var i;
@@ -256,7 +266,7 @@ define(['Phaser','Game','estados/mundo','sprites/Vehiculos'], function (Phaser,G
     }
 
     /**
-     *
+     * Se encarga de generar los botones en su sitio
      */
     Rushhour.prototype.load_boton=function () {
 
@@ -285,10 +295,10 @@ define(['Phaser','Game','estados/mundo','sprites/Vehiculos'], function (Phaser,G
     }
 
     /**
-     *
+     * Se encarga de mostrar o ocultar el resto de botones cuando se da al de opciones
      */
     function mostrarMenu(){
-        Game.physics.arcade.isPaused=! Game.physics.arcade.isPaused;
+
         if(this.optionGrupo.cameraOffset.y == 0){
 
             var menuTween = Game.add.tween(this.optionGrupo.cameraOffset).to({
@@ -305,7 +315,7 @@ define(['Phaser','Game','estados/mundo','sprites/Vehiculos'], function (Phaser,G
     }
 
     /**
-     *
+     * Pone o quita el sonido
      */
     function toggleSound() {
 
@@ -315,12 +325,15 @@ define(['Phaser','Game','estados/mundo','sprites/Vehiculos'], function (Phaser,G
     }
 
     /**
-     *
+     * Accion cuando se pulsa el boton de salir, vuelves al menu de inicio, reiniciando el juego
      */
     function salirMenu() {
-        if(confirm("¿Esta seguro de que quiere salir al menu?"))
+        if (confirm("¿Esta seguro de que quiere salir al menu?")) {
+            for (var mini in Game.global.control) {
+                mini.haGanado = false
+            }
             Game.state.start('Menu');
-
+        }
     }
 
     return Rushhour;

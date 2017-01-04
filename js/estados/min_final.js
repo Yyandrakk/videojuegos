@@ -176,7 +176,7 @@ define(['Phaser','Game','sprites/player_min_final','sprites/enemy_min_final','Ba
     }
 
     /**
-     *
+     * Se encarga de generar los botones en su sitio
      */
     Min_final.prototype.load_boton=function () {
 
@@ -195,36 +195,55 @@ define(['Phaser','Game','sprites/player_min_final','sprites/enemy_min_final','Ba
         this.soundBoton.anchor.set(0.5);
         this.soundBoton.input.useHandCursor = true;
         this.optionGrupo.add(this.soundBoton);
+
+
+        this.quitJuego = Game.add.button(Game.width-30, Game.height +90, "salir",salirMenu,this);
+        this.quitJuego.scale.setTo(0.5,0.5);
+        this.quitJuego.anchor.set(0.5);
+        this.quitJuego.input.useHandCursor = true;
+        this.optionGrupo.add( this.quitJuego);
     }
+
     /**
-     *
+     * Se encarga de mostrar o ocultar el resto de botones cuando se da al de opciones
      */
     function mostrarMenu(){
-        game.paused=!game.paused;
+
         if(this.optionGrupo.cameraOffset.y == 0){
 
             var menuTween = Game.add.tween(this.optionGrupo.cameraOffset).to({
-                y: -60
+                y: -120
             }, 500, Phaser.Easing.Bounce.Out, true);
 
         }
-        if(this.optionGrupo.cameraOffset.y == -60){
+        if(this.optionGrupo.cameraOffset.y == -120){
 
             var menuTween = Game.add.tween(this.optionGrupo.cameraOffset).to({
                 y: 0
             }, 500, Phaser.Easing.Bounce.Out, true);
-
         }
     }
 
     /**
-     *
+     * Pone o quita el sonido
      */
     function toggleSound() {
 
         Game.sound.mute = ! Game.sound.mute;
         this.soundBoton.frame = Game.sound.mute ? 0 : 1;
 
+    }
+
+    /**
+     * Accion cuando se pulsa el boton de salir, vuelves al menu de inicio, reiniciando el juego
+     */
+    function salirMenu() {
+        if (confirm("¿Esta seguro de que quiere salir al menu?")) {
+            for (var mini in Game.global.control) {
+                mini.haGanado = false
+            }
+            Game.state.start('Menu');
+        }
     }
     return Min_final;
 });

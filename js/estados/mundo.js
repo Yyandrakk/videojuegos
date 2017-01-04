@@ -23,6 +23,7 @@ define(['Phaser','Game','sprites/player','estados/min_final','estados/laberinto'
         Game.load.spritesheet('mage', 'media/sprite/face_w2_2d.png',32,32);
         Game.load.spritesheet('dog', 'media/sprite/dog.png',  32, 32);
         Game.load.spritesheet('arrow', 'media/sprite/arrow.png',  32,32);
+        Game.load.spritesheet('Police', 'media/sprite/Police.png',32,32);
         Game.load.image('audi', 'media/sprite/Audi.png');
         Game.load.image('Black_viper', 'media/sprite/Black_viper.png');
         Game.load.image('Mini_truck', 'media/sprite/Mini_truck.png');
@@ -252,7 +253,7 @@ define(['Phaser','Game','sprites/player','estados/min_final','estados/laberinto'
     }
 
     /**
-     * Desbloquea el minijuego final cuando se ganan todos
+     * Desbloquea el minijuego final cuando se ganan todos los demas
      */
     function desbloquearFinal(){
         for (var mini in Game.global.control){
