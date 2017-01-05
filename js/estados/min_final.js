@@ -242,6 +242,7 @@ define(['Phaser','Game','sprites/player_min_final','sprites/enemy_min_final','Ba
             for (var mini in Game.global.control) {
                 mini.haGanado = false
             }
+            this.music.stop();
             Game.state.start('Menu');
         }
     }

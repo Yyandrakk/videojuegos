@@ -33,6 +33,7 @@ define(['Phaser','Game','estados/menu'], function (Phaser,Game,Menu) {
         Game.load.audio('mundo_music', 'media/sound/Heroic_Demise_(New).mp3');
         Game.load.audio('mundo_music2', 'media/sound/Dark_ Descent.mp3');
         Game.load.audio('menu_music', 'media/sound/prologue.mp3');
+        Game.load.audio('cascada', 'media/sound/waterfall.mp3');
 
     }
 

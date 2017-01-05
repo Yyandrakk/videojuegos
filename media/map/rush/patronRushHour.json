@@ -1,0 +1,45 @@
+{
+  "vehiculos":[{
+    "fila":2 ,
+    "col":2,
+    "dir":true,
+    "tam":2,
+    "key":"audi"
+  },
+  {
+    "fila":0 ,
+    "col":1,
+    "dir":true,
+    "tam":3,
+    "key":"Mini_truck"
+  },
+  {
+   "fila":0,
+   "col":4,
+   "dir":false,
+   "tam":3,
+   "key":"truck"
+  },
+  {
+   "fila":3 ,
+   "col":  3,
+   "dir":  true,
+   "tam":  3,
+   "key":  "Mini_truck"
+  },
+  {
+   "fila":4,
+   "col":3,
+   "dir":false,
+   "tam":2,
+   "key":"Black_viper"
+  },
+  {
+  "fila":4,
+  "col":4,
+  "dir":true,
+  "tam":2,
+  "key":"taxi"
+  }
+  ]
+}

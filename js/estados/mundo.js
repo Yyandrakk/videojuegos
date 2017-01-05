@@ -37,6 +37,8 @@ define(['Phaser','Game','sprites/player','estados/min_final','estados/laberinto'
         Game.load.image('mountain_landscape', 'media/tileset/mountain_landscape.png');
         Game.load.audio('shoot_arrow', ['media/sound/shoot_arrow_mike-koenig.mp3', 'media/sound/shoot_arrow_mike-koenig.wav']);
         Game.load.audio('music_min_final', ['media/sound/Zander_Noriega-Fight_Them_Until_We_Cant.mp3', 'media/sound/Zander_Noriega-Fight_Them_Until_We_Cant.wav']);
+        Game.load.audio('car', ['media/sound/car.mp3', 'media/sound/car.wav']);
+        Game.load.audio('To_New_World', 'media/sound/To_New_World.mp3');
 
 
     }
@@ -80,8 +82,7 @@ define(['Phaser','Game','sprites/player','estados/min_final','estados/laberinto'
         this.water = this.waterA.getAt(0);
         this.water.animations.add('move',[0,1,2,3],12,true,true);
         this.water.animations.play('move');
-
-
+        this.water.posCascada={x:this.water.x,y:this.water.y+this.water.height};
         /*
         Interesante para el juego de arastrar
         this.player.inputEnabled=true;
@@ -90,13 +91,14 @@ define(['Phaser','Game','sprites/player','estados/min_final','estados/laberinto'
 
         Game.camera.follow(this.player);
         if(Game.rnd.integerInRange(0, 10)<5){
-            this.music = this.game.add.audio('mundo_music');
+            this.music = this.game.add.audio('mundo_music',1,true);
         }
         else{
-            this.music = this.game.add.audio('mundo_music2')
+            this.music = this.game.add.audio('mundo_music2',1,true)
         }
-        this.music.loop = true;
+
         this.music.play();
+        this.cascada = this.game.add.audio('cascada',1,true);
         this.load_boton();
        // Game.world.swap(this.optionGrupo,this.suelo);
         //console.log([].slice.apply(Game.global.control));
@@ -115,6 +117,16 @@ define(['Phaser','Game','sprites/player','estados/min_final','estados/laberinto'
         Game.physics.arcade.overlap(this.player, this.colPuz, this.load_puzzle, null, this);
         Game.physics.arcade.overlap(this.player, this.colRush, this.load_Rushhour, null, this);
         this.player.update();
+        var distancia=Phaser.Point.distance({x:this.player.x,y:this.player.y},this.water.posCascada,true);
+        if(distancia<300){
+           //this.cascada.volume=
+            if(!this.cascada.isPlaying)
+                this.cascada.play();
+        }else{
+            if(this.cascada.isPlaying)
+                this.cascada.stop();
+        }
+
     }
     /**
      *
@@ -248,6 +260,7 @@ define(['Phaser','Game','sprites/player','estados/min_final','estados/laberinto'
             for (var mini in Game.global.control){
                 mini.haGanado=false
             }
+            this.music.stop();
             Game.state.start('Menu');
         }
     }

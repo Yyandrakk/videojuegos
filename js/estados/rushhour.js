@@ -15,7 +15,10 @@ define(['Phaser','Game','estados/mundo','sprites/Vehiculos','JQuery'], function 
 
     Rushhour.prototype.create = function () {
         Game.world.setBounds(0,0,640,352);
-
+        this.sound_car = this.game.add.audio('car');
+        this.music = this.game.add.audio('To_New_World');
+        this.music.loop = true;
+        this.music.play();
         this.enemyG = Game.add.group();
         this.enemyG.enableBody=true;
         this.enemyG.visible=true;
@@ -36,6 +39,8 @@ define(['Phaser','Game','estados/mundo','sprites/Vehiculos','JQuery'], function 
             e.body.velocity.y=100*Game.rnd.realInRange(0.5,1.5);
             e.body.bounce.y=1;
         },this);
+
+
 
     }
 
@@ -66,7 +71,7 @@ define(['Phaser','Game','estados/mundo','sprites/Vehiculos','JQuery'], function 
     Rushhour.prototype.levelCompleted = function (p,m) {
         Game.global.control.rushhour.haGanado = true;
 
-        // this.music.stop();
+        this.music.stop();
         Game.state.start('Mundo');
     }
     /**
@@ -76,8 +81,7 @@ define(['Phaser','Game','estados/mundo','sprites/Vehiculos','JQuery'], function 
      */
     Rushhour.prototype.levelInCompleted = function (p,m) {
 
-        // Game.state.add('Mundo', new Mundo());
-        // this.music.stop();
+         this.music.stop();
         Game.state.start('Mundo');
     }
     Rushhour.prototype.leerVehiculos = function (vehiculos) {
@@ -125,6 +129,7 @@ define(['Phaser','Game','estados/mundo','sprites/Vehiculos','JQuery'], function 
             vehS.dir=veh.dir;
             vehS.col=veh.col;
             vehS.fila=veh.fila;
+            vehS.music= this.sound_car;
             vehS.inputEnabled=true;
             vehS.input.enableDrag();
             vehS.input.enableSnap(Game.global.rush.tamanoSprite,Game.global.rush.tamanoSprite,false,true);
@@ -150,7 +155,7 @@ define(['Phaser','Game','estados/mundo','sprites/Vehiculos','JQuery'], function 
     function agarrar(c) {
 
         var i,inicio,final;
-
+        c.music.play();
         if(c.dir){
             inicio=c.col;
             final=c.col+c.tam-1;
@@ -301,6 +306,7 @@ define(['Phaser','Game','estados/mundo','sprites/Vehiculos','JQuery'], function 
             for (var mini in Game.global.control) {
                 mini.haGanado = false
             }
+            this.music.stop();
             Game.state.start('Menu');
         }
     }
