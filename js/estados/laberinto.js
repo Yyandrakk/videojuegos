@@ -21,7 +21,7 @@ define(['Phaser','Game','sprites/dog','estados/mundo','estados/gameOver'], funct
         this.listSprites.push(this.dog);
         Game.physics.arcade.enable(this.dog);
         this.listSprites.push(this.dog);
-		Game.state.add('GameOver', new GameOver());
+		Game.state.add('GameOver', new GameOver("media/image/cientificoloco.jpg"));
     }
     Laberinto.prototype.create = function () {
         Game.world.setBounds(0,0,30*32,30*32);

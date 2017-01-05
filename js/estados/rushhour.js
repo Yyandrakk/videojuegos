@@ -1,10 +1,11 @@
-define(['Phaser','Game','estados/mundo','sprites/Vehiculos'], function (Phaser,Game,Mundo,Vehiculos) {
+define(['Phaser','Game','estados/mundo','sprites/Vehiculos','JQuery'], function (Phaser,Game,Mundo,Vehiculos,$) {
     /**
      * Representa al minijuego Rush Hour
      * @constructor
      */
     function Rushhour() {
         Phaser.State.call(this);
+
 
     }
 //Inheritance
@@ -25,9 +26,9 @@ define(['Phaser','Game','estados/mundo','sprites/Vehiculos'], function (Phaser,G
         this.colSalida.visible=true;
         this.colSalida.physicsBodyType=Phaser.Physics.ARCADE;
         this.createWorld();
-       Game.world.swap(this.enemyG,this.suelo);
-       this.crearTablero();
-       this.load_boton();
+        Game.world.swap(this.enemyG,this.suelo);
+        this.crearTablero();
+        this.load_boton();
 
 
         this.enemyG.forEach(function (e) {
@@ -65,7 +66,7 @@ define(['Phaser','Game','estados/mundo','sprites/Vehiculos'], function (Phaser,G
     Rushhour.prototype.levelCompleted = function (p,m) {
         Game.global.control.rushhour.haGanado = true;
 
-       // this.music.stop();
+        // this.music.stop();
         Game.state.start('Mundo');
     }
     /**
@@ -79,98 +80,66 @@ define(['Phaser','Game','estados/mundo','sprites/Vehiculos'], function (Phaser,G
         // this.music.stop();
         Game.state.start('Mundo');
     }
+    Rushhour.prototype.leerVehiculos = function (vehiculos) {
+        $.getJSON("media/map/rush/patronRushHour.json",function (datos) {
+
+            $.each(datos["vehiculos"],function (id,veh) {
+                //var vehObj={fila:veh.fila , col:veh.col,dir:veh.dir,tam:veh.tam,key:veh.key};
+
+                vehiculos.push(veh);
+
+            });
+        });
+    }
     /**
      * Carga el tablero en su posicion, tambien añade los vehiculos en su posicion
      */
     Rushhour.prototype.crearTablero = function () {
 
-       var i=0,j=0;
-       Game.add.sprite(0,0,"tablero");
+        var i=0,j=0;
+        Game.add.sprite(0,0,"tablero");
 
 
-      var vehiculos=new Array();
-      vehiculos.push({
-          fila:2 ,
-          col:  2,
-          dir:  true,
-          tam:  2,
-          key:  "audi"
-      });
-      vehiculos.push(
-           {
-               fila:0 ,
-               col:  1,
-               dir:  true,
-               tam:  3,
-               key:  "Mini_truck"
-      });
-      vehiculos.push (
-           {
-               fila:3 ,
-               col:  3,
-               dir:  true,
-               tam:  3,
-               key:  "Mini_truck"
-           });
-        vehiculos.push( {
-               fila: 0 ,
-               col:  4,
-               dir:  false,
-               tam:  3,
-               key:  "truck"
-           });
-        vehiculos.push({
-               fila: 4 ,
-               col:  3,
-               dir:  false,
-               tam:  2,
-               key:  "Black_viper"
-           });
-        vehiculos.push({
-               fila: 4 ,
-               col:  4,
-               dir:  true,
-               tam:  2,
-               key:  "taxi"
-           });
+        var vehiculos=new Array();
+        $.ajaxSetup({async:false});
+        this.leerVehiculos(vehiculos);
 
-
-       for(j=0;j<vehiculos.length;j++){
+        for(j=0;j<vehiculos.length;j++){
             var veh=vehiculos[j];
-           for(i=0;i<veh.tam;i++){
-               if(veh.dir){
-                   Game.global.rush.tablero[veh.fila][veh.col+i]=1;
-               }else{
-                   Game.global.rush.tablero[veh.fila+i][veh.col]=1;
-               }
-           }
+            for(i=0;i<veh.tam;i++){
+                if(veh.dir){
+                    Game.global.rush.tablero[veh.fila][veh.col+i]=1;
+                }else{
+                    Game.global.rush.tablero[veh.fila+i][veh.col]=1;
+                }
+            }
 
 
-           if(veh.dir){
-              var vehS=Game.add.sprite(Game.global.rush.tamanoSprite*veh.col,Game.global.rush.tamanoSprite*veh.fila,veh.key);
-           }else{
-              var vehS=Game.add.sprite(Game.global.rush.tamanoSprite*veh.col+Game.global.rush.tamanoSprite,Game.global.rush.tamanoSprite*veh.fila,veh.key);
-           }
-           vehS.angle=(veh.dir)?0:90;
-           vehS.tam=veh.tam;
-           vehS.dir=veh.dir;
-           vehS.col=veh.col;
-           vehS.fila=veh.fila;
-           vehS.inputEnabled=true;
-           vehS.input.enableDrag();
-           vehS.input.enableSnap(Game.global.rush.tamanoSprite,Game.global.rush.tamanoSprite,false,true);
-           vehS.input.usedHandCursor=true;
-           vehS.input.allowHorizontalDrag=vehS.dir;
-           vehS.input.allowVerticalDrag=!vehS.dir;
-           vehS.events.onDragStart.add(agarrar);
-           vehS.events.onDragStop.add(soltar);
+            if(veh.dir){
+                var vehS=Game.add.sprite(Game.global.rush.tamanoSprite*veh.col,Game.global.rush.tamanoSprite*veh.fila,veh.key);
+            }else{
+                var vehS=Game.add.sprite(Game.global.rush.tamanoSprite*veh.col+Game.global.rush.tamanoSprite,Game.global.rush.tamanoSprite*veh.fila,veh.key);
+            }
+            vehS.angle=(veh.dir)?0:90;
+            vehS.tam=veh.tam;
+            vehS.dir=veh.dir;
+            vehS.col=veh.col;
+            vehS.fila=veh.fila;
+            vehS.inputEnabled=true;
+            vehS.input.enableDrag();
+            vehS.input.enableSnap(Game.global.rush.tamanoSprite,Game.global.rush.tamanoSprite,false,true);
+            vehS.input.usedHandCursor=true;
+            vehS.input.allowHorizontalDrag=vehS.dir;
+            vehS.input.allowVerticalDrag=!vehS.dir;
+            vehS.events.onDragStart.add(agarrar);
+            vehS.events.onDragStop.add(soltar);
 
-           if(veh.key=="audi"){
-               this.player=vehS;
-               Game.physics.enable(this.player,Phaser.Physics.ARCADE);
-           }
+            if(veh.key=="audi"){
+                this.player=vehS;
+                Game.physics.enable(this.player,Phaser.Physics.ARCADE);
+            }
 
-       }
+        }
 
     }
     /**

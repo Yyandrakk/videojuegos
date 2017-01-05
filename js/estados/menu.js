@@ -1,4 +1,4 @@
-define(['Phaser','Game','estados/mundo'], function (Phaser,Game,Mundo) {
+define(['Phaser','Game','estados/mundo',], function (Phaser,Game,Mundo) {
     /**
      *
      * @constructor
@@ -58,6 +58,7 @@ define(['Phaser','Game','estados/mundo'], function (Phaser,Game,Mundo) {
     }
 
     Menu.prototype.create = function () {
+
         Game.add.image(0, 0, 'back_menu');
         var nameLabel = Game.add.text(Game.world.centerX, Game.world.centerY-100, 'EPS WARRIOR',{font:'48px PressStart2P'});
         nameLabel.anchor.setTo(0.5, 0.5);
