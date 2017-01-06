@@ -21,8 +21,12 @@ body {
     background-repeat: no-repeat;
     background-attachment: fixed;
 }
+.center{
+    margin-left: 20.6667%;
+    width: 66.6667%;
+}
 #game {
-    width: 47.5%;
+    width: 640px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 

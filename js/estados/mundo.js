@@ -79,6 +79,7 @@ define(['Phaser','Game','sprites/player','estados/min_final','estados/laberinto'
         Game.world.swap(this.waterA,this.decoracion);
         Game.world.swap(this.decoracion,this.muro);
         this.player =  this.playerG.getAt(0);
+        Game.physics.arcade.enable(this.player);
         this.water = this.waterA.getAt(0);
         this.water.animations.add('move',[0,1,2,3],12,true,true);
         this.water.animations.play('move');
@@ -105,8 +106,14 @@ define(['Phaser','Game','sprites/player','estados/min_final','estados/laberinto'
 
     }
     Mundo.prototype.update = function () {
+
         Game.physics.arcade.collide(this.player,this.muro);
         Game.physics.arcade.collide(this.player,this.decoracion);
+        if(Game.input.activePointer.isDown){
+            //alert("prueba");
+            Game.physics.arcade.moveToPointer(this.player, 200);
+
+        }
 
        if(this.desbloquear){
             Game.physics.arcade.overlap(this.player, this.colision, this.load_minfinal, null, this);

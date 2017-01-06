@@ -15,7 +15,7 @@ define(['Phaser'], function (Phaser) {
 
         this.animations.play('down');
         this.anchor.setTo(0.5,0.5);
-        game.add.existing(this);
+
         game.input.mouse.capture = true;
         this.cursor = game.input.keyboard.createCursorKeys();
        
@@ -39,7 +39,7 @@ define(['Phaser'], function (Phaser) {
     
     Dog.prototype.update = function () {
         
-        if (this.game.input.mousePointer.isDown) {
+        if (this.game.input.activePointer.isDown) {
             this.game.physics.arcade.moveToPointer(this, 200);
             if (Phaser.Rectangle.contains(this.body, this.game.input.x, this.game.input.y))
                 this.body.velocity.setTo(0, 0);

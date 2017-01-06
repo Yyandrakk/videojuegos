@@ -1,4 +1,4 @@
-define(['Phaser'], function (Phaser) {
+define(['Phaser','Game'], function (Phaser,Game) {
     /**
      * Sprite para el mundo
      * @param game - Phaser.Game
@@ -21,7 +21,7 @@ define(['Phaser'], function (Phaser) {
 
         this.animations.frame=frame;
         this.anchor.setTo(0.5,0.5);
-
+        game.input.mouse.capture = true;
         this.cursor= {
             up: [game.input.keyboard.addKey(Phaser.Keyboard.W), game.input.keyboard.addKey(Phaser.Keyboard.UP)],
             left: [game.input.keyboard.addKey(Phaser.Keyboard.A), game.input.keyboard.addKey(Phaser.Keyboard.LEFT)],
@@ -38,7 +38,18 @@ define(['Phaser'], function (Phaser) {
     Player.prototype = Object.create(Phaser.Sprite.prototype);
     Player.prototype.constructor = Player;
     Player.prototype.update = function () {
-        if(this.cursor.left.some(bt => bt.isDown==true) && this.cursor.up.some(b => b.isDown==true)){
+
+      /*  if(this.game.input.activePointer.isDown){
+            //alert("prueba");
+            this.game.physics.arcade.moveToPointer(this, 200);
+            if (Phaser.Rectangle.contains(this.body, this.game.input.x, this.game.input.y))
+                this.body.velocity.setTo(0, 0);
+        }else{
+            this.body.velocity.x = 0;
+            this.body.velocity.y = 0;
+        }*/
+
+        if((this.cursor.left.some(bt => bt.isDown==true) && this.cursor.up.some(b => b.isDown==true))){
             this.body.velocity.x = -200;
             this.body.velocity.y = -200;
             this.animations.play('leftu',15);
@@ -56,7 +67,7 @@ define(['Phaser'], function (Phaser) {
             this.body.velocity.y = -200;
             this.animations.play('rightu',15);
         }
-        else if (this.cursor.left.some(bt => bt.isDown==true)) {
+        else if ((this.cursor.left.some(bt => bt.isDown==true)) ) {
             this.body.velocity.x = -200;
             this.body.velocity.y = 0;
             this.animations.play('left',15);
@@ -66,7 +77,7 @@ define(['Phaser'], function (Phaser) {
             this.body.velocity.y = 0;
             this.animations.play('right',15);
         }
-        else if(this.cursor.up.some(b => b.isDown==true)){
+        else if(this.cursor.up.some(b => b.isDown==true) ){
             this.body.velocity.y = -200;
             this.body.velocity.x = 0;
             this.animations.play('up',15);
