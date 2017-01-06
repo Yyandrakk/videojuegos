@@ -101,23 +101,24 @@ define(['Phaser','Game','sprites/player','estados/min_final','estados/laberinto'
         this.music.play();
         this.cascada = this.game.add.audio('cascada',1,true);
         this.load_boton();
-       // Game.world.swap(this.optionGrupo,this.suelo);
-        //console.log([].slice.apply(Game.global.control));
+
 
     }
     Mundo.prototype.update = function () {
 
         Game.physics.arcade.collide(this.player,this.muro);
         Game.physics.arcade.collide(this.player,this.decoracion);
-        alert(Game.input.keyboard.enabled);
+
+    if(Game.device.android){
         if(Game.input.activePointer.isDown){
-            //alert("prueba");
-            Game.physics.arcade.moveToPointer(this.player, 200);
-
-        }else{
-            //this.player.update();
-
+            alert("Prueba");
         }
+    }else{
+        this.player.update();
+    }
+
+
+
 
        if(this.desbloquear){
             Game.physics.arcade.overlap(this.player, this.colision, this.load_minfinal, null, this);
