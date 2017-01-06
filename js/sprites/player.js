@@ -39,16 +39,6 @@ define(['Phaser','Game'], function (Phaser,Game) {
     Player.prototype.constructor = Player;
     Player.prototype.update = function () {
 
-      /*  if(this.game.input.activePointer.isDown){
-            //alert("prueba");
-            this.game.physics.arcade.moveToPointer(this, 200);
-            if (Phaser.Rectangle.contains(this.body, this.game.input.x, this.game.input.y))
-                this.body.velocity.setTo(0, 0);
-        }else{
-            this.body.velocity.x = 0;
-            this.body.velocity.y = 0;
-        }*/
-
         if((this.cursor.left.some(bt => bt.isDown==true) && this.cursor.up.some(b => b.isDown==true))){
             this.body.velocity.x = -200;
             this.body.velocity.y = -200;

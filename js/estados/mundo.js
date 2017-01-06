@@ -109,9 +109,13 @@ define(['Phaser','Game','sprites/player','estados/min_final','estados/laberinto'
 
         Game.physics.arcade.collide(this.player,this.muro);
         Game.physics.arcade.collide(this.player,this.decoracion);
+        alert(Game.input.keyboard.enabled);
         if(Game.input.activePointer.isDown){
             //alert("prueba");
             Game.physics.arcade.moveToPointer(this.player, 200);
+
+        }else{
+            //this.player.update();
 
         }
 
@@ -123,7 +127,7 @@ define(['Phaser','Game','sprites/player','estados/min_final','estados/laberinto'
         Game.physics.arcade.overlap(this.player, this.colLab, this.load_laberinto, null, this);
         Game.physics.arcade.overlap(this.player, this.colPuz, this.load_puzzle, null, this);
         Game.physics.arcade.overlap(this.player, this.colRush, this.load_Rushhour, null, this);
-        this.player.update();
+
         var distancia=Phaser.Point.distance({x:this.player.x,y:this.player.y},this.water.posCascada,true);
         if(distancia<300){
            //this.cascada.volume=
