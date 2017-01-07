@@ -3,11 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="8cc47ea1-de98-404f-ab17-859d132e00d9" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/estados/gameOver.js" afterPath="$PROJECT_DIR$/js/estados/gameOver.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/estados/laberinto.js" afterPath="$PROJECT_DIR$/js/estados/laberinto.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/estados/min_final.js" afterPath="$PROJECT_DIR$/js/estados/min_final.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/estados/puzzle.js" afterPath="$PROJECT_DIR$/js/estados/puzzle.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/estados/rushhour.js" afterPath="$PROJECT_DIR$/js/estados/rushhour.js" />
     </list>
     <ignored path="videojuegos.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -33,7 +28,7 @@
       <file leaf-file-name="rushhour.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/estados/rushhour.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3015">
+            <state relative-caret-position="3339">
               <caret line="242" column="7" lean-forward="true" selection-start-line="242" selection-start-column="7" selection-end-line="242" selection-end-column="7" />
               <folding />
             </state>
@@ -444,7 +439,7 @@
       <workItem from="1483697729089" duration="8102000" />
       <workItem from="1483706903798" duration="647000" />
       <workItem from="1483783417694" duration="8479000" />
-      <workItem from="1483806495984" duration="5138000" />
+      <workItem from="1483806495984" duration="5167000" />
     </task>
     <task id="LOCAL-00001" summary="Subir las cosas ordenadas y iniciado RequireJS">
       <created>1479067366520</created>
@@ -768,11 +763,18 @@
       <option name="project" value="LOCAL" />
       <updated>1483809804925</updated>
     </task>
-    <option name="localTasksCounter" value="47" />
+    <task id="LOCAL-00047" summary="Version final-solo falta comentar">
+      <created>1483811651159</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1483811651159</updated>
+    </task>
+    <option name="localTasksCounter" value="48" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="223358000" />
+    <option name="totallyTimeSpent" value="223387000" />
   </component>
   <component name="TodoView" selected-index="4">
     <todo-panel id="selected-file">
@@ -822,7 +824,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
-    <MESSAGE value="añadida barra de carga al mundo" />
     <MESSAGE value="añadirdo el diagrama de estados" />
     <MESSAGE value="corregido" />
     <MESSAGE value="intentando añadir animacion de muerte" />
@@ -847,7 +848,8 @@
     <MESSAGE value="Prueba touch3" />
     <MESSAGE value="Prueba touch4" />
     <MESSAGE value="Victoria" />
-    <option name="LAST_COMMIT_MESSAGE" value="Victoria" />
+    <MESSAGE value="Version final-solo falta comentar" />
+    <option name="LAST_COMMIT_MESSAGE" value="Version final-solo falta comentar" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1186,7 +1188,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/js/estados/rushhour.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3015">
+        <state relative-caret-position="3339">
           <caret line="242" column="7" lean-forward="true" selection-start-line="242" selection-start-column="7" selection-end-line="242" selection-end-column="7" />
           <folding />
         </state>
