@@ -1,4 +1,4 @@
-define(['Phaser','Game','estados/mundo','sprites/Vehiculos','JQuery'], function (Phaser,Game,Mundo,Vehiculos,$) {
+define(['Phaser','Game','estados/mundo','sprites/Vehiculos','JQuery','estados/gameOver'], function (Phaser,Game,Mundo,Vehiculos,$,GameOver) {
     /**
      * Representa al minijuego Rush Hour
      * @constructor
@@ -81,8 +81,9 @@ define(['Phaser','Game','estados/mundo','sprites/Vehiculos','JQuery'], function 
      */
     Rushhour.prototype.levelInCompleted = function (p,m) {
 
-         this.music.stop();
-        Game.state.start('Mundo');
+        this.music.stop();
+        Game.state.add('GameOver', new GameOver());
+        Game.state.start('GameOver');
     }
     Rushhour.prototype.leerVehiculos = function (vehiculos) {
         $.getJSON("media/map/rush/patronRushHour.json",function (datos) {

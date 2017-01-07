@@ -1,4 +1,4 @@
-define(['Phaser','Game','estados/mundo'], function (Phaser,Game,Mundo) {
+define(['Phaser','Game','estados/gameOver'], function (Phaser,Game) {
     /**
      *
      * @constructor
@@ -44,8 +44,9 @@ define(['Phaser','Game','estados/mundo'], function (Phaser,Game,Mundo) {
     }
 
     GameOver.prototype.create = function () {
+        Game.world.setBounds(0,0,640,352);
         Game.add.image(0, 0, 'fondoGameOver');
-        var nameLabel = Game.add.text(Game.world.centerX, Game.world.centerY-100, 'GAME OVER',{font:'48px PressStart2P'});
+        var nameLabel = Game.add.text(Game.world.centerX, Game.world.centerY-100, 'GAME OVER',{font:'48px PressStart2P',fill:'#70120f'});
         nameLabel.anchor.setTo(0.5, 0.5);
         var startBo = Game.add.button(Game.world.centerX, Game.world.centerY, "startB", empezar,this);
         startBo.scale.setTo(0.5,0.5);
@@ -75,8 +76,6 @@ define(['Phaser','Game','estados/mundo'], function (Phaser,Game,Mundo) {
      *
      */
     function empezar() {
-        Game.physics.startSystem(Phaser.Physics.ARCADE);
-        Game.state.add('Mundo', new Mundo());
         this.music.stop();
         Game.state.start('Mundo');
     }

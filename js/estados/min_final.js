@@ -1,4 +1,4 @@
-define(['Phaser','Game','sprites/player_min_final','sprites/enemy_min_final','BarHealth','estados/victoria'], function (Phaser,Game,Player_min_final,Enemy_min_final,BarHealth,Victoria) {
+define(['Phaser','Game','sprites/player_min_final','sprites/enemy_min_final','BarHealth','estados/victoria','estados/gameOver'], function (Phaser,Game,Player_min_final,Enemy_min_final,BarHealth,Victoria,GameOver) {
     /**
      *
      * @constructor
@@ -43,16 +43,16 @@ define(['Phaser','Game','sprites/player_min_final','sprites/enemy_min_final','Ba
         this.arrowEnemy.setAll('anchor.y',0.5);
         this.arrowEnemy.setAll('anchor.x',0);
 
-       // this.arrows=[this.arrowPlayer,this.arrowEnemy];
+
         this.shootArrow= Game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR)
 
         //Hace que el jugador se pinte arriba del suelo
         Game.world.swap(this.playerG,this.suelo);
-       // Game.world.swap(this.enemyG,this.suelo);
+
         this.player =  this.playerG.getAt(0);
         this.player.health+=5;
         this.player.maxHealth= this.player.health;
-        //console.log(this.player.health);
+
 
         this.sound_arrow = this.game.add.audio('shoot_arrow');
         this.music = this.game.add.audio('music_min_final');
@@ -106,10 +106,9 @@ define(['Phaser','Game','sprites/player_min_final','sprites/enemy_min_final','Ba
 
         }else{
             this.player.revive();
-          //  this.dead.onComplete.add(deadF,this);
             this.dead.play(10);
             this.deadB=true;
-            //this.player.animations.play('dead',1);
+
         }
 
 
@@ -172,9 +171,9 @@ define(['Phaser','Game','sprites/player_min_final','sprites/enemy_min_final','Ba
      *
      */
     function deadF() {
-        //alert("Game over");
-        //this.music.stop();
-        Game.state.start('Mundo');
+        this.music.stop();
+        Game.state.add('GameOver', new GameOver());
+        Game.state.start('GameOver');
     }
 
     /**
