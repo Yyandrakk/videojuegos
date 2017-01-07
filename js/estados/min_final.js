@@ -17,6 +17,11 @@ define(['Phaser','Game','sprites/player_min_final','sprites/enemy_min_final','Ba
 
     Min_final.prototype.create = function () {
         Game.world.setBounds(0,0,640,352);
+
+        Game.touchControl = Game.plugins.add(Phaser.Plugin.TouchControl);
+        Game.touchControl.inputEnable();
+        Game.touchControl.settings.singleDirection=true;
+
         this.playerG = Game.add.group();
         this.playerG.enableBody=true;
         this.playerG.visible=true;
@@ -42,6 +47,8 @@ define(['Phaser','Game','sprites/player_min_final','sprites/enemy_min_final','Ba
         this.arrowEnemy.setAll('frame',4);
         this.arrowEnemy.setAll('anchor.y',0.5);
         this.arrowEnemy.setAll('anchor.x',0);
+        this.arrowEnemy.setAll('anchor.x',0);
+
 
 
         this.shootArrow= Game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR)
@@ -60,8 +67,7 @@ define(['Phaser','Game','sprites/player_min_final','sprites/enemy_min_final','Ba
         this.music.play();
 
         this.dead=this.player.animations.getAnimation("dead");
-        this.dead.onComplete.active=true;
-        this.dead.onComplete.add(deadF,this);
+
         this.deadB=false;
         this.load_boton();
 
@@ -78,15 +84,18 @@ define(['Phaser','Game','sprites/player_min_final','sprites/enemy_min_final','Ba
         Game.physics.arcade.overlap(this.arrowPlayer,this.enemyG,this.enemy_kill,null,this);
 
         if(this.deadB==true){
-            deadF();
+            this.music.stop();
+            Game.state.add('GameOver', new GameOver());
+            Game.state.start('GameOver');
         }
         if(this.player.alive) {
             Game.physics.arcade.collide(this.player, this.muro);
 
-            if (this.shootArrow.isDown && Game.time.now > this.shootTime) {
+            if ((this.shootArrow.isDown || Game.touchControl.cursors.left || Game.touchControl.cursors.right) && Game.time.now > this.shootTime) {
                 this.sound_arrow.play();
                 var arrow = this.arrowPlayer.getFirstExists(false);
                 if (arrow) {
+
                     arrow.reset(this.player.x, this.player.y);
                     arrow.body.velocity.x = 300;
                     this.shootTime = Game.time.now + 300;
@@ -166,14 +175,6 @@ define(['Phaser','Game','sprites/player_min_final','sprites/enemy_min_final','Ba
     Min_final.prototype.col_muro= function(a,e){
         a.kill();
 
-    }
-    /**
-     *
-     */
-    function deadF() {
-        this.music.stop();
-        Game.state.add('GameOver', new GameOver());
-        Game.state.start('GameOver');
     }
 
     /**

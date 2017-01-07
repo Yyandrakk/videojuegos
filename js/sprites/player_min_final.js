@@ -38,12 +38,12 @@ define(['Phaser'], function (Phaser) {
     Player_min_final.prototype.constructor = Player_min_final;
     Player_min_final.prototype.update = function () {
 
-        if(this.cursor.up.some(b => b.isDown==true)){
+        if(this.cursor.up.some(b => b.isDown==true)|| this.game.touchControl.cursors.up){
             this.body.velocity.y = -200;
             this.body.velocity.x = 0;
             this.animations.play('up',15);
         }
-        else if(this.cursor.down.some(b=>b.isDown==true)){
+        else if(this.cursor.down.some(b=>b.isDown==true)||this.game.touchControl.cursors.down){
             this.body.velocity.y = +200;
             this.body.velocity.x = 0;
             this.animations.play('down',15);

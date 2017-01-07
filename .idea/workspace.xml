@@ -3,6 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="8cc47ea1-de98-404f-ab17-859d132e00d9" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/estados/min_final.js" afterPath="$PROJECT_DIR$/js/estados/min_final.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/estados/mundo.js" afterPath="$PROJECT_DIR$/js/estados/mundo.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/sprites/player_min_final.js" afterPath="$PROJECT_DIR$/js/sprites/player_min_final.js" />
     </list>
     <ignored path="videojuegos.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -25,53 +28,21 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="menu.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/estados/menu.js">
+      <file leaf-file-name="min_final.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/estados/min_final.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="149">
-              <caret line="14" column="42" lean-forward="true" selection-start-line="14" selection-start-column="42" selection-end-line="14" selection-end-column="42" />
+            <state relative-caret-position="153">
+              <caret line="93" column="108" lean-forward="false" selection-start-line="93" selection-start-column="108" selection-end-line="93" selection-end-column="108" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="main.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/main.js">
+      <file leaf-file-name="player_min_final.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/js/sprites/player_min_final.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="72">
-              <caret line="19" column="24" lean-forward="false" selection-start-line="19" selection-start-column="24" selection-end-line="19" selection-end-column="24" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="phaser-touch-control.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/libs/phaser-touch-control.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-2029">
-              <caret line="34" column="7" lean-forward="false" selection-start-line="34" selection-start-column="7" selection-end-line="34" selection-end-column="7" />
-              <folding>
-                <element signature="n#!!doc" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="game.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/game.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="38" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="player.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/sprites/player.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-265">
-              <caret line="59" column="65" lean-forward="false" selection-start-line="59" selection-start-column="65" selection-end-line="59" selection-end-column="65" />
+            <state relative-caret-position="259">
+              <caret line="45" column="67" lean-forward="false" selection-start-line="45" selection-start-column="67" selection-end-line="45" selection-end-column="67" />
               <folding />
             </state>
           </provider>
@@ -80,12 +51,22 @@
       <file leaf-file-name="mundo.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/estados/mundo.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="115">
-              <caret line="110" column="0" lean-forward="false" selection-start-line="110" selection-start-column="0" selection-end-line="110" selection-end-column="0" />
+            <state relative-caret-position="113">
+              <caret line="47" column="56" lean-forward="true" selection-start-line="45" selection-start-column="7" selection-end-line="47" selection-end-column="56" />
               <folding>
-                <marker date="1483816263240" expanded="true" signature="185:5921" ph="{...}" />
-                <marker date="1483816263240" expanded="true" signature="4939:5098" ph="{...}" />
+                <marker date="1483817083257" expanded="true" signature="185:6079" ph="{...}" />
+                <marker date="1483817083257" expanded="true" signature="4939:5098" ph="{...}" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="player.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/sprites/player.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="108">
+              <caret line="64" column="95" lean-forward="false" selection-start-line="64" selection-start-column="90" selection-end-line="64" selection-end-column="95" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -122,7 +103,6 @@
         <option value="$PROJECT_DIR$/js/boot.js" />
         <option value="$PROJECT_DIR$/js/sprites/cuadrado.js" />
         <option value="$PROJECT_DIR$/js/sprites/enemy_min_final.js" />
-        <option value="$PROJECT_DIR$/js/sprites/player_min_final.js" />
         <option value="$PROJECT_DIR$/js/preLoader.js" />
         <option value="$PROJECT_DIR$/media/map/rushhour.json" />
         <option value="$PROJECT_DIR$/js/game.js" />
@@ -137,13 +117,14 @@
         <option value="$PROJECT_DIR$/js/estados/gameOver.js" />
         <option value="$PROJECT_DIR$/js/estados/rushhour.js" />
         <option value="$PROJECT_DIR$/js/estados/laberinto.js" />
-        <option value="$PROJECT_DIR$/js/estados/min_final.js" />
         <option value="$PROJECT_DIR$/js/estados/puzzle.js" />
         <option value="$PROJECT_DIR$/js/main.js" />
         <option value="$PROJECT_DIR$/libs/phaser-touch-control.js" />
         <option value="$PROJECT_DIR$/js/sprites/player.js" />
-        <option value="$PROJECT_DIR$/js/estados/mundo.js" />
         <option value="$PROJECT_DIR$/js/estados/menu.js" />
+        <option value="$PROJECT_DIR$/js/estados/mundo.js" />
+        <option value="$PROJECT_DIR$/js/estados/min_final.js" />
+        <option value="$PROJECT_DIR$/js/sprites/player_min_final.js" />
       </list>
     </option>
   </component>
@@ -437,14 +418,7 @@
       <workItem from="1483697729089" duration="8102000" />
       <workItem from="1483706903798" duration="647000" />
       <workItem from="1483783417694" duration="8479000" />
-      <workItem from="1483806495984" duration="9550000" />
-    </task>
-    <task id="LOCAL-00002" summary="Subir hasta Menu">
-      <created>1479474288507</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1479474288507</updated>
+      <workItem from="1483806495984" duration="11118000" />
     </task>
     <task id="LOCAL-00003" summary="mundo principal">
       <created>1479481306518</created>
@@ -782,11 +756,18 @@
       <option name="project" value="LOCAL" />
       <updated>1483816338107</updated>
     </task>
-    <option name="localTasksCounter" value="51" />
+    <task id="LOCAL-00051" summary="touch Plugin">
+      <created>1483816544604</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1483816544605</updated>
+    </task>
+    <option name="localTasksCounter" value="52" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="227770000" />
+    <option name="totallyTimeSpent" value="229338000" />
   </component>
   <component name="TodoView" selected-index="4">
     <todo-panel id="selected-file">
@@ -809,7 +790,7 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.4143302" sideWeight="0.4974359" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.4143302" sideWeight="0.4974359" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -1001,13 +982,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/sprites/player_min_final.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="36">
-          <caret line="2" column="6" lean-forward="false" selection-start-line="2" selection-start-column="6" selection-end-line="2" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/js/boot.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="216">
@@ -1112,14 +1086,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/estados/min_final.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1836">
-          <caret line="108" column="9" lean-forward="false" selection-start-line="108" selection-start-column="9" selection-end-line="108" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/js/estados/rushhour.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3339">
@@ -1162,38 +1128,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/game.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="38" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/js/main.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="72">
           <caret line="19" column="24" lean-forward="false" selection-start-line="19" selection-start-column="24" selection-end-line="19" selection-end-column="24" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/sprites/player.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-265">
-          <caret line="59" column="65" lean-forward="false" selection-start-line="59" selection-start-column="65" selection-end-line="59" selection-end-column="65" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/estados/mundo.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="115">
-          <caret line="110" column="0" lean-forward="false" selection-start-line="110" selection-start-column="0" selection-end-line="110" selection-end-column="0" />
-          <folding>
-            <marker date="1483816263240" expanded="true" signature="185:5921" ph="{...}" />
-            <marker date="1483816263240" expanded="true" signature="4939:5098" ph="{...}" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1212,6 +1151,49 @@
           <folding>
             <element signature="n#!!doc" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/game.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/estados/mundo.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="113">
+          <caret line="47" column="56" lean-forward="true" selection-start-line="45" selection-start-column="7" selection-end-line="47" selection-end-column="56" />
+          <folding>
+            <marker date="1483817083257" expanded="true" signature="185:6079" ph="{...}" />
+            <marker date="1483817083257" expanded="true" signature="4939:5098" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/sprites/player.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="108">
+          <caret line="64" column="95" lean-forward="false" selection-start-line="64" selection-start-column="90" selection-end-line="64" selection-end-column="95" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/estados/min_final.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="93" column="108" lean-forward="false" selection-start-line="93" selection-start-column="108" selection-end-line="93" selection-end-column="108" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/sprites/player_min_final.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="259">
+          <caret line="45" column="67" lean-forward="false" selection-start-line="45" selection-start-column="67" selection-end-line="45" selection-end-column="67" />
+          <folding />
         </state>
       </provider>
     </entry>

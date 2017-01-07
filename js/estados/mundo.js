@@ -121,9 +121,10 @@ define(['Phaser','Game','sprites/player','estados/min_final','estados/laberinto'
         Game.physics.arcade.overlap(this.player, this.colLab, this.load_laberinto, null, this);
         Game.physics.arcade.overlap(this.player, this.colPuz, this.load_puzzle, null, this);
         Game.physics.arcade.overlap(this.player, this.colRush, this.load_Rushhour, null, this);
-
+        //Descomente la linea de abajo para activar el truco.
+        Game.physics.arcade.overlap(this.player, this.colision, this.load_minfinal, null, this);
         var distancia=Phaser.Point.distance({x:this.player.x,y:this.player.y},this.water.posCascada,true);
-        if(distancia<300){
+        if(distancia<250){
            //this.cascada.volume=
             if(!this.cascada.isPlaying)
                 this.cascada.play();
@@ -190,8 +191,7 @@ define(['Phaser','Game','sprites/player','estados/min_final','estados/laberinto'
     Mundo.prototype.load_Rushhour=function (p,m) {
         Game.state.add('Rushhour', new Rushhour());
         this.music.stop();
-        if(this.cascada.isPlaying)
-            this.cascada.stop();
+        this.cascada.stop();
         Game.state.start('Rushhour');
     }
     /**
