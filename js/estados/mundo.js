@@ -108,18 +108,7 @@ define(['Phaser','Game','sprites/player','estados/min_final','estados/laberinto'
 
         Game.physics.arcade.collide(this.player,this.muro);
         Game.physics.arcade.collide(this.player,this.decoracion);
-
-    if(Game.device.android){
-        alert("Prueba1");
-        if(Game.input.activePointer.isDown){
-            alert("Prueba");
-        }
-    }else{
         this.player.update();
-    }
-
-
-
 
        if(this.desbloquear){
             Game.physics.arcade.overlap(this.player, this.colision, this.load_minfinal, null, this);

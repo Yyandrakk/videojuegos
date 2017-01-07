@@ -1,4 +1,4 @@
-define(['Phaser','Game','sprites/player_min_final','sprites/enemy_min_final','BarHealth'], function (Phaser,Game,Player_min_final,Enemy_min_final,BarHealth) {
+define(['Phaser','Game','sprites/player_min_final','sprites/enemy_min_final','BarHealth','estados/victoria'], function (Phaser,Game,Player_min_final,Enemy_min_final,BarHealth,Victoria) {
     /**
      *
      * @constructor
@@ -16,7 +16,7 @@ define(['Phaser','Game','sprites/player_min_final','sprites/enemy_min_final','Ba
     Min_final.prototype.constructor = Min_final;
 
     Min_final.prototype.create = function () {
-
+        Game.world.setBounds(0,0,640,352);
         this.playerG = Game.add.group();
         this.playerG.enableBody=true;
         this.playerG.visible=true;
@@ -144,8 +144,10 @@ define(['Phaser','Game','sprites/player_min_final','sprites/enemy_min_final','Ba
 
         if(this.enemyG.countLiving()<=0){
             this.music.stop();
-            alert("Win!");
-            Game.state.start('Menu');
+            Game.state.add('Victoria', new Victoria());
+
+            Game.state.start('Victoria');
+
         }
 
     }

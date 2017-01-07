@@ -1,4 +1,4 @@
-define(['Phaser','Game','estados/mundo',], function (Phaser,Game,Mundo) {
+define(['Phaser','Game','estados/mundo'], function (Phaser,Game,Mundo) {
     /**
      *
      * @constructor
