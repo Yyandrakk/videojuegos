@@ -16,13 +16,17 @@ requirejs.config({
         },
         'JQuery':{
             exports:'$'
+        },
+        'TouchControl':{
+            exports:'TouchControl'
         }
     },
     paths: {
         'Phaser': '../libs/phaser/build/phaser',
         'Game': 'game',
         'BarHealth':'../libs/HealthBar',
-        'JQuery':'../libs/jquery-3.1.1.min'
+        'JQuery':'../libs/jquery-3.1.1.min',
+        'TouchControl':'../libs/phaser-touch-control'
     }
 });
 

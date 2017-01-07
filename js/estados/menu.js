@@ -1,4 +1,4 @@
-define(['Phaser','Game','estados/mundo'], function (Phaser,Game,Mundo) {
+define(['Phaser','Game','estados/mundo','TouchControl'], function (Phaser,Game,Mundo,TouchControl) {
     /**
      *
      * @constructor
@@ -18,6 +18,11 @@ define(['Phaser','Game','estados/mundo'], function (Phaser,Game,Mundo) {
         Game.load.image('tileMP2', 'media/tileset/Hyptosis/hyptosis_til-art-batch-2.png');
         Game.load.image('tileMP3', 'media/tileset/Hyptosis/hyptosis_tile-art-batch-3.png');
         Game.load.image('tileMP4', 'media/tileset/Hyptosis/hyptosis_tile-art-batch-4.png');
+
+        Game.load.image('compass', 'media/image/compass_rose.png');
+        Game.load.image('touch_segment', 'media/image/touch_segment.png');
+        Game.load.image('touch', 'media/image/touch.png');
+
         Game.load.spritesheet('colisionMP1', 'media/tileset/Hyptosis/hyptosis_tile-art-batch-1.png',32,32);
         Game.load.spritesheet('colisionMP2', 'media/tileset/Hyptosis/hyptosis_til-art-batch-2.png',32,32);
         Game.load.spritesheet('colisionMP3', 'media/tileset/Hyptosis/hyptosis_tile-art-batch-3.png',32,32);
@@ -59,6 +64,9 @@ define(['Phaser','Game','estados/mundo'], function (Phaser,Game,Mundo) {
 
     Menu.prototype.create = function () {
         Game.world.setBounds(0,0,640,352);
+
+
+
         Game.add.image(0, 0, 'back_menu');
         var nameLabel = Game.add.text(Game.world.centerX, Game.world.centerY-100, 'EPS WARRIOR',{font:'48px PressStart2P'});
         nameLabel.anchor.setTo(0.5, 0.5);

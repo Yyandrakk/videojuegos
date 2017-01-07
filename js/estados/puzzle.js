@@ -173,7 +173,7 @@ define(['Phaser','Game','estados/mundo'], function(Phaser,Game,Mundo){
     /**
      * Se encarga de generar los botones en su sitio
      */
-    Rushhour.prototype.load_boton=function () {
+    Puzzle.prototype.load_boton=function () {
 
         this.optionGrupo = Game.add.group();
         this.optionGrupo.fixedToCamera=true;

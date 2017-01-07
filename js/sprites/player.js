@@ -57,22 +57,22 @@ define(['Phaser','Game'], function (Phaser,Game) {
             this.body.velocity.y = -200;
             this.animations.play('rightu',15);
         }
-        else if ((this.cursor.left.some(bt => bt.isDown==true)) ) {
+        else if ((this.cursor.left.some(bt => bt.isDown==true))|| Game.touchControl.cursors.left ) {
             this.body.velocity.x = -200;
             this.body.velocity.y = 0;
             this.animations.play('left',15);
         }
-        else if (this.cursor.right.some(bt => bt.isDown==true)) {
+        else if (this.cursor.right.some(bt => bt.isDown==true)||Game.touchControl.cursors.right) {
             this.body.velocity.x = 200;
             this.body.velocity.y = 0;
             this.animations.play('right',15);
         }
-        else if(this.cursor.up.some(b => b.isDown==true) ){
+        else if((this.cursor.up.some(b => b.isDown==true)) || Game.touchControl.cursors.up ){
             this.body.velocity.y = -200;
             this.body.velocity.x = 0;
             this.animations.play('up',15);
         }
-        else if(this.cursor.down.some(b=>b.isDown==true)){
+        else if(this.cursor.down.some(b=>b.isDown==true)||Game.touchControl.cursors.down){
             this.body.velocity.y = +200;
             this.body.velocity.x = 0;
             this.animations.play('down',15);

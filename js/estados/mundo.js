@@ -43,6 +43,9 @@ define(['Phaser','Game','sprites/player','estados/min_final','estados/laberinto'
 
     }
     Mundo.prototype.create = function () {
+        Game.touchControl = Game.plugins.add(Phaser.Plugin.TouchControl);
+        Game.touchControl.inputEnable();
+        Game.touchControl.settings.singleDirection=true;
         Game.world.setBounds(0,0,40*32,40*32);
 
         this.playerG = Game.add.group();
@@ -163,6 +166,8 @@ define(['Phaser','Game','sprites/player','estados/min_final','estados/laberinto'
     Mundo.prototype.load_minfinal=function (p,m) {
         Game.state.add('MinFinal', new Min_final());
         this.music.stop();
+        if(this.cascada.isPlaying)
+            this.cascada.stop();
         Game.state.start('MinFinal');
     }
     /**
@@ -173,6 +178,8 @@ define(['Phaser','Game','sprites/player','estados/min_final','estados/laberinto'
     Mundo.prototype.load_laberinto=function (p,m) {
        Game.state.add('Laberinto', new Laberinto());
         this.music.stop();
+        if(this.cascada.isPlaying)
+            this.cascada.stop();
        Game.state.start('Laberinto');
     }
     /**
@@ -183,6 +190,8 @@ define(['Phaser','Game','sprites/player','estados/min_final','estados/laberinto'
     Mundo.prototype.load_Rushhour=function (p,m) {
         Game.state.add('Rushhour', new Rushhour());
         this.music.stop();
+        if(this.cascada.isPlaying)
+            this.cascada.stop();
         Game.state.start('Rushhour');
     }
     /**
@@ -193,6 +202,8 @@ define(['Phaser','Game','sprites/player','estados/min_final','estados/laberinto'
     Mundo.prototype.load_puzzle=function (p,m) {
         Game.state.add('Puzzle', new Puzzle());
         this.music.stop();
+        if(this.cascada.isPlaying)
+            this.cascada.stop();
         Game.state.start('Puzzle');
     }
 
@@ -263,6 +274,8 @@ define(['Phaser','Game','sprites/player','estados/min_final','estados/laberinto'
                 mini.haGanado=false
             }
             this.music.stop();
+            if(this.cascada.isPlaying)
+                this.cascada.stop();
             Game.state.start('Menu');
         }
     }
