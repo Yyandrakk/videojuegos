@@ -3,11 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="8cc47ea1-de98-404f-ab17-859d132e00d9" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/estados/menu.js" afterPath="$PROJECT_DIR$/js/estados/menu.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/estados/mundo.js" afterPath="$PROJECT_DIR$/js/estados/mundo.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/estados/puzzle.js" afterPath="$PROJECT_DIR$/js/estados/puzzle.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/main.js" afterPath="$PROJECT_DIR$/js/main.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/sprites/player.js" afterPath="$PROJECT_DIR$/js/sprites/player.js" />
     </list>
     <ignored path="videojuegos.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -442,7 +437,7 @@
       <workItem from="1483697729089" duration="8102000" />
       <workItem from="1483706903798" duration="647000" />
       <workItem from="1483783417694" duration="8479000" />
-      <workItem from="1483806495984" duration="9275000" />
+      <workItem from="1483806495984" duration="9344000" />
     </task>
     <task id="LOCAL-00001" summary="Subir las cosas ordenadas y iniciado RequireJS">
       <created>1479067366520</created>
@@ -780,11 +775,18 @@
       <option name="project" value="LOCAL" />
       <updated>1483811690211</updated>
     </task>
-    <option name="localTasksCounter" value="49" />
+    <task id="LOCAL-00049" summary="touch Plugin">
+      <created>1483816271662</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1483816271662</updated>
+    </task>
+    <option name="localTasksCounter" value="50" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="227495000" />
+    <option name="totallyTimeSpent" value="227564000" />
   </component>
   <component name="TodoView" selected-index="4">
     <todo-panel id="selected-file">
@@ -834,7 +836,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
-    <MESSAGE value="añadirdo el diagrama de estados" />
     <MESSAGE value="corregido" />
     <MESSAGE value="intentando añadir animacion de muerte" />
     <MESSAGE value="añadido boton menu al mundo y minijuego final pero no pausa el juego" />
@@ -859,7 +860,8 @@
     <MESSAGE value="Prueba touch4" />
     <MESSAGE value="Victoria" />
     <MESSAGE value="Version final-solo falta comentar" />
-    <option name="LAST_COMMIT_MESSAGE" value="Version final-solo falta comentar" />
+    <MESSAGE value="touch Plugin" />
+    <option name="LAST_COMMIT_MESSAGE" value="touch Plugin" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
