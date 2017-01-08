@@ -135,9 +135,9 @@ define(['Phaser','Game','estados/mundo'], function(Phaser,Game,Mundo){
 		});
 		
 		if (esFin){
-			Game.add.text(Game.world.centerX, Game.world.centerY, "Victoria");
 			this.music.stop();
 			Game.global.control.puzzle.haGanado = true;
+			Game.state.start('Mundo');
 		}
 	}
     /**
