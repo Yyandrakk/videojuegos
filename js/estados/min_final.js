@@ -1,6 +1,6 @@
 define(['Phaser','Game','sprites/player_min_final','sprites/enemy_min_final','BarHealth','estados/victoria','estados/gameOver'], function (Phaser,Game,Player_min_final,Enemy_min_final,BarHealth,Victoria,GameOver) {
     /**
-     *
+     * Estado del minijuego final, es parecido a un space invader
      * @constructor
      */
     function Min_final() {
@@ -130,7 +130,7 @@ define(['Phaser','Game','sprites/player_min_final','sprites/enemy_min_final','Ba
 
     }
     /**
-     *
+     *  Carga el tileMap del Minijuego Final y genera todos los layer y objetos que contiene
      */
     Min_final.prototype.createWorld = function () {
         this.map=Game.add.tilemap('mapMF');
@@ -148,9 +148,9 @@ define(['Phaser','Game','sprites/player_min_final','sprites/enemy_min_final','Ba
 
     }
     /**
-     *
-     * @param a
-     * @param e
+     * Funcion que salta cuando un flecha impacta en un enemigo
+     * @param {Phaser.sprite} a - Flecha del jugador que impacta
+     * @param {Phaser.sprite} e - Sprite del enemigo impactado
      */
     Min_final.prototype.enemy_kill= function(a,e){
         a.kill();
@@ -160,25 +160,31 @@ define(['Phaser','Game','sprites/player_min_final','sprites/enemy_min_final','Ba
         if(this.enemyG.countLiving()<=0){
             this.music.stop();
             Game.state.add('Victoria', new Victoria());
-
             Game.state.start('Victoria');
 
         }
 
     }
     /**
-     *
-     * @param p
-     * @param a
+     * Esta funcion salta cuando una flecha golpea en el jugador,
+     * quitandole uno de vida y actualiza la barra de vida
+     * @param {Phaser.sprite} p - Player
+     * @param {Phaser.sprite} a - Flecha enemiga que impacta
      */
     Min_final.prototype.player_damage= function(p,a){
         a.kill();
-        //cambiar que no le quite la ultima vida
+
         this.player.damage(1);
         this.barraVida.setPercent((this.player.health/this.player.maxHealth)*100);
 
 
     }
+
+    /**
+     * Elimina las flechas que impacten con el muro
+     * @param {Phaser.sprite} a - Flecha que impacta
+     * @param {Phaser.sprite} e - Muro
+     */
     Min_final.prototype.col_muro= function(a,e){
         a.kill();
 

@@ -1,6 +1,6 @@
 define(['Phaser','Game'], function (Phaser,Game) {
     /**
-     * Sprite para el mundo
+     * Sprite jugador para el mundo
      * @param game - Phaser.Game
      * @param {number} x - Coordenada  x
      * @param {number} y - Coordenada y

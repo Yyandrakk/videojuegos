@@ -138,7 +138,7 @@ define(['Phaser','Game','sprites/player','estados/min_final','estados/laberinto'
 
     }
     /**
-     *  Carga el tileMap de Mundo y genera tddos los layer y objetos que contiene
+     *  Carga el tileMap de Mundo y genera todos los layer y objetos que contiene
      */
     Mundo.prototype.createWorld = function () {
         this.map=Game.add.tilemap('mapP');

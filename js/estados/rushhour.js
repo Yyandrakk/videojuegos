@@ -88,11 +88,16 @@ define(['Phaser','Game','estados/mundo','sprites/Vehiculos','JQuery','estados/ga
         Game.state.add('GameOver', new GameOver());
         Game.state.start('GameOver');
     }
+
+
+    /**
+     *  Se usa JQuery sincrono para leer desde un archivo JSON los datos de cada vehiculo
+      * @param {Array} vehiculos - Array donde se insertan los datos de los vehiculos
+     */
     Rushhour.prototype.leerVehiculos = function (vehiculos) {
         $.getJSON("media/map/rush/patronRushHour.json",function (datos) {
 
             $.each(datos["vehiculos"],function (id,veh) {
-                //var vehObj={fila:veh.fila , col:veh.col,dir:veh.dir,tam:veh.tam,key:veh.key};
 
                 vehiculos.push(veh);
 
