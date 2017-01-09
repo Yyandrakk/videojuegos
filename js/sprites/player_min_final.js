@@ -33,7 +33,10 @@ define(['Phaser'], function (Phaser) {
         game.add.existing(this);
     }
 
-
+    /**
+     *
+     * @type {Phaser.Sprite}
+     */
     Player_min_final.prototype = Object.create(Phaser.Sprite.prototype);
     Player_min_final.prototype.constructor = Player_min_final;
     Player_min_final.prototype.update = function () {

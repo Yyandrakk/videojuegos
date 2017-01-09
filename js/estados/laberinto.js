@@ -8,6 +8,10 @@ define(['Phaser','Game','sprites/dog','estados/mundo','estados/gameOver'], funct
         this.listSprites=[];
     }
 //Inheritance
+    /**
+     *
+     * @type {Phaser.State}
+     */
     Laberinto.prototype = Object.create(Phaser.State.prototype);
     Laberinto.prototype.constructor = Laberinto;
 

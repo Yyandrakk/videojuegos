@@ -33,7 +33,10 @@ define(['Phaser'], function (Phaser) {
         game.add.existing(this);
     }
 
-
+    /**
+     *
+     * @type {Phaser.Sprite}
+     */
     Dog.prototype = Object.create(Phaser.Sprite.prototype);
     Dog.prototype.constructor = Dog;
     

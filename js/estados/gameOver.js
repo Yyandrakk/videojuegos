@@ -9,6 +9,10 @@ define(['Phaser','Game','estados/gameOver'], function (Phaser,Game) {
         this.soundBoton=null;
     }
 //Inheritance
+    /**
+     *
+     * @type {Phaser.State}
+     */
     GameOver.prototype = Object.create(Phaser.State.prototype);
     GameOver.prototype.constructor = GameOver;
     /* download assets code here */

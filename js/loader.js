@@ -1,14 +1,16 @@
-/**
- * Created by oscar on 13/11/16.
- */
 define(['Phaser','Game','estados/menu'], function (Phaser,Game,Menu) {
     /**
-     *
+     * Estado que carga las imagenes, sonidos necesarios en Menu
      * @constructor
      */
     function Loader() {
         Phaser.State.call(this);
     }
+
+    /**
+     *
+     * @type {Phaser.State}
+     */
     Loader.prototype = Object.create(Phaser.State.prototype);
     Loader.prototype.constructor = Loader;
 

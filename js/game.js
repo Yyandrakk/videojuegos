@@ -1,3 +1,6 @@
+/**
+ * Inicializa el Game de Phaser, y las fistintas variables globales necesarias
+ */
 define(['Phaser'], function (Phaser) {
     var g= new Phaser.Game(640, 352, Phaser.AUTO, 'game',null,true);
     g.global = {

@@ -12,6 +12,10 @@ define(['Phaser','Game','sprites/player_min_final','sprites/enemy_min_final','Ba
         this.soundBoton=null;
     }
 //Inheritance
+    /**
+     *
+     * @type {Phaser.State}
+     */
     Min_final.prototype = Object.create(Phaser.State.prototype);
     Min_final.prototype.constructor = Min_final;
 

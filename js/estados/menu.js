@@ -1,6 +1,6 @@
 define(['Phaser','Game','estados/mundo','TouchControl'], function (Phaser,Game,Mundo,TouchControl) {
     /**
-     *
+     * Es un estado que carga la interfaz Menu que permite inicializar el juego
      * @constructor
      */
     function Menu() {
@@ -9,6 +9,10 @@ define(['Phaser','Game','estados/mundo','TouchControl'], function (Phaser,Game,M
         this.soundBoton=null;
     }
 //Inheritance
+    /**
+     *
+     * @type {Phaser.State}
+     */
     Menu.prototype = Object.create(Phaser.State.prototype);
     Menu.prototype.constructor = Menu;
     /* download assets code here */
@@ -38,7 +42,7 @@ define(['Phaser','Game','estados/mundo','TouchControl'], function (Phaser,Game,M
 
     }
     /**
-     *
+     * Se encarga de mostrar o ocultar el resto de botones cuando se da al de opciones
      */
     function mostrarMenu(){
         if(this.optionGrupo.y == 0){
@@ -54,7 +58,7 @@ define(['Phaser','Game','estados/mundo','TouchControl'], function (Phaser,Game,M
     }
 
     /**
-     *
+     * Pone o quita el sonido
      */
     function toggleSound() {
 
@@ -95,7 +99,7 @@ define(['Phaser','Game','estados/mundo','TouchControl'], function (Phaser,Game,M
 
     }
     /**
-     *
+     * Carga el estado Mundo que es inicial del juego y lo inicia
      */
     function empezar() {
         Game.physics.startSystem(Phaser.Physics.ARCADE);

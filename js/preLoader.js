@@ -1,11 +1,16 @@
 define(['Game','loader'],function (Game,Loader) {
     /**
-     *
+     * Estado que preCarga las barras de carga
      * @constructor
      */
     function PreLoader() {
         Phaser.State.call(this);
     }
+
+    /**
+     *
+     * @type {Phaser.State}
+     */
     PreLoader.prototype = Object.create(Phaser.State.prototype);
     PreLoader.prototype.constructor = PreLoader;
     PreLoader.prototype.preload = function (){

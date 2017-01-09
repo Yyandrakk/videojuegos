@@ -1,6 +1,6 @@
 define(['Phaser','Game','estados/mundo','sprites/Vehiculos','JQuery','estados/gameOver'], function (Phaser,Game,Mundo,Vehiculos,$,GameOver) {
     /**
-     * Representa al minijuego Rush Hour
+     * Estado que representa al minijuego Rush Hour
      * @constructor
      */
     function Rushhour() {
@@ -9,7 +9,10 @@ define(['Phaser','Game','estados/mundo','sprites/Vehiculos','JQuery','estados/ga
 
     }
 //Inheritance
-
+    /**
+     *
+     * @type {Phaser.State}
+     */
     Rushhour.prototype = Object.create(Phaser.State.prototype);
     Rushhour.prototype.constructor = Rushhour;
 

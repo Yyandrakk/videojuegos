@@ -1,5 +1,8 @@
 define(['Phaser','Game'], function (Phaser,Game)  {
-
+    /**
+     * Estado final que muestra los creditos cuando se han completado todos los minijuegos
+     * @constructor
+     */
     function Victoria() {
         Phaser.State.call(this);
         this.shoot=0;

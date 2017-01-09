@@ -18,6 +18,10 @@ define(['Phaser','Game','estados/mundo'], function(Phaser,Game,Mundo){
      */
 	var totalPiezas, grupoPiezas, aleat = [];
     //Inheritance
+    /**
+	 *
+     * @type {Phaser.State}
+     */
     Puzzle.prototype = Object.create(Phaser.State.prototype);
     Puzzle.prototype.constructor = Puzzle;
     

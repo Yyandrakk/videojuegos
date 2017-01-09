@@ -1,5 +1,5 @@
 /**
- * Created by oscar on 13/11/16.
+ * Archivo de configuracion e inicio
  */
 requirejs.config({
     baseUrl:"js",

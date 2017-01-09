@@ -11,6 +11,10 @@ define(['Phaser','Game','sprites/player','estados/min_final','estados/laberinto'
 
     }
 //Inheritance
+    /**
+     *
+     * @type {Phaser.State}
+     */
     Mundo.prototype = Object.create(Phaser.State.prototype);
     Mundo.prototype.constructor = Mundo;
 
@@ -134,7 +138,7 @@ define(['Phaser','Game','sprites/player','estados/min_final','estados/laberinto'
 
     }
     /**
-     *
+     *  Carga el tileMap de Mundo y genera tddos los layer y objetos que contiene
      */
     Mundo.prototype.createWorld = function () {
         this.map=Game.add.tilemap('mapP');
@@ -160,9 +164,9 @@ define(['Phaser','Game','sprites/player','estados/min_final','estados/laberinto'
         this.map.setCollisionBetween(1, 10000, true, this.decoracion);
     }
     /**
-     *
-     * @param p
-     * @param m
+     *  Carga el minijuego final
+     * @param p - No se usa
+     * @param m - No se usa
      */
     Mundo.prototype.load_minfinal=function (p,m) {
         Game.state.add('MinFinal', new Min_final());
@@ -172,9 +176,9 @@ define(['Phaser','Game','sprites/player','estados/min_final','estados/laberinto'
         Game.state.start('MinFinal');
     }
     /**
-     *
-     * @param p
-     * @param m
+     * Carga el minijuego del laberinto
+     * @param p - No se usa
+     * @param m - No se usa
      */
     Mundo.prototype.load_laberinto=function (p,m) {
        Game.state.add('Laberinto', new Laberinto());
@@ -184,9 +188,9 @@ define(['Phaser','Game','sprites/player','estados/min_final','estados/laberinto'
        Game.state.start('Laberinto');
     }
     /**
-     *
-     * @param p
-     * @param m
+     * Carga el minijuego Rush Hour
+     * @param p - No se usa
+     * @param m - No se usa
      */
     Mundo.prototype.load_Rushhour=function (p,m) {
         if(!Game.global.control.rushhour.primeraEntrada){
@@ -199,9 +203,9 @@ define(['Phaser','Game','sprites/player','estados/min_final','estados/laberinto'
         Game.state.start('Rushhour');
     }
     /**
-     *
-     * @param p
-     * @param m
+     * Garga el minijuego del Puzzle
+     * @param p - No se usa
+     * @param m - No se usa
      */
     Mundo.prototype.load_puzzle=function (p,m) {
         Game.state.add('Puzzle', new Puzzle());
