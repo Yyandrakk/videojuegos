@@ -21,6 +21,9 @@ define(['Phaser','Game','sprites/player_min_final','sprites/enemy_min_final','Ba
         Game.touchControl = Game.plugins.add(Phaser.Plugin.TouchControl);
         Game.touchControl.inputEnable();
         Game.touchControl.settings.singleDirection=true;
+        if(Game.device.desktop) {
+            Game.touchControl.inputDisable();
+        }
 
         this.playerG = Game.add.group();
         this.playerG.enableBody=true;

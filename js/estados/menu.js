@@ -26,6 +26,7 @@ define(['Phaser','Game','estados/mundo','TouchControl'], function (Phaser,Game,M
         Game.load.spritesheet('colisionMP1', 'media/tileset/Hyptosis/hyptosis_tile-art-batch-1.png',32,32);
         Game.load.spritesheet('colisionMP2', 'media/tileset/Hyptosis/hyptosis_til-art-batch-2.png',32,32);
         Game.load.spritesheet('colisionMP3', 'media/tileset/Hyptosis/hyptosis_tile-art-batch-3.png',32,32);
+        Game.load.spritesheet('colisionMP4', 'media/tileset/Hyptosis/hyptosis_tile-art-batch-4.png',32,32);
 
         Game.load.spritesheet('water','media/tileset/wateranimate2.png',96,193);
 

@@ -104,6 +104,15 @@ define(['Phaser','Game','estados/mundo','sprites/Vehiculos','JQuery','estados/ga
         var i=0,j=0;
         Game.add.sprite(0,0,"tablero");
 
+        Game.global.rush.tablero=[
+            [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+        ];
+
 
         var vehiculos=new Array();
         $.ajaxSetup({async:false});

@@ -8,6 +8,7 @@ define(['Phaser','Game','sprites/player','estados/min_final','estados/laberinto'
         this.optionGrupo=null;
         this.soundBoton=null;
         this.desbloquear=false;
+
     }
 //Inheritance
     Mundo.prototype = Object.create(Phaser.State.prototype);
@@ -45,7 +46,10 @@ define(['Phaser','Game','sprites/player','estados/min_final','estados/laberinto'
     Mundo.prototype.create = function () {
         Game.touchControl = Game.plugins.add(Phaser.Plugin.TouchControl);
         Game.touchControl.inputEnable();
-        Game.touchControl.settings.singleDirection=true;
+        Game.touchControl.settings.singleDirection = true;
+        if(Game.device.desktop) {
+            Game.touchControl.inputDisable();
+        }
         Game.world.setBounds(0,0,40*32,40*32);
 
         this.playerG = Game.add.group();
@@ -87,11 +91,7 @@ define(['Phaser','Game','sprites/player','estados/min_final','estados/laberinto'
         this.water.animations.add('move',[0,1,2,3],12,true,true);
         this.water.animations.play('move');
         this.water.posCascada={x:this.water.x,y:this.water.y+this.water.height};
-        /*
-        Interesante para el juego de arastrar
-        this.player.inputEnabled=true;
-        this.player.input.enableDrag(false,false,true);
-        this.player.input.priorityID=0;*/
+
 
         Game.camera.follow(this.player);
         if(Game.rnd.integerInRange(0, 10)<5){
@@ -106,6 +106,7 @@ define(['Phaser','Game','sprites/player','estados/min_final','estados/laberinto'
         this.load_boton();
 
 
+
     }
     Mundo.prototype.update = function () {
 
@@ -113,19 +114,17 @@ define(['Phaser','Game','sprites/player','estados/min_final','estados/laberinto'
         Game.physics.arcade.collide(this.player,this.decoracion);
         this.player.update();
 
-       if(this.desbloquear){
+       if(Game.global.control.rushhour.haGanado && Game.global.control.laberinto.haGanado && Game.global.control.puzzle.haGanado){
             Game.physics.arcade.overlap(this.player, this.colision, this.load_minfinal, null, this);
-       }else{
-           desbloquearFinal();
        }
         Game.physics.arcade.overlap(this.player, this.colLab, this.load_laberinto, null, this);
         Game.physics.arcade.overlap(this.player, this.colPuz, this.load_puzzle, null, this);
         Game.physics.arcade.overlap(this.player, this.colRush, this.load_Rushhour, null, this);
         //Descomente la linea de abajo para activar el truco.
-        Game.physics.arcade.overlap(this.player, this.colision, this.load_minfinal, null, this);
+        //Game.physics.arcade.overlap(this.player, this.colision, this.load_minfinal, null, this);
         var distancia=Phaser.Point.distance({x:this.player.x,y:this.player.y},this.water.posCascada,true);
         if(distancia<250){
-           //this.cascada.volume=
+
             if(!this.cascada.isPlaying)
                 this.cascada.play();
         }else{
@@ -154,6 +153,7 @@ define(['Phaser','Game','sprites/player','estados/min_final','estados/laberinto'
         this.map.createFromObjects('colision','laberinto','colisionMP2',130,true,false,this.colLab);
         this.map.createFromObjects('colision','rushhour','colisionMP3',561,true,false,this.colRush);
         this.map.createFromObjects('colision','rushhour2','colisionMP3',531,true,false,this.colRush);
+
 
         this.map.createFromObjects('animated','water','water',0,true,false,this.waterA);
         this.map.setCollisionBetween(1, 10000, true, this.muro);
@@ -189,7 +189,11 @@ define(['Phaser','Game','sprites/player','estados/min_final','estados/laberinto'
      * @param m
      */
     Mundo.prototype.load_Rushhour=function (p,m) {
-        Game.state.add('Rushhour', new Rushhour());
+        if(!Game.global.control.rushhour.primeraEntrada){
+            Game.state.add('Rushhour', new Rushhour());
+            Game.global.control.rushhour.primeraEntrada=true;
+        }
+
         this.music.stop();
         this.cascada.stop();
         Game.state.start('Rushhour');
@@ -280,16 +284,6 @@ define(['Phaser','Game','sprites/player','estados/min_final','estados/laberinto'
         }
     }
 
-    /**
-     * Desbloquea el minijuego final cuando se ganan todos los demas
-     */
-    function desbloquearFinal(){
-        for (var mini in Game.global.control){
-            if(mini.haGanado==false){
-                return;
-            }
-        }
-        this.desbloquear=true;
-    }
+
     return Mundo;
 });
