@@ -21,7 +21,7 @@
     "inverseNav": false
   },
   "opts": {
-    "template": "/home/oscar/node_modules/jsdoc/templates/docdash",
+    "template": "/home/oscar/node_modules/docdash",
     "encoding": "utf8",
     "destination": "docs/js",
     "recurse": true,

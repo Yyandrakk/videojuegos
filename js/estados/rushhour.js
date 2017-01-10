@@ -1,3 +1,9 @@
+/**
+ * Modulo que representa Rush Hour
+ *
+ * @exports estados/rushhour
+ * @namespace
+ */
 define(['Phaser','Game','estados/mundo','sprites/Vehiculos','JQuery','estados/gameOver'], function (Phaser,Game,Mundo,Vehiculos,$,GameOver) {
     /**
      * Estado que representa al minijuego Rush Hour
