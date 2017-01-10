@@ -50,7 +50,7 @@ define(['Phaser','Game','sprites/dog','estados/mundo','estados/gameOver'], funct
 
     }
     /**
-     *
+     * Crea el mapa del laberinto
      */
     Laberinto.prototype.createWorld = function () {
         this.map=Game.add.tilemap('mapLab', tileWidth=50, tileHeight=50);
@@ -68,7 +68,7 @@ define(['Phaser','Game','sprites/dog','estados/mundo','estados/gameOver'], funct
 
     }
     /**
-     *
+     * Resta una vida cuando el personaje muere, lo devuelve a la posición inicial y, en caso de quedaron sin vidas, salta a GameOver
      */
     Laberinto.prototype.dogDie = function() {
         this.dog.position.x = 80;
@@ -76,15 +76,13 @@ define(['Phaser','Game','sprites/dog','estados/mundo','estados/gameOver'], funct
         Game.global.control.laberinto.vidas -= 1;
         this.numVidas.text = 'Vidas: ' + Game.global.control.laberinto.vidas;
         if (Game.global.control.laberinto.vidas < 0){
-            Game.state.start('GameOver');
             this.music.stop();
-            //Game.state.start('Mundo');
-
+			Game.state.start('GameOver');
         }
         this.deathSound.play();
     }
     /**
-     *
+     * Vuelve al mundo tras completar el minijuego
      */
     Laberinto.prototype.levelCompleted = function() {
         Game.global.control.laberinto.haGanado = true;

@@ -67,8 +67,8 @@ define(['Phaser','Game','estados/mundo'], function(Phaser,Game,Mundo){
 		
     }
     /**
-	 *
-     * @param pieza
+	 * Si hay un hueco vacío al lado de la pieza, la mueve a esa posición
+     * @param pieza actual
      */
 	Puzzle.prototype.seleccionarPieza = function(pieza){
 		var huecoVacio = this.vecinoVacio(pieza);
@@ -78,7 +78,7 @@ define(['Phaser','Game','estados/mundo'], function(Phaser,Game,Mundo){
 		}
 	}
     /**
-	 *
+	 * Comprueba si una pieza tiene algún vecino que sea un hueco vacío
      * @param pieza
      * @returns {boolean}
      */
@@ -98,7 +98,7 @@ define(['Phaser','Game','estados/mundo'], function(Phaser,Game,Mundo){
 		return vacioEncontrado;
 	}
     /**
-	 *
+	 * Mueve una pieza a un hueco vacío
      * @param pieza
      * @param huecoVacio
      */
@@ -126,7 +126,7 @@ define(['Phaser','Game','estados/mundo'], function(Phaser,Game,Mundo){
 		this.fin();
 	}
     /**
-	 *
+	 * Comprueba si se ha completado el puzzle. Si es así, vuelve al mundo
      */
 	Puzzle.prototype.fin = function(){
 		var esFin = true;
@@ -145,7 +145,7 @@ define(['Phaser','Game','estados/mundo'], function(Phaser,Game,Mundo){
 		}
 	}
     /**
-	 *
+	 * Crea un array aleatorio
      */
 	Puzzle.prototype.crearArrayAleatorio = function(){
 		var indArray = [];
@@ -155,7 +155,7 @@ define(['Phaser','Game','estados/mundo'], function(Phaser,Game,Mundo){
 		return this.mezclar(indArray);
 	}
     /**
-	 *
+	 * Recibe un array y lo mezcla
      * @param array
      * @returns {*}
      */

@@ -22,7 +22,7 @@ define(['Phaser','Game','estados/gameOver'], function (Phaser,Game) {
 		Game.load.audio('gameOverMusica', ['media/sound/Final Fantasy Game Over.mp3']);
     }
     /**
-     *
+     * Se encarga de mostrar o ocultar el resto de botones cuando se da al de opciones
      */
     function mostrarMenu(){
         if(this.optionGrupo.y == 0){
@@ -38,7 +38,7 @@ define(['Phaser','Game','estados/gameOver'], function (Phaser,Game) {
     }
 
     /**
-     *
+     * Pone o quita el sonido
      */
     function toggleSound() {
 
@@ -77,7 +77,7 @@ define(['Phaser','Game','estados/gameOver'], function (Phaser,Game) {
 
     }
     /**
-     *
+     * Carga el estado Mundo que es inicial del juego y lo inicia
      */
     function empezar() {
         this.music.stop();
