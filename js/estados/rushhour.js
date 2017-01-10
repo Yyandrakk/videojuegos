@@ -92,7 +92,7 @@ define(['Phaser','Game','estados/mundo','sprites/Vehiculos','JQuery','estados/ga
 
     /**
      *  Se usa JQuery sincrono para leer desde un archivo JSON los datos de cada vehiculo
-      * @param {Array} vehiculos - Array donde se insertan los datos de los vehiculos
+      * @param {Object[]} vehiculos - Array donde se insertan los datos de los vehiculos
      */
     Rushhour.prototype.leerVehiculos = function (vehiculos) {
         $.getJSON("media/map/rush/patronRushHour.json",function (datos) {
