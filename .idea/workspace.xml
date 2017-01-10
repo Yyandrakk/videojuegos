@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8cc47ea1-de98-404f-ab17-859d132e00d9" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/conf.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/estados/rushhour.js" afterPath="$PROJECT_DIR$/js/estados/rushhour.js" />
     </list>
     <ignored path="videojuegos.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -469,14 +466,7 @@
       <workItem from="1484036469514" duration="26000" />
       <workItem from="1484036514714" duration="771000" />
       <workItem from="1484041468482" duration="2810000" />
-      <workItem from="1484057750652" duration="617000" />
-    </task>
-    <task id="LOCAL-00007" summary="Ya carga bien el tilemap pero no colisiona, añadido el movimiento con las flechas y AWSD">
-      <created>1479732989918</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1479732989918</updated>
+      <workItem from="1484057750652" duration="628000" />
     </task>
     <task id="LOCAL-00008" summary="Menu funciona y ya colisona con el mundo, aunque hay algunas que no quedan muy bien">
       <created>1479738560974</created>
@@ -814,11 +804,18 @@
       <option name="project" value="LOCAL" />
       <updated>1483973660395</updated>
     </task>
-    <option name="localTasksCounter" value="56" />
+    <task id="LOCAL-00056" summary="Todo comentado">
+      <created>1484061501226</created>
+      <option name="number" value="00056" />
+      <option name="presentableId" value="LOCAL-00056" />
+      <option name="project" value="LOCAL" />
+      <updated>1484061501227</updated>
+    </task>
+    <option name="localTasksCounter" value="57" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="244273000" />
+    <option name="totallyTimeSpent" value="244284000" />
   </component>
   <component name="TodoView" selected-index="4">
     <todo-panel id="selected-file">
